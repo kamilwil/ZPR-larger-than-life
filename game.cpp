@@ -16,7 +16,7 @@ class Game{
     State state;
 
 public:
-    Game::Game()=default;
+    Game()=default;
     const int GAME_LENGTH=100;
     const int BOARD_SIZE=100;
 

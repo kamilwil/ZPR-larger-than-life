@@ -6,9 +6,6 @@
 #include <map>
 #include <set>
 #include "change.hpp"
-
-#include <set>
-
 #include "state.hpp"
 
 

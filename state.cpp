@@ -12,7 +12,7 @@ class State{
     std::set<Cell> inactive_cells;
     int it_number;
 public:
-    State::State()=default;
+    State()=default;
     State(std::set<Cell> actives, std::set<Cell> inactives, int it){}
 
     void changeIteration(int i){}
