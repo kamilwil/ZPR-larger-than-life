@@ -2,7 +2,7 @@ import tkinter as tk
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
-CELL_COUNT = 30
+CELL_COUNT = 50
 
 # Window (Frame)
 class Window(tk.Frame):
@@ -25,8 +25,8 @@ class ScalableCanvas(tk.Canvas):
 		self.bind("<Configure>", lambda event, arga=parent: self.onResize(event, arga))
 
 		for i in range(CELL_COUNT+1):
-			self.create_line(20 + i*(WINDOW_HEIGHT-100)/CELL_COUNT, 20, 20 + i*(WINDOW_HEIGHT-100)/CELL_COUNT, WINDOW_HEIGHT-80) #pionowe linie w tabeli
-			self.create_line(20, 20 + i*(WINDOW_HEIGHT-100)/CELL_COUNT, WINDOW_HEIGHT-80, 20 + i*(WINDOW_HEIGHT-100)/CELL_COUNT) #poziome linie w tabeli
+			self.create_line(20 + i*(WINDOW_HEIGHT-300)/CELL_COUNT, 20, 20 + i*(WINDOW_HEIGHT-300)/CELL_COUNT, WINDOW_HEIGHT-80) #pionowe linie w tabeli
+			self.create_line(20, 20 + i*(WINDOW_HEIGHT-100)/CELL_COUNT, WINDOW_HEIGHT-280, 20 + i*(WINDOW_HEIGHT-100)/CELL_COUNT) #poziome linie w tabeli
 		self.addtag_all("all")
 
 		self.height = self.winfo_reqheight() 
@@ -53,15 +53,28 @@ class ScalableCanvas(tk.Canvas):
 		#print(self.width)
 		#print(self.height)
 
+def onPressRules(self):
+	#tu bedzie obsluga przycisku
+	print('Hey! Ew prest the batyn! Heer haev sam logynfow.')
+
 root = tk.Tk()
 root.title("Larger than Life")
 geom_string = str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGHT)
 root.geometry(geom_string)
 
-main_frame = Window(root, width = WINDOW_WIDTH, height = WINDOW_HEIGHT)
+main_frame = Window(root, width = WINDOW_HEIGHT, height = WINDOW_HEIGHT)
 main_frame.pack(fill="both", expand=True)
 
 canvas = ScalableCanvas(main_frame, width = WINDOW_WIDTH, height = WINDOW_HEIGHT, highlightthickness=0)
 canvas.pack()
+
+side_frame = tk.Frame(canvas, bg="gray")
+sf = canvas.create_window(WINDOW_HEIGHT-250,0, anchor = "nw", window=(side_frame))
+
+canvas.itemconfig(sf,width=230,height=WINDOW_HEIGHT)
+
+rules = tk.Button(side_frame, text="Zarzadzaj regulami")
+rules.bind("<Button-1>", onPressRules)
+rules.pack(side="left")
 
 root.mainloop()
