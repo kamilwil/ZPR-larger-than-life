@@ -9,6 +9,7 @@ class Cell{
 
 public:
     Cell();
+    ~Cell();
     Cell(int, int, int);
     int getXcoord();
     int getYcoord();
