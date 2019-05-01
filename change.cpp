@@ -1,19 +1,20 @@
-#include <unordered_set>
+#include <set>
 #include <iterator>
 #include "change.hpp"
 #include "cell.hpp"
 
 
-Change::Change(std::unordered_set<Cell> toshifts, std::unordered_set<Cell> tobirths){}
 
-std::unordered_set<Cell> Change::getToShift(){}
-std::unordered_set<Cell> Change::getToBirth(){}
+Change::Change(std::set<Cell> toshifts, std::set<Cell> tobirths){}
 
-void Change::setToShift(std::unordered_set<Cell> toshifted){}
-void Change::setToBirth(std::unordered_set<Cell> tobirthed){}
+std::set<Cell> Change::getToShift(){return toShift;}
+std::set<Cell> Change::getToBirth(){return toBirth;}
 
-void Change::addToShift(std::unordered_set<Cell> toshifted){}
-void Change::addToBirth(std::unordered_set<Cell> tobirthed){}
+void Change::setToShift(std::set<Cell> toshifted){}
+void Change::setToBirth(std::set<Cell> tobirthed){}
+
+void Change::addToShift(std::set<Cell> toshifted){}
+void Change::addToBirth(std::set<Cell> tobirthed){}
 
 
 

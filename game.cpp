@@ -1,34 +1,35 @@
 //game.hpp
 
-#ifndef GAME_HPP
-
 #include <map>
-#include <unordered_set>
+#include <set>
 #include "cell.hpp"
+#include "change.hpp"
+#include "state.cpp"
+#include "state.hpp"
 
 
 
 class Game{
 
     std::map<int,int> rules;
-    std::unordered_set<Change> changes;
+    std::set<Change> changes;
     State state;
 
 public:
-    const int GAME_LENGTH;
-    const int BOARD_SIZE;
+    const int GAME_LENGTH=100;
+    const int BOARD_SIZE=100;
 
-    Game(int length,int size,std::map<int,int> rulings,std::unordered_set<Change> changes, State state){}
+    Game(int length,int size,std::map<int,int> rulings,std::set<Change> changes, State state){}
 
 
     std::map<int,int> getRules(){}
-    std::unordered_set<Change> getChanges(){}
+    std::set<Change> getChanges(){}
     State getState(){}
     int getGameLength(){return 1;}
     int getBoardSize(){return 1;}
 
     void setRules(std::map<int,int> rules){}
-    void setChanges(std::unordered_set<Change> changes){}
+    void setChanges(std::set<Change> changes){}
     void setState(State state){}
 
     void updateState(Change change,int direction){}

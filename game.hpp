@@ -4,32 +4,33 @@
 #define GAME_HPP
 
 #include <map>
-#include <unordered_set>
+#include <set>
 #include "change.hpp"
-
+#include "change.cpp"
+#include <set>
 int x=30;
 
 class Game{
 
     std::map<int,int> rules;
-    std::unordered_set<Change> changes;
+    std::set<Change> changes;
     State state;
 
 public:
     const int GAME_LENGTH;
     const int BOARD_SIZE;
 
-    Game(int,int,std::map<int,int>,std::unordered_set<Change>,State);
+    Game(int,int,std::map<int,int>,std::set<Change>,State);
 
 
     std::map<int,int> getRules();
-    std::unordered_set<Change> getChanges();
+    std::set<Change> getChanges();
     State getState();
     int getGameLength();
     int getBoardSize();
     
     void setRules(std::map<int,int>);
-    void setChanges(std::unordered_set<Change>);
+    void setChanges(std::set<Change>);
     void setState(State);
 
     void updateState(Change,int);
