@@ -1,10 +1,11 @@
 #include "cell.hpp"
 #include "state.hpp"
-#include "game.hpp"
 #include "change.hpp"
+#include "game.hpp"
 
 
 
 
-int main ()
-{return 0;}
+
+int main (void)
+{}
