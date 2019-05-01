@@ -22,7 +22,7 @@ public:
 
     std::unordered_set<Cell> get_activeCells(){}
     std::set<Cell> get_inactiveCells(){}
-    int getItNumber(){}
+    int getItNumber(){return 1;}
     void setActiveCells(std::unordered_set<Cell> actives){}
     void setInactiveCells(std::set<Cell> inactives){}
     void setItNumber(int it){}

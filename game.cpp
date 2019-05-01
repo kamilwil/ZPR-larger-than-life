@@ -24,8 +24,8 @@ public:
     std::map<int,int> getRules(){}
     std::unordered_set<Change> getChanges(){}
     State getState(){}
-    int getGameLength(){}
-    int getBoardSize(){}
+    int getGameLength(){return 1;}
+    int getBoardSize(){return 1;}
 
     void setRules(std::map<int,int> rules){}
     void setChanges(std::unordered_set<Change> changes){}
@@ -34,7 +34,7 @@ public:
     void updateState(Change change,int direction){}
     void generateChanges(){}
 
-    int sendChanges(Change change,int it){}
+    int sendChanges(Change change,int it){return 1;}
 
     void receiveRules(){}
     void receiveStartingPosition(){}
