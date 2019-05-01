@@ -32,7 +32,6 @@ public:
 
     void updateState(Change,int);
     void generateChanges();
-    void implementChange();
 
     int sendChanges(Change,int);
 

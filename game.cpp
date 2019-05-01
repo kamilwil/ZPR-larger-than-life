@@ -4,6 +4,7 @@
 
 #include <map>
 #include <unordered_set>
+#include "cell.hpp"
 
 
 
@@ -32,7 +33,6 @@ public:
 
     void updateState(Change change,int direction){}
     void generateChanges(){}
-    void implementChange(){}
 
     int sendChanges(Change change,int it){}
 
