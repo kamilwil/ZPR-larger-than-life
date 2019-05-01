@@ -27,7 +27,7 @@ public:
     void setActiveCells(std::unordered_set<Cell>);
     void setInactiveCells(std::set<Cell>);
     void setItNumber(int it);
-}
+};
 
 
 

@@ -42,7 +42,7 @@ public:
     void receiveTask();
 
 
-}
+};
 
 
 #endif

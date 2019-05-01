@@ -14,6 +14,6 @@ public:
     void setXcoord(int);
     void setYcoord(int);
     void setState(int);
-}
+};
 
 #endif

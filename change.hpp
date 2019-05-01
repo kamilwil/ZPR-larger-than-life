@@ -23,7 +23,7 @@ public:
     void addToShift(std::unordered_set<Cell>);
     void addToBirth(std::unordered_set<Cell>);
 
-}
+};
 
 
 #endif
