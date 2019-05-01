@@ -1,9 +1,11 @@
 //Change.hpp
 #ifndef CHANGE_HPP
+#define CHANGE_HPP
 
+#include "cell.hpp"
 #include <unordered_set>
 #include <iterator>
-#include "cell.hpp"
+
 
 class Change{
 
@@ -20,7 +22,6 @@ public:
 
     void addToShift(std::unordered_set<Cell>);
     void addToBirth(std::unordered_set<Cell>);
-
 
 }
 

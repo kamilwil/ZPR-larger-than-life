@@ -1,6 +1,7 @@
 //State.hpp
 
 #ifndef STATE_HPP
+#define STATE_HPP
 #include <set>
 #include <unordered_set>
 #include <iterator>

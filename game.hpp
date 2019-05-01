@@ -1,12 +1,13 @@
 //game.hpp
 
 #ifndef GAME_HPP
+#define GAME_HPP
 
 #include <map>
 #include <unordered_set>
 #include "change.hpp"
 
-
+int x=30;
 
 class Game{
 
@@ -42,15 +43,6 @@ public:
 
 
 }
-
-
-
-
-
-
-
-
-
 
 
 #endif

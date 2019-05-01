@@ -18,7 +18,7 @@ public:
     const int GAME_LENGTH;
     const int BOARD_SIZE;
 
-    Game(int length,int size,std::map<int,int> rulings,std::unordered_set<Change> changes, State state);
+    Game(int length,int size,std::map<int,int> rulings,std::unordered_set<Change> changes, State state){}
 
 
     std::map<int,int> getRules(){}
