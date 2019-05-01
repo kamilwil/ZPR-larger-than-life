@@ -40,22 +40,36 @@ class ScalableCanvas(tk.Canvas):
 		parent.height = parent.parev_height
 		self.config(width = parent.width, height = parent.height) #ustawianie nowych wymiarow Canvas
 		self.scale("all", 0, 0, wscale, hscale) #ustawianie nowych wymiarow elementow wewnatrz
-		#print("Event")
-		#print(parent.parev_width)
-		#print(parent.parev_height)
-		#print("Rodzic")
-		#print(parent.width)
-		#print(parent.height)
-		#print("Skale")
-		#print(wscale)
-		#print(hscale)
-		#print("Canvas")
-		#print(self.width)
-		#print(self.height)
 
-def onPressRules(self):
-	#tu bedzie obsluga przycisku
-	print('Hey! Ew prest the batyn! Heer haev sam logynfow.')
+# RulesButton (Button)
+class RulesButton(tk.Button):
+	def __init__(self, parent=None, **kwargs):
+		tk.Button.__init__(self, parent, **kwargs)
+		self.parent = parent
+
+def onPressSave():
+	print('Called Save method!')
+
+def onPressLoad():
+	print('Called Load method!')
+
+def onPressRand():
+	print('Called Randomize method!')
+
+# IterButton (Button)
+class IterButton(tk.Button):
+	def __init__(self, parent=None, **kwargs):
+		tk.Button.__init__(self, parent, **kwargs)
+		self.parent = parent
+
+def onPressPrev():
+	print('Called Previous method!')
+
+def onPressPlay():
+	print('Called Play method!')
+
+def onPressNext():
+	print('Called Next method!')
 
 root = tk.Tk()
 root.title("Larger than Life")
@@ -73,8 +87,32 @@ sf = canvas.create_window(WINDOW_HEIGHT-250,0, anchor = "nw", window=(side_frame
 
 canvas.itemconfig(sf,width=230,height=WINDOW_HEIGHT)
 
-rules = tk.Button(side_frame, text="Zarzadzaj regulami")
-rules.bind("<Button-1>", onPressRules)
-rules.pack(side="left")
+save_rule = RulesButton(side_frame, text="Zapisz regule", command=onPressSave)
+save_rule.pack(side="top")
+
+load_rule = RulesButton(side_frame, text="Wczytaj regule", command=onPressLoad)
+load_rule.pack(side="top")
+
+rand_rule = RulesButton(side_frame, text="Losuj regule", command=onPressRand)
+rand_rule.pack(side="top")
+
+rule_field = tk.Entry(side_frame, width = 40, textvariable="Wpisz regule")
+rule_field.pack(side="top")
+rule_field.delete(0,tk.END)
+rule_field.insert(0,"Wpisz regule")
+
+iter_frame = tk.Frame(side_frame)
+iter_frame.pack(side="top", anchor="center")
+
+prev_iter = IterButton(iter_frame, text="<<", command=onPressPrev)
+prev_iter.pack(side="left")
+
+play_iter = IterButton(iter_frame, text=">", command=onPressPlay)
+play_iter.pack(side="left")
+
+next_iter = IterButton(iter_frame, text=">>", command=onPressNext)
+next_iter.pack(side="left")
+
+
 
 root.mainloop()
