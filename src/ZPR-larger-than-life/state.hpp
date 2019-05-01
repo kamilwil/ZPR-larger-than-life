@@ -14,6 +14,7 @@ class State{
     int it_number;
 public:
     State();
+    ~State();
     State(std::set<Cell>, std::set<Cell>, int);
 
     void changeIteration(int);

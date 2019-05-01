@@ -1,33 +1,31 @@
 //State.cpp
 
-#include <set>
+
 #include <set>
 #include <iterator>
 #include "cell.hpp"
+#include "state.hpp"
 
 
 
-class State{
-    std::set<Cell> active_cells;
-    std::set<Cell> inactive_cells;
-    int it_number;
-public:
-    State()=default;
-    State(std::set<Cell> actives, std::set<Cell> inactives, int it){}
 
-    void changeIteration(int i){}
-    void addActiveCell(Cell cell){}
-    void removeActiveCell(Cell cell){}
-    void addInactiveCell(Cell cell){}
-    void removeInactiveCell(Cell cell){}
+    State::State()=default;
+    State::~State()=default;
+    State::State(std::set<Cell> actives, std::set<Cell> inactives, int it){}
 
-    std::set<Cell> get_activeCells(){}
-    std::set<Cell> get_inactiveCells(){}
-    int getItNumber(){return 1;}
-    void setActiveCells(std::set<Cell> actives){}
-    void setInactiveCells(std::set<Cell> inactives){}
-    void setItNumber(int it){}
-};
+    void State::changeIteration(int i){}
+    void State::addActiveCell(Cell cell){}
+    void State::removeActiveCell(Cell cell){}
+    void State::addInactiveCell(Cell cell){}
+    void State::removeInactiveCell(Cell cell){}
+
+    std::set<Cell> State::get_activeCells(){return active_cells;}
+    std::set<Cell> State::get_inactiveCells(){return inactive_cells;}
+    int State::getItNumber(){return 1;}
+    void State::setActiveCells(std::set<Cell> actives){}
+    void State::setInactiveCells(std::set<Cell> inactives){}
+    void State::setItNumber(int it){}
+
 
 
 

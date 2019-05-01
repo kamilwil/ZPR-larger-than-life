@@ -17,8 +17,9 @@ class Game{
 
 public:
     Game();
-    const int GAME_LENGTH;
-    const int BOARD_SIZE;
+    ~Game();
+    const int GAME_LENGTH=100;
+    const int BOARD_SIZE=100;
 
     Game(int,int,std::map<int,int>,std::set<Change>,State);
 

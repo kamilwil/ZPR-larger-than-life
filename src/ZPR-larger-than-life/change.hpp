@@ -14,6 +14,7 @@ class Change{
 
 public:
     Change();
+    ~Change();
     Change(std::set<Cell>, std::set<Cell>);
 
     std::set<Cell> getToShift();
