@@ -13,6 +13,7 @@ class Change{
     std::set<Cell> toBirth;
 
 public:
+    Change();
     Change(std::set<Cell>, std::set<Cell>);
 
     std::set<Cell> getToShift();

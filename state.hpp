@@ -13,7 +13,7 @@ class State{
     std::set<Cell> inactive_cells;
     int it_number;
 public:
-
+    State();
     State(std::set<Cell>, std::set<Cell>, int);
 
     void changeIteration(int);

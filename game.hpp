@@ -19,6 +19,7 @@ class Game{
     State state;
 
 public:
+    Game();
     const int GAME_LENGTH;
     const int BOARD_SIZE;
 

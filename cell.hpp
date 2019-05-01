@@ -8,6 +8,7 @@ class Cell{
     int state;
 
 public:
+    Cell();
     Cell(int, int, int);
     int getXcoord();
     int getYcoord();

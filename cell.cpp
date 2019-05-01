@@ -8,3 +8,4 @@ int Cell::getYcoord(void){return 1;}
 void Cell::setXcoord(int x){}
 void Cell::setYcoord(int y){}
 void Cell::setState(int st){}
+Cell::Cell()=default;
