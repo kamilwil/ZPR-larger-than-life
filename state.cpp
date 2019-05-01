@@ -4,7 +4,7 @@
 #include <set>
 #include <iterator>
 #include "cell.hpp"
-#include "cell.cpp"
+
 
 
 class State{
@@ -12,7 +12,7 @@ class State{
     std::set<Cell> inactive_cells;
     int it_number;
 public:
-
+    State(){active_cells=0;inactive_cells=0;it_number=0;}
     State(std::set<Cell> actives, std::set<Cell> inactives, int it){}
 
     void changeIteration(int i){}

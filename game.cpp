@@ -4,7 +4,7 @@
 #include <set>
 #include "cell.hpp"
 #include "change.hpp"
-#include "state.cpp"
+
 #include "state.hpp"
 
 

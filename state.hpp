@@ -4,6 +4,8 @@
 #define STATE_HPP
 #include <set>
 #include <iterator>
+#include "cell.hpp"
+
 
 
 class State{

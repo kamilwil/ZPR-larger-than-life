@@ -6,9 +6,11 @@
 #include <map>
 #include <set>
 #include "change.hpp"
-#include "change.cpp"
+
 #include <set>
-int x=30;
+
+#include "state.hpp"
+
 
 class Game{
 
