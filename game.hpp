@@ -4,6 +4,7 @@
 
 #include <map>
 #include <unordered_set>
+#include "change.hpp"
 
 
 
@@ -32,7 +33,6 @@ public:
 
     void updateState(Change,int);
     void generateChanges();
-    void implementChange();
 
     int sendChanges(Change,int);
 

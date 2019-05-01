@@ -1,5 +1,5 @@
 //Cell.cpp
-#include "Cell.hpp"
+#include "cell.hpp"
 
 class Cell{
     int x_coord;
