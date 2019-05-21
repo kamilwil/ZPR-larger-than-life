@@ -12,32 +12,29 @@
 class Game{
 
     std::map<int,int> rules;
-    std::set<Change> changes;
-    State state;
+    std::set<Change*> changes;
+    State* state;
 
 public:
     Game();
     ~Game();
-    const int GAME_LENGTH=100;
-    const int BOARD_SIZE=100;
+    const static int GAME_LENGTH=100;
+    const static int BOARD_SIZE=100;
 
-    Game(int,int,std::map<int,int>,std::set<Change>,State);
-
+    Game(std::map<int,int>,std::set<Change*>,State);
 
     std::map<int,int> getRules();
-    std::set<Change> getChanges();
+    std::set<Change*> getChanges();
     State getState();
-    int getGameLength();
-    int getBoardSize();
     
     void setRules(std::map<int,int>);
-    void setChanges(std::set<Change>);
-    void setState(State);
+    void setChanges(std::set<Change*>);
+    void setState(State*);
 
-    void updateState(Change,int);
+    void updateState(Change*,int);
     void generateChanges();
 
-    int sendChanges(Change,int);
+    int sendChanges(Change*,int);
 
     void receiveRules();
     void receiveStartingPosition();
