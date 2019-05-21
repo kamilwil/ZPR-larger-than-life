@@ -23,8 +23,8 @@ public:
     void addInactiveCell(Cell*);
     void removeInactiveCell(Cell*);
 
-    std::set<Cell> * get_activeCells();
-    std::set<Cell> * get_inactiveCells();
+    std::set<Cell*>  get_activeCells();
+    std::set<Cell*>  get_inactiveCells();
     int getItNumber();
     void setActiveCells(std::set<Cell*>);
     void setInactiveCells(std::set<Cell*>);
