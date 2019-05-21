@@ -6,7 +6,10 @@
 
 
 
-    Change::Change(std::set<Cell> toshifts, std::set<Cell> tobirths){}
+    Change::Change(std::set<Cell> toshifts, std::set<Cell> tobirths){
+        toShift = toshifts;
+        toBirth = tobirths;
+    }
     Change::Change() = default;
     Change::~Change() = default;
 
