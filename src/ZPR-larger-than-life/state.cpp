@@ -2,6 +2,7 @@
 
 
 #include <set>
+
 #include <iterator>
 #include "cell.hpp"
 #include "state.hpp"
