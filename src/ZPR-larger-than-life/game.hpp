@@ -5,6 +5,7 @@
 
 #include <map>
 #include <set>
+#include <deque> // http://www.gotw.ca/gotw/054.htm
 #include "change.hpp"
 #include "state.hpp"
 
@@ -12,7 +13,7 @@
 class Game{
 
     std::map<int,int> rules;
-    std::set<Change*> changes;
+    std::deque<Change*> changes;
     State* state;
 
 public:
@@ -28,7 +29,7 @@ public:
     State getState();
     
     void setRules(std::map<int,int>);
-    void setChanges(std::set<Change*>);
+    void setChanges(std::deque<Change*>);
     void setState(State*);
 
     void updateState(Change*,int);
