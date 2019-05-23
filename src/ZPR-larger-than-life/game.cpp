@@ -2,6 +2,7 @@
 
 #include <map>
 #include <set>
+#include <deque> // http://www.gotw.ca/gotw/054.htm
 #include "cell.hpp"
 #include "change.hpp"
 #include "game.hpp"
@@ -21,7 +22,7 @@
 
 
     std::map<int,int> Game::getRules(){return rules;}
-    std::set<Change> Game::getChanges(){return changes;}
+    std::deque<Change> Game::getChanges(){return changes;}
     State Game::getState(){return state;}
 
     void Game::setRules(std::map<int,int> rulings){rules = rulings;}
@@ -29,12 +30,18 @@
     void Game::setState(State status){state = status;}
 
     void Game::updateState(Change change,int direction){}
-    void Game::generateChanges(){}
+    void Game::generateChanges(){
+        State current_position = state;
+        for (int i = 0; i < GAME_LENGTH; ++i){
+            
+        }
+        
+    }
 
     int Game::sendChanges(Change change,int it){return 1;}
 
     void Game::receiveRules(){}
-    void Game::receiveStartingPosition(){}
+    void Game::receiveStartingPosition(){} //changes[0] = starting_pos
     void Game::receiveTask(){}
 
 
