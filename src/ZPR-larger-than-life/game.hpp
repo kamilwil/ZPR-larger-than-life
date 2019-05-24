@@ -3,7 +3,6 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <map>
 #include <set>
 #include <deque> // http://www.gotw.ca/gotw/054.htm
 #include "change.hpp"
@@ -34,9 +33,9 @@ public:
     const static int GAME_LENGTH=100;
     const static int BOARD_SIZE=100;
 
-    Game(std::map<int,int>,std::set<Change*>,State);
+    Game(Rules,std::set<Change*>,State);
 
-    std::map<int,int> getRules();
+    Rules getRules();
     std::set<Change*> getChanges();
     State getState();
     
