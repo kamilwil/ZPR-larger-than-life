@@ -40,7 +40,7 @@ public:
     std::set<Change*> getChanges();
     State getState();
     
-    void setRules(std::map<int,int>);
+    void setRules(Rules);
     void setChanges(std::deque<Change*>);
     void setState(State*);
 
