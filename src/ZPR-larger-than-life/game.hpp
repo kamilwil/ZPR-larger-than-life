@@ -41,12 +41,12 @@ public:
     
     void setRules(Rules);
     void setChanges(std::deque<Change*>);
-    void setState(State*);
+    void setState(State);
 
-    void updateState(Change*,int);
+    void updateState(Change,int);
     void generateChanges();
 
-    int sendChanges(Change*,int);
+    int sendChanges(Change,int);
 
     void receiveRules();
     void receiveStartingPosition();
