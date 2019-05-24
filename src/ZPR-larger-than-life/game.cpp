@@ -22,11 +22,11 @@
 
 
     Rules Game::getRules(){return rules;}
-    std::deque<Change> Game::getChanges(){return changes;}
+    std::deque<Change*> Game::getChanges(){return changes;}
     State Game::getState(){return state;}
 
     void Game::setRules(Rules rulings){rules = rulings;}
-    void Game::setChanges(std::deque<Change> change_list){changes = change_list; }
+    void Game::setChanges(std::deque<Change*> change_list){changes = change_list; }
     void Game::setState(State status){state = status;}
 
     void Game::updateState(Change change,int direction){}
