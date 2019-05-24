@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ZPR Larger Than Life: Plik źródłowy src/ZPR-larger-than-life/state.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ZPR Larger Than Life
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ff41f148f5058fbd68bb29c56be5abe9.html">ZPR-larger-than-life</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">state.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="state_8hpp.html">Idź do dokumentacji tego pliku.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//State.hpp</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef STATE_HPP</span></div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define STATE_HPP</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;iterator&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cell_8hpp.html">cell.hpp</a>&quot;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div><div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="classState.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="classState.html">State</a>{</div><div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="classState.html#af90fb3658e16d9e77ac0d7219c8da638">   12</a></span>&#160;    std::set&lt;Cell*&gt; <a class="code" href="classState.html#af90fb3658e16d9e77ac0d7219c8da638">active_cells</a>;</div><div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classState.html#a17a8a8fa6069e4adc9b334f0022df6f5">   13</a></span>&#160;    std::set&lt;Cell*&gt; <a class="code" href="classState.html#a17a8a8fa6069e4adc9b334f0022df6f5">inactive_cells</a>;</div><div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classState.html#ad56f3eaba54970723e5a76464ee7a7a0">   14</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classState.html#ad56f3eaba54970723e5a76464ee7a7a0">it_number</a>;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State</a>();</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">~State</a>();</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State</a>(std::set&lt;Cell*&gt;, std::set&lt;Cell*&gt;, <span class="keywordtype">int</span>);</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//    void changeIteration(int);</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classState.html#a8a92765570c400f92caddea548dba0a6">addActiveCell</a>(<a class="code" href="classCell.html">Cell</a>*);</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classState.html#a656f5ff23b892814a32d0addaae20b24">removeActiveCell</a>(<a class="code" href="classCell.html">Cell</a>*);</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classState.html#ae15c36eca808516986a40a4db2f711ed">addInactiveCell</a>(<a class="code" href="classCell.html">Cell</a>*);</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classState.html#a69e6dbba6bdde74ce328d8abbf838dee">removeInactiveCell</a>(<a class="code" href="classCell.html">Cell</a>*);</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    std::set&lt;Cell*&gt;  <a class="code" href="classState.html#a1840a9ae235cde698eb57510568ab6de">get_activeCells</a>();</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::set&lt;Cell*&gt;  <a class="code" href="classState.html#ae30d156559db4e438c8543a4a2ae1607">get_inactiveCells</a>();</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classState.html#a14346d5f19e72a358859bbc1892276dd">getItNumber</a>();</div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classState.html#a04792438277126b441432bcc03a2b53c">setActiveCells</a>(std::set&lt;Cell*&gt;);</div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classState.html#a335f3ba54dbe09ba1de7090fcff36914">setInactiveCells</a>(std::set&lt;Cell*&gt;);</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classState.html#aa2e96a74da6ca0281a1875c7724c2765">setItNumber</a>(<span class="keywordtype">int</span> it);</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div></div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassState_html_aa2e96a74da6ca0281a1875c7724c2765"><div class="ttname"><a href="classState.html#aa2e96a74da6ca0281a1875c7724c2765">State::setItNumber</a></div><div class="ttdeci">void setItNumber(int it)</div><div class="ttdef"><b>Definition:</b> state.cpp:47</div></div>
+<div class="ttc" id="aclassState_html_a335f3ba54dbe09ba1de7090fcff36914"><div class="ttname"><a href="classState.html#a335f3ba54dbe09ba1de7090fcff36914">State::setInactiveCells</a></div><div class="ttdeci">void setInactiveCells(std::set&lt; Cell * &gt;)</div><div class="ttdef"><b>Definition:</b> state.cpp:46</div></div>
+<div class="ttc" id="aclassState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> state.hpp:11</div></div>
+<div class="ttc" id="aclassState_html_ad56f3eaba54970723e5a76464ee7a7a0"><div class="ttname"><a href="classState.html#ad56f3eaba54970723e5a76464ee7a7a0">State::it_number</a></div><div class="ttdeci">int it_number</div><div class="ttdef"><b>Definition:</b> state.hpp:14</div></div>
+<div class="ttc" id="aclassState_html_a656f5ff23b892814a32d0addaae20b24"><div class="ttname"><a href="classState.html#a656f5ff23b892814a32d0addaae20b24">State::removeActiveCell</a></div><div class="ttdeci">void removeActiveCell(Cell *)</div><div class="ttdef"><b>Definition:</b> state.cpp:23</div></div>
+<div class="ttc" id="aclassState_html_a17a8a8fa6069e4adc9b334f0022df6f5"><div class="ttname"><a href="classState.html#a17a8a8fa6069e4adc9b334f0022df6f5">State::inactive_cells</a></div><div class="ttdeci">std::set&lt; Cell * &gt; inactive_cells</div><div class="ttdef"><b>Definition:</b> state.hpp:13</div></div>
+<div class="ttc" id="aclassState_html_a8a92765570c400f92caddea548dba0a6"><div class="ttname"><a href="classState.html#a8a92765570c400f92caddea548dba0a6">State::addActiveCell</a></div><div class="ttdeci">void addActiveCell(Cell *)</div><div class="ttdef"><b>Definition:</b> state.cpp:21</div></div>
+<div class="ttc" id="aclassState_html_a69e6dbba6bdde74ce328d8abbf838dee"><div class="ttname"><a href="classState.html#a69e6dbba6bdde74ce328d8abbf838dee">State::removeInactiveCell</a></div><div class="ttdeci">void removeInactiveCell(Cell *)</div><div class="ttdef"><b>Definition:</b> state.cpp:33</div></div>
+<div class="ttc" id="aclassState_html_ae30d156559db4e438c8543a4a2ae1607"><div class="ttname"><a href="classState.html#ae30d156559db4e438c8543a4a2ae1607">State::get_inactiveCells</a></div><div class="ttdeci">std::set&lt; Cell * &gt; get_inactiveCells()</div><div class="ttdef"><b>Definition:</b> state.cpp:43</div></div>
+<div class="ttc" id="aclassState_html_a14346d5f19e72a358859bbc1892276dd"><div class="ttname"><a href="classState.html#a14346d5f19e72a358859bbc1892276dd">State::getItNumber</a></div><div class="ttdeci">int getItNumber()</div><div class="ttdef"><b>Definition:</b> state.cpp:44</div></div>
+<div class="ttc" id="aclassState_html_a1840a9ae235cde698eb57510568ab6de"><div class="ttname"><a href="classState.html#a1840a9ae235cde698eb57510568ab6de">State::get_activeCells</a></div><div class="ttdeci">std::set&lt; Cell * &gt; get_activeCells()</div><div class="ttdef"><b>Definition:</b> state.cpp:42</div></div>
+<div class="ttc" id="aclassState_html_ae15c36eca808516986a40a4db2f711ed"><div class="ttname"><a href="classState.html#ae15c36eca808516986a40a4db2f711ed">State::addInactiveCell</a></div><div class="ttdeci">void addInactiveCell(Cell *)</div><div class="ttdef"><b>Definition:</b> state.cpp:31</div></div>
+<div class="ttc" id="aclassCell_html"><div class="ttname"><a href="classCell.html">Cell</a></div><div class="ttdef"><b>Definition:</b> cell.hpp:5</div></div>
+<div class="ttc" id="aclassState_html_a04792438277126b441432bcc03a2b53c"><div class="ttname"><a href="classState.html#a04792438277126b441432bcc03a2b53c">State::setActiveCells</a></div><div class="ttdeci">void setActiveCells(std::set&lt; Cell * &gt;)</div><div class="ttdef"><b>Definition:</b> state.cpp:45</div></div>
+<div class="ttc" id="aclassState_html_ab91bb1dd5aa6260ab2a456581daf9ec2"><div class="ttname"><a href="classState.html#ab91bb1dd5aa6260ab2a456581daf9ec2">State::State</a></div><div class="ttdeci">State()</div></div>
+<div class="ttc" id="aclassState_html_afab438d92b90dc18d194dbd9c9c8bab3"><div class="ttname"><a href="classState.html#afab438d92b90dc18d194dbd9c9c8bab3">State::~State</a></div><div class="ttdeci">~State()</div></div>
+<div class="ttc" id="aclassState_html_af90fb3658e16d9e77ac0d7219c8da638"><div class="ttname"><a href="classState.html#af90fb3658e16d9e77ac0d7219c8da638">State::active_cells</a></div><div class="ttdeci">std::set&lt; Cell * &gt; active_cells</div><div class="ttdef"><b>Definition:</b> state.hpp:12</div></div>
+<div class="ttc" id="acell_8hpp_html"><div class="ttname"><a href="cell_8hpp.html">cell.hpp</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>

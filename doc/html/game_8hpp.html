@@ -1,0 +1,533 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.16"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ZPR Larger Than Life: Dokumentacja pliku src/ZPR-larger-than-life/game.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ZPR Larger Than Life
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Wygenerowano przez Doxygen 1.8.16 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Szukaj');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Szukaj');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_ff41f148f5058fbd68bb29c56be5abe9.html">ZPR-larger-than-life</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">Komponenty</a> &#124;
+<a href="#enum-members">Wyliczenia</a> &#124;
+<a href="#func-members">Funkcje</a> &#124;
+<a href="#var-members">Zmienne</a>  </div>
+  <div class="headertitle">
+<div class="title">Dokumentacja pliku game.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;map&gt;</code><br />
+<code>#include &lt;set&gt;</code><br />
+<code>#include &lt;deque&gt;</code><br />
+<code>#include &quot;<a class="el" href="change_8hpp_source.html">change.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="state_8hpp_source.html">state.hpp</a>&quot;</code><br />
+</div>
+<p><a href="game_8hpp_source.html">Idź do kodu źródłowego tego pliku.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Komponenty</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structRules.html">Rules</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Wyliczenia</h2></td></tr>
+<tr class="memitem:a8aeb293bb2e53a99089ea134f07c7e0f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a8aeb293bb2e53a99089ea134f07c7e0f">NeighboorhoodType</a> { <a class="el" href="game_8hpp.html#a8aeb293bb2e53a99089ea134f07c7e0fab0178f564e5e2f5ba820fa46306a9fbe">NeighboorhoodType::MOORE</a>, 
+<a class="el" href="game_8hpp.html#a8aeb293bb2e53a99089ea134f07c7e0fab2544832b0949cfbf3304c163e62334c">NeighboorhoodType::NEUM</a>, 
+<a class="el" href="game_8hpp.html#a8aeb293bb2e53a99089ea134f07c7e0fa659b28d352b60e54d1f2a5e48859eeb3">NeighboorhoodType::CIRC</a>
+ }</td></tr>
+<tr class="separator:a8aeb293bb2e53a99089ea134f07c7e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Funkcje</h2></td></tr>
+<tr class="memitem:ad59df6562a58a614fda24622d3715b65"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#ad59df6562a58a614fda24622d3715b65">Game</a> ()</td></tr>
+<tr class="separator:ad59df6562a58a614fda24622d3715b65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3d112ca6e0e55150d2fdbc704474530"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a> ()</td></tr>
+<tr class="separator:ae3d112ca6e0e55150d2fdbc704474530"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09459aa872c26593aaf7d7bad9d200a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#ad09459aa872c26593aaf7d7bad9d200a">Game</a> (std::map&lt; int, int &gt;, std::set&lt; <a class="el" href="classChange.html">Change</a> * &gt;, <a class="el" href="classState.html">State</a>)</td></tr>
+<tr class="separator:ad09459aa872c26593aaf7d7bad9d200a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ddd862b26ee10de146c0a08019bf7f"><td class="memItemLeft" align="right" valign="top">std::map&lt; int, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a65ddd862b26ee10de146c0a08019bf7f">getRules</a> ()</td></tr>
+<tr class="separator:a65ddd862b26ee10de146c0a08019bf7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae39aa7eb3798c5a3fee35b0dc2a2dd0f"><td class="memItemLeft" align="right" valign="top">std::set&lt; <a class="el" href="classChange.html">Change</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#ae39aa7eb3798c5a3fee35b0dc2a2dd0f">getChanges</a> ()</td></tr>
+<tr class="separator:ae39aa7eb3798c5a3fee35b0dc2a2dd0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b49a95020f004bdbb6955d4b3de5215"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classState.html">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a0b49a95020f004bdbb6955d4b3de5215">getState</a> ()</td></tr>
+<tr class="separator:a0b49a95020f004bdbb6955d4b3de5215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5970525fe66e7faec36937f7d41b3eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#ae5970525fe66e7faec36937f7d41b3eb">setRules</a> (<a class="el" href="structRules.html">Rules</a>)</td></tr>
+<tr class="separator:ae5970525fe66e7faec36937f7d41b3eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab72cee1293da2bb70441519b8aeba3f6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#ab72cee1293da2bb70441519b8aeba3f6">setChanges</a> (std::deque&lt; <a class="el" href="classChange.html">Change</a> * &gt;)</td></tr>
+<tr class="separator:ab72cee1293da2bb70441519b8aeba3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a3ff6d35477d92199cb952cdc83bc68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a7a3ff6d35477d92199cb952cdc83bc68">setState</a> (<a class="el" href="classState.html">State</a> *)</td></tr>
+<tr class="separator:a7a3ff6d35477d92199cb952cdc83bc68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add58559e8a79e35edd6444c9f6dc028a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#add58559e8a79e35edd6444c9f6dc028a">updateState</a> (<a class="el" href="classChange.html">Change</a> *, int)</td></tr>
+<tr class="separator:add58559e8a79e35edd6444c9f6dc028a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7783625a111cf228d8b6ac205428728a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a7783625a111cf228d8b6ac205428728a">generateChanges</a> ()</td></tr>
+<tr class="separator:a7783625a111cf228d8b6ac205428728a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fecfd8ba72334681485d5c8c2983ea1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a7fecfd8ba72334681485d5c8c2983ea1">sendChanges</a> (<a class="el" href="classChange.html">Change</a> *, int)</td></tr>
+<tr class="separator:a7fecfd8ba72334681485d5c8c2983ea1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a291ff75ec5e9885bbac856d5bfa4dc20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a291ff75ec5e9885bbac856d5bfa4dc20">receiveRules</a> ()</td></tr>
+<tr class="separator:a291ff75ec5e9885bbac856d5bfa4dc20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4e90e0e790fc887ce143105b22fa23e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a4e90e0e790fc887ce143105b22fa23e9">receiveStartingPosition</a> ()</td></tr>
+<tr class="separator:a4e90e0e790fc887ce143105b22fa23e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17af873149b45b49650029f129f8a15f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#a17af873149b45b49650029f129f8a15f">receiveTask</a> ()</td></tr>
+<tr class="separator:a17af873149b45b49650029f129f8a15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Zmienne</h2></td></tr>
+<tr class="memitem:af33a51c3adfe2c5add7d12dee3d53018"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structRules.html">Rules</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#af33a51c3adfe2c5add7d12dee3d53018">rules</a></td></tr>
+<tr class="separator:af33a51c3adfe2c5add7d12dee3d53018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8d46de495c12a5eb71591818fb9baa8"><td class="memItemLeft" align="right" valign="top">std::deque&lt; <a class="el" href="classChange.html">Change</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#ae8d46de495c12a5eb71591818fb9baa8">changes</a></td></tr>
+<tr class="separator:ae8d46de495c12a5eb71591818fb9baa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf68cf2fa9e81d5d23c30598e6be7bbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classState.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="game_8hpp.html#adf68cf2fa9e81d5d23c30598e6be7bbe">state</a></td></tr>
+<tr class="separator:adf68cf2fa9e81d5d23c30598e6be7bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Dokumentacja typów wyliczanych</h2>
+<a id="a8aeb293bb2e53a99089ea134f07c7e0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8aeb293bb2e53a99089ea134f07c7e0f">&#9670;&nbsp;</a></span>NeighboorhoodType</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="game_8hpp.html#a8aeb293bb2e53a99089ea134f07c7e0f">NeighboorhoodType</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">strong</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<table class="fieldtable">
+<tr><th colspan="2">Wartości wyliczeń</th></tr><tr><td class="fieldname"><a id="a8aeb293bb2e53a99089ea134f07c7e0fab0178f564e5e2f5ba820fa46306a9fbe"></a>MOORE&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8aeb293bb2e53a99089ea134f07c7e0fab2544832b0949cfbf3304c163e62334c"></a>NEUM&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a8aeb293bb2e53a99089ea134f07c7e0fa659b28d352b60e54d1f2a5e48859eeb3"></a>CIRC&#160;</td><td class="fielddoc"></td></tr>
+</table>
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja funkcji</h2>
+<a id="ad59df6562a58a614fda24622d3715b65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad59df6562a58a614fda24622d3715b65">&#9670;&nbsp;</a></span>Game() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game::Game </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad09459aa872c26593aaf7d7bad9d200a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09459aa872c26593aaf7d7bad9d200a">&#9670;&nbsp;</a></span>Game() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game </td>
+          <td>(</td>
+          <td class="paramtype">std::map&lt; int, int &gt;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::set&lt; <a class="el" href="classChange.html">Change</a> * &gt;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classState.html">State</a>&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7783625a111cf228d8b6ac205428728a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7783625a111cf228d8b6ac205428728a">&#9670;&nbsp;</a></span>generateChanges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::generateChanges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae39aa7eb3798c5a3fee35b0dc2a2dd0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae39aa7eb3798c5a3fee35b0dc2a2dd0f">&#9670;&nbsp;</a></span>getChanges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::deque&lt; <a class="el" href="classChange.html">Change</a> &gt; Game::getChanges </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a65ddd862b26ee10de146c0a08019bf7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65ddd862b26ee10de146c0a08019bf7f">&#9670;&nbsp;</a></span>getRules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structRules.html">Rules</a> Game::getRules </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0b49a95020f004bdbb6955d4b3de5215"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b49a95020f004bdbb6955d4b3de5215">&#9670;&nbsp;</a></span>getState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classState.html">State</a> Game::getState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a291ff75ec5e9885bbac856d5bfa4dc20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a291ff75ec5e9885bbac856d5bfa4dc20">&#9670;&nbsp;</a></span>receiveRules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::receiveRules </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4e90e0e790fc887ce143105b22fa23e9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e90e0e790fc887ce143105b22fa23e9">&#9670;&nbsp;</a></span>receiveStartingPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::receiveStartingPosition </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a17af873149b45b49650029f129f8a15f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17af873149b45b49650029f129f8a15f">&#9670;&nbsp;</a></span>receiveTask()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::receiveTask </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7fecfd8ba72334681485d5c8c2983ea1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fecfd8ba72334681485d5c8c2983ea1">&#9670;&nbsp;</a></span>sendChanges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int sendChanges </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classChange.html">Change</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab72cee1293da2bb70441519b8aeba3f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab72cee1293da2bb70441519b8aeba3f6">&#9670;&nbsp;</a></span>setChanges()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setChanges </td>
+          <td>(</td>
+          <td class="paramtype">std::deque&lt; <a class="el" href="classChange.html">Change</a> * &gt;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5970525fe66e7faec36937f7d41b3eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5970525fe66e7faec36937f7d41b3eb">&#9670;&nbsp;</a></span>setRules()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::setRules </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structRules.html">Rules</a>&#160;</td>
+          <td class="paramname"><em>rulings</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a3ff6d35477d92199cb952cdc83bc68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a3ff6d35477d92199cb952cdc83bc68">&#9670;&nbsp;</a></span>setState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classState.html">State</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="add58559e8a79e35edd6444c9f6dc028a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add58559e8a79e35edd6444c9f6dc028a">&#9670;&nbsp;</a></span>updateState()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classChange.html">Change</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae3d112ca6e0e55150d2fdbc704474530"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3d112ca6e0e55150d2fdbc704474530">&#9670;&nbsp;</a></span>~Game()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Game::~Game </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Dokumentacja zmiennych</h2>
+<a id="ae8d46de495c12a5eb71591818fb9baa8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8d46de495c12a5eb71591818fb9baa8">&#9670;&nbsp;</a></span>changes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::deque&lt;<a class="el" href="classChange.html">Change</a>*&gt; changes</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af33a51c3adfe2c5add7d12dee3d53018"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af33a51c3adfe2c5add7d12dee3d53018">&#9670;&nbsp;</a></span>rules</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structRules.html">Rules</a> rules</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adf68cf2fa9e81d5d23c30598e6be7bbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf68cf2fa9e81d5d23c30598e6be7bbe">&#9670;&nbsp;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classState.html">State</a>* state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Wygenerowano przez &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.16
+</small></address>
+</body>
+</html>
