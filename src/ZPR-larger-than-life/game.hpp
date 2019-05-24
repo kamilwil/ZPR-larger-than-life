@@ -10,9 +10,21 @@
 #include "state.hpp"
 
 
+enum class NeighboorhoodType {MOORE, NEUM, CIRC };
+
+struct Rules {
+    NeighbourhoodType neighboorhood;
+    int range;
+    int states;
+    int smin;
+    int smax;
+    int bmin;
+    int bmax;
+}
+
 class Game{
 
-    std::map<int,int> rules;
+    Rules rules;
     std::deque<Change*> changes;
     State* state;
 
