@@ -2,7 +2,6 @@
 
 
 #include <set>
-
 #include <iterator>
 #include "cell.hpp"
 #include "state.hpp"
@@ -22,7 +21,7 @@
     void State::addActiveCell(Cell *cell){active_cells.insert(cell);}
 
     void State::removeActiveCell(Cell *cell){
-        for(auto it = active_cells.begin(); it != active_cells.end(); )
+        for(auto std::iterator<Cell*> it = active_cells.begin(); it != active_cells.end(); )
             if(*it == cell)
                 it = active_cells.erase(it);
                 break;
@@ -32,7 +31,7 @@
     void State::addInactiveCell(Cell *cell){inactive_cells.insert(cell);}
 
     void State::removeInactiveCell(Cell *cell){
-        for(auto it = inactive_cells.begin(); it != inactive_cells.end(); )
+        for(auto std:iterator<Cell*> it = inactive_cells.begin(); it != inactive_cells.end(); )
             if(*it == cell)
                 it = inactive_cells.erase(it);
                 break;
