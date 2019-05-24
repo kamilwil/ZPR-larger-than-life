@@ -25,6 +25,7 @@
         for(auto it = active_cells.begin(); it != active_cells.end(); )
             if(*it == cell)
                 it = active_cells.erase(it);
+                break;
             else
                 ++it;
     }
@@ -34,6 +35,7 @@
         for(auto it = inactive_cells.begin(); it != inactive_cells.end(); )
             if(*it == cell)
                 it = inactive_cells.erase(it);
+                break;
             else
                 ++it;        
     }
