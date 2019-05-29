@@ -1,10 +1,10 @@
 //Cell.hpp
 #ifndef CELL_HPP
 #define CELL_HPP
+#include <pair>
 
 class Cell{
-    int x_coord;
-    int y_coord;
+    std::pair<int,int> coords;
     int state;
 
 public:
@@ -13,9 +13,11 @@ public:
     Cell(int, int, int);
     int getXcoord();
     int getYcoord();
+    std::pair<int,int> getCoords;
     void setXcoord(int);
     void setYcoord(int);
     void setState(int);
+    void setCoords(int, int)
 };
 
 #endif
