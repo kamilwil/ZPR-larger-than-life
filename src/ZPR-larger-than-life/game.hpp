@@ -19,6 +19,7 @@ struct Rules {
     int smax;
     int bmin;
     int bmax;
+    int m;
 }
 
 class Game{
