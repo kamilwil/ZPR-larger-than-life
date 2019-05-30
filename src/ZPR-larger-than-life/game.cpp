@@ -18,15 +18,15 @@ Game::Game()=default;
 Game::~Game()=default;
 
 
-Game::Game(Rules rulings,std::set<Change*> change_list, State status){
+Game::Game(Rules rulings, std::set<Change*> change_list, State status){
     rules = rulings;
     changes = change_list;
     state = status;
 }
 
 void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x_index, int y_index){
-    to_find = std::make_pair(x_index, y_index);
-    finder = (*influence_map).find(to_find)
+    std::pair to_find = std::make_pair(x_index, y_index);
+    std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
         
     if finder == (*influence_map).end(){           // nie ma takiego klucza https://stackoverflow.com/questions/1939953/how-to-find-if-a-given-key-exists-in-a-c-stdmap
         (*influence_map).insert(std::pair<to_find, 1);
@@ -75,7 +75,7 @@ void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_ma
 std::map<std::pair<int, int>, int>* Game::generateInfluenceMap(){
         
     current_state = state; //niepotrzebne, ale na razie dla czytelnosci kodu sobie siedzi
-    std::map<std::pair<int, int>, int> influence_map;
+    std::map<std::pair<<int, int>, int> influence_map;
         
     for(auto std::iterator<Cell*> it = state.active_cells.begin(); it != state.active_cells.end();){
         Game::includeCellInfluence(influence_map, it);            
@@ -84,6 +84,23 @@ std::map<std::pair<int, int>, int>* Game::generateInfluenceMap(){
     return influence_map;
 }
 
+    
+void Game::generateChange(std::map<std::pair<int, int>, int> influence_map, int i){
+    Change change_i = new Change();
+    for(auto std::map<std::pair<int, int>, int>::iterator it = influence_map.begin(); it != influence_map.end(); ++it)
+        for (auto std::set<Cell*>::iterator it2 = state.active_cells; it2 != state.active_cells.end(); ++it2){
+            if ((*it2)->std::pair<it->first, it->second>){                                  //jesli cell o takich wspolrzednych jest w active cellsach
+                if ((it->second < rules.smin + 1 - rules.m) || (it->second  > rules.smax + 1 - rules.m)){                 //jesli nei jest spelniony warunek przezywalnosci
+                    change_i.addToShift((*it2));
+                    break;
+                }                                                                           //jesli jest to nic nie robimy                
+            }           
+        }                                                                                
+        if  ((it->second >= rules.bmin + 1 - rules.m) && (it->second  <= rules.bmax + 1 - rules.m))       //jseli jestesmy w tym miejscu to oznacza ze takiego cella nie ma
+            change_i.addToBirth((*it2));                                      // i jesli chcemy go stworzyc to go tworzymy
+
+    }
+}
     
 
     Rules Game::getRules(){return rules;}
