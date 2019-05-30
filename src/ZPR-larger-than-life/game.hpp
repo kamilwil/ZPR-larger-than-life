@@ -9,10 +9,10 @@
 #include "state.hpp"
 
 
-enum class NeighboorhoodType {MOORE, NEUM, CIRC };
+enum class NeighbourhoodType {MOORE, NEUM, CIRC };
 
 struct Rules {
-    NeighbourhoodType neighboorhood;
+    NeighbourhoodType neighbourhood;
     int range;
     int states;
     int smin;
