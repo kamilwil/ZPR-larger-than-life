@@ -85,7 +85,7 @@ std::map<std::pair<int, int>, int>* Game::generateInfluenceMap(){
 }
 
     
-void Game::generateChange(std::map<std::pair<int, int>, int> influence_map, int i){
+void Game::generateChange(std::map<std::pair<int, int>, int> influence_map){
     Change change_i = new Change();
     for(auto std::map<std::pair<int, int>, int>::iterator it = influence_map.begin(); it != influence_map.end(); ++it)
         for (auto std::set<Cell*>::iterator it2 = state.active_cells; it2 != state.active_cells.end(); ++it2){
@@ -100,6 +100,15 @@ void Game::generateChange(std::map<std::pair<int, int>, int> influence_map, int 
             change_i.addToBirth((*it2));                                      // i jesli chcemy go stworzyc to go tworzymy
 
     }
+    changes.push_back(&change_i);
+}
+
+void Game::implementChange (Change* change){
+    for (auto std::set<Cell*>::iterator it = change->to_birth.begin(); it != change->to_birth.end(); ++it){
+        std::pair to_find = std::make_pair(x_index, y_index);
+        std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
+        
+    }
 }
     
 
@@ -112,11 +121,14 @@ void Game::generateChange(std::map<std::pair<int, int>, int> influence_map, int 
     void Game::setState(State status){state = status;}
 
     void Game::updateState(Change change,int direction){}
-    void Game::generateChanges(){
+
+    void Game::generateAllChanges(){
         State current_position = state;
         
         for (int i = 0; i < GAME_LENGTH; ++i){
-            
+            std::map<std::pair<int, int>, int>* influence_map = generateInfluenceMap();
+            generateChange(influence_map);
+            implementChange(changes[i]);
         }
         
     }
