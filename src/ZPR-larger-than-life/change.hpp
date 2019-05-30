@@ -22,8 +22,8 @@ public:
     void setToShift(std::set<Cell*>);
     void setToBirth(std::set<Cell*>);
 
-    void addToShift(std::set<Cell*>);
-    void addToBirth(std::set<Cell*>);
+    void addToShift(Cell*);
+    void addToBirth(Cell*);
 
 };
 
