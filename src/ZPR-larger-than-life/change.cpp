@@ -19,8 +19,8 @@
     void Change::setToShift(std::set<Cell*> toshifted){toShift = toshifted;}
     void Change::setToBirth(std::set<Cell*> tobirthed){toBirth = tobirthed;}
 
-    void Change::addToShift(std::set<Cell*> toshifted){toShift.insert(toshifted);}
-    void Change::addToBirth(std::set<Cell*> tobirthed){toShift.insert(tobirthed);}
+    void Change::addToShift(Cell* toshifted){toShift.insert(toshifted);}
+    void Change::addToBirth(Cell* tobirthed){toShift.insert(tobirthed);}
 
 
 
