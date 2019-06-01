@@ -20,14 +20,25 @@
 
 bool Cell::operator< (const Cell &compared_cell) const                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
 {
-    if (cell.coords.first < compared_cell.cords.first)
-        return 1;
-    else if (cell.coords.first > compared_cell.cords.first)
-        return 0;
-    else if (cell.coords.second < compared_cell.cords.second)
-        return 1;
+    if (coords.first < compared_cell.coords.first)
+        return true;
+    else if (coords.first > compared_cell.coords.first)
+        return false;
+    else if (coords.second < compared_cell.coords.second)
+        return true;
     else
-        return 0;  
+        return false;  
 }
+
+bool Cell::operator== (const Cell &compared_cell) const                //przeciazamy operator potrzebny do znajdowania celli
+{
+    if (coords == compared_cell.coords)
+        return true;
+    else
+        return false;
+
+}
+
+
     
 
