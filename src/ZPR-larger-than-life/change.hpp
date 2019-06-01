@@ -3,24 +3,24 @@
 #define CHANGE_HPP
 
 #include "cell.hpp"
-#include <set>
+#include <list>
 #include <iterator>
 
 
 class Change{
 
-    std::set<Cell> toShift;
-    std::set<Cell> toBirth;
+    std::list<Cell> toShift;
+    std::list<Cell> toBirth;
 
 public:
     Change();
     ~Change();
-    Change(std::set<Cell>, std::set<Cell>);
+    Change(std::list<Cell>, std::list<Cell>);
 
-    std::set<Cell* getToShift();
-    std::set<Cell> getToBirth();
-    void setToShift(std::set<Cell>);
-    void setToBirth(std::set<Cell>);
+    std::list<Cell> getToShift();
+    std::list<Cell> getToBirth();
+    void setToShift(std::list<Cell>);
+    void setToBirth(std::list<Cell>);
 
     void addToShift(Cell);
     void addToBirth(Cell);
