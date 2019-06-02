@@ -13,6 +13,7 @@
 #include <cmath>     //sqrt, floor, ceil, pow
 
 typedef std::map<std::pair<int,int>, int>::iterator findertype;
+typedef std::set<Cell*>::iterator stateiteratortype;
 
 Game::Game()=default;
 Game::~Game()=default;
@@ -81,7 +82,7 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
     State* current_state = state; //niepotrzebne, ale na razie dla czytelnosci kodu sobie siedzi
     std::map<std::pair<int, int>, int> influence_map;
         
-    for(auto std::set<Cell*>::iterator it = state->getActiveCells().begin(); it != state->getActiveCells().end(); ++it){
+    for(auto stateiteratortype it = state->getActiveCells().begin(); it != state->getActiveCells().end(); ++it){
         includeCellInfluence(influence_map, *it);                
     }
     return influence_map;
@@ -107,7 +108,7 @@ void Game::generateChange(std::map<std::pair<int, int>, int> influence_map){
 }
 
 void Game::implementChange (Change* change){
-    for (auto std::set<Cell*>::iterator it = change->to_birth.begin(); it != change->to_birth.end(); ++it){
+    for (auto stateiteratortype it = change->getToBirth().begin(); it != change->getToBirth().end(); ++it){
         std::pair to_find = std::make_pair(x_index, y_index);
         std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
         
@@ -117,19 +118,19 @@ void Game::implementChange (Change* change){
 
     Rules Game::getRules(){return rules;}
     std::deque<Change*> Game::getChanges(){return changes;}
-    State Game::getState(){return state;}
+    State* Game::getState(){return state;}
 
     void Game::setRules(Rules rulings){rules = rulings;}
     void Game::setChanges(std::deque<Change*> change_list){changes = change_list;}
-    void Game::setState(State status){state = status;}
+    void Game::setState(State* status){state = status;}
 
     void Game::updateState(Change change,int direction){}
 
     void Game::generateAllChanges(){
-        State current_position = state;
+        State* current_position = state; //nieuzywane
         
         for (int i = 0; i < GAME_LENGTH; ++i){
-            std::map<std::pair<int, int>, int>* influence_map = generateInfluenceMap();
+            std::map<std::pair<int, int>, int> influence_map = generateInfluenceMap();
             generateChange(influence_map);
             implementChange(changes[i]);
         }

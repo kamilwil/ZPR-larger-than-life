@@ -39,20 +39,21 @@ public:
 
     Rules getRules();
     std::deque<Change*> getChanges();
-    State getState();
+    State* getState();
     
     void setRules(Rules);
     void setChanges(std::deque<Change*>);
-    void setState(State);
+    void setState(State*);
 
     void updateRecord(std::map<std::pair<int, int>, int>*, int, int);
     void includeCellInfluence(std::map<std::pair<int, int>, int>*, Cell*);
     std::map<std::pair<int, int>, int> generateInfluenceMap();
+    void generateChange(std::map<std::pair<int, int>, int>);
 
     void implementChange (Change*);
 
     void updateState(Change,int);
-    void generateChanges();
+    void generateAllChanges();
 
     int sendChanges(Change,int);
 
