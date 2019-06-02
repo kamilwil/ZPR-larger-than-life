@@ -4,6 +4,7 @@
 #define GAME_HPP
 
 #include <set>
+#include <map>
 #include <deque> // http://www.gotw.ca/gotw/054.htm
 #include "change.hpp"
 #include "state.hpp"
@@ -20,7 +21,7 @@ struct Rules {
     int bmin;
     int bmax;
     int m;
-}
+};
 
 class Game{
 
@@ -34,15 +35,21 @@ public:
     const static int GAME_LENGTH=100;
     const static int BOARD_SIZE=100;
 
-    Game(Rules,std::set<Change*>,State);
+    Game(Rules,std::deque<Change*>,State*);
 
     Rules getRules();
-    std::set<Change*> getChanges();
+    std::deque<Change*> getChanges();
     State getState();
     
     void setRules(Rules);
     void setChanges(std::deque<Change*>);
     void setState(State);
+
+    void updateRecord(std::map<std::pair<int, int>, int>*, int, int);
+    void includeCellInfluence(std::map<std::pair<int, int>, int>*, Cell*);
+    std::map<std::pair<int, int>, int> generateInfluenceMap();
+
+    void implementChange (Change*);
 
     void updateState(Change,int);
     void generateChanges();

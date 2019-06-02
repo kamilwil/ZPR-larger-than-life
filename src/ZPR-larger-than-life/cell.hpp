@@ -13,7 +13,7 @@ public:
     Cell(int, int, int);
     int getXcoord();
     int getYcoord();
-    std::pair<int,int> getCoords;
+    std::pair<int,int> getCoords();
     void setXcoord(int);
     void setYcoord(int);
     void setState(int);

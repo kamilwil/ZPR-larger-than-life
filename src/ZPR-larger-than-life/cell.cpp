@@ -9,12 +9,12 @@
         state = st;
     }
         
-    void Cell::setCoords(x,y){coords.first = x; coords.second = y;}
+    void Cell::setCoords(int x, int y){coords.first = x; coords.second = y;}
     std::pair<int,int> Cell::getCoords(){return coords;}
-    int Cell::getXcoord(void){return coords.first;}
-    int Cell::getYcoord(void){return coords.second;}
-    void Cell::setXcoord(int x){x_coord = x;}
-    void Cell::setYcoord(int y){y_coord = y;}
+    int Cell::getXcoord(){return coords.first;}
+    int Cell::getYcoord(){return coords.second;}
+    void Cell::setXcoord(int x){coords.first = x;}
+    void Cell::setYcoord(int y){coords.second = y;}
     void Cell::setState(int st){state = st;}
     
 

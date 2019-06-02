@@ -10,26 +10,26 @@
 #include <utility>
 #include <iterator>
 #include <algorithm>  // min,max (da sie bez tego ale jest czytelniej niz konstrukcja a ? b : c ; zgaduje za duzo pythona)
-#include <cmath>     //sqrt, floor, ceil
+#include <cmath>     //sqrt, floor, ceil, pow
 
-
+typedef std::map<std::pair<int,int>, int>::iterator findertype;
 
 Game::Game()=default;
 Game::~Game()=default;
 
 
-Game::Game(Rules rulings, std::set<Change*> change_list, State status){
+Game::Game(Rules rulings, std::deque<Change*> change_list, State* status){
     rules = rulings;
     changes = change_list;
     state = status;
 }
 
 void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x_index, int y_index){
-    std::pair to_find = std::make_pair(x_index, y_index);
-    std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
+    std::pair<int, int> to_find = std::make_pair(x_index, y_index);
+    findertype finder = influence_map->find(to_find);
         
-    if finder == (*influence_map).end(){           // nie ma takiego klucza https://stackoverflow.com/questions/1939953/how-to-find-if-a-given-key-exists-in-a-c-stdmap
-        (*influence_map).insert(std::pair<to_find, 1>);
+    if (finder == influence_map->end()){           // nie ma takiego klucza https://stackoverflow.com/questions/1939953/how-to-find-if-a-given-key-exists-in-a-c-stdmap
+        influence_map->insert(std::pair<std::pair<int,int>, int>(to_find, 1));
     }
     else{                                       // jest taki klucz
         (*influence_map)[to_find] += 1;
@@ -47,39 +47,42 @@ void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_ma
     // I czy poprawnie sa zapisane warunki dla enumow
     
     
-    current_x = current_cell->coords.first;
-    current_y = current_cell->coords.second;
-    min_x = min(0, current_x);
-    max_x = max(BOARD_SIZE-1, current_x);        
-    min_y = min(0, current_y);
-    max_y = max(BOARD_SIZE-1, current_y);   
+    int current_x = current_cell->getXcoord();
+    int current_y = current_cell->getYcoord();
+    int min_x = std::min(0, current_x);
+    int max_x = std::max(BOARD_SIZE-1, current_x);        
+    int min_y = std::min(0, current_y);
+    int max_y = std::max(BOARD_SIZE-1, current_y);   
             
-    if (rules.neighboorhood == NeighbourhoodType::MOORE)
-        for (auto x_offset = max(-rules.range, -current_x) ; x_offset <= min(rules.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = max(-rules.range, -current_y) ; y_offset <= min(rules.range, BOARD_SIZE-1-current_y); ++y_offset) 
-                updateRecord(influence_map, current_x + x_offset, current_y + y_offset)
+    if (rules.neighbourhood == NeighbourhoodType::MOORE){
+        for (auto x_offset = std::max(-rules.range, -current_x) ; x_offset <= std::min(rules.range, BOARD_SIZE-1-current_x); ++x_offset){
+             for (auto y_offset = std::max(-rules.range, -current_y) ; y_offset <= std::min(rules.range, BOARD_SIZE-1-current_y); ++y_offset) 
+                updateRecord(influence_map, current_x + x_offset, current_y + y_offset);
+    	}
+    }
     
-    else if (rules.neighboorhood == NeighbourhoodType::NEUM)
-        for (auto x_offset = max(-rules.range, -current_x) ; x_offset <= min(rules.range, BOARD_SIZE-1-current_x); ++x_offset)
+    else if (rules.neighbourhood == NeighbourhoodType::NEUM){
+        for (auto x_offset = std::max(-rules.range, -current_x) ; x_offset <= std::min(rules.range, BOARD_SIZE-1-current_x); ++x_offset){
              for (auto y_offset = -abs(rules.range - abs(x_offset)); y_offset <= abs(rules.range - abs(x_offset)); ++y_offset) 
-                 updateRecord(influence_map, current_x + x_offset, current_y + y_offset)      
+                 updateRecord(influence_map, current_x + x_offset, current_y + y_offset);     
+        }
+    }
         
-    else if (rules.neighboorhood == NeighbourhoodType::CIRC)
-        for (auto x_offset = max(-rules.range, -current_x) ; x_offset <= min(rules.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = -floor(sqrt((rules.range + 0.5)^2 - x_offset^2)); y_offset <= floor(sqrt((rules.range + 0.5)^2 - x_offset^2)); ++y_offset) {  
-                 updateRecord(influence_map, current_x + x_offset, current_y + y_offset)            
-                  
+    else if (rules.neighbourhood == NeighbourhoodType::CIRC){
+        for (auto x_offset = std::max(-rules.range, -current_x) ; x_offset <= std::min(rules.range, BOARD_SIZE-1-current_x); ++x_offset){
+             for (auto y_offset = -floor(sqrt(pow(rules.range + 0.5, 2) - pow(x_offset, 2))); y_offset <= floor(sqrt(pow(rules.range + 0.5, 2) - pow(x_offset, 2))); ++y_offset)
+                 updateRecord(influence_map, current_x + x_offset, current_y + y_offset);            
+        }
+    }             
 }
     
-
-std::map<std::pair<int, int>, int>* Game::generateInfluenceMap(){
+std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
         
-    current_state = state; //niepotrzebne, ale na razie dla czytelnosci kodu sobie siedzi
-    std::map<std::pair<<int, int>, int> influence_map;
+    State* current_state = state; //niepotrzebne, ale na razie dla czytelnosci kodu sobie siedzi
+    std::map<std::pair<int, int>, int> influence_map;
         
-    for(auto std::iterator<Cell*> it = state.active_cells.begin(); it != state.active_cells.end();){
-        Game::includeCellInfluence(influence_map, it);            
-            
+    for(auto std::set<Cell*>::iterator it = state->getActiveCells().begin(); it != state->getActiveCells().end(); ++it){
+        includeCellInfluence(influence_map, *it);                
     }
     return influence_map;
 }
@@ -87,7 +90,7 @@ std::map<std::pair<int, int>, int>* Game::generateInfluenceMap(){
     
 void Game::generateChange(std::map<std::pair<int, int>, int> influence_map){
     Change change_i = new Change();
-    for(auto std::map<std::pair<int, int>, int>::iterator it = influence_map.begin(); it != influence_map.end(); ++it)
+    for(auto std::map<std::pair<int, int>, int>::iterator it = influence_map.begin(); it != influence_map.end(); ++it){
         for (auto std::set<Cell*>::iterator it2 = state.active_cells; it2 != state.active_cells.end(); ++it2){
             if ((*it2)->std::pair<it->first, it->second>){                                  //jesli cell o takich wspolrzednych jest w active cellsach
                 if ((it->second < rules.smin + 1 - rules.m) || (it->second  > rules.smax + 1 - rules.m)){                 //jesli nei jest spelniony warunek przezywalnosci
