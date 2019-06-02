@@ -7,7 +7,7 @@
 #include "game.hpp"
 #include "state.hpp"
 #include <map>
-#include <pair>
+#include <utility>
 #include <iterator>
 #include <algorithm>  // min,max (da sie bez tego ale jest czytelniej niz konstrukcja a ? b : c ; zgaduje za duzo pythona)
 #include <cmath>     //sqrt, floor, ceil
@@ -29,7 +29,7 @@ void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x
     std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
         
     if finder == (*influence_map).end(){           // nie ma takiego klucza https://stackoverflow.com/questions/1939953/how-to-find-if-a-given-key-exists-in-a-c-stdmap
-        (*influence_map).insert(std::pair<to_find, 1);
+        (*influence_map).insert(std::pair<to_find, 1>);
     }
     else{                                       // jest taki klucz
         (*influence_map)[to_find] += 1;
