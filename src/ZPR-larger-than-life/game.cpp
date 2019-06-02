@@ -7,6 +7,7 @@
 #include "game.hpp"
 #include "state.hpp"
 #include <map>
+#include <deque>
 #include <pair>
 #include <iterator>
 #include <algorithm>  // min,max (da sie bez tego ale jest czytelniej niz konstrukcja a ? b : c ; zgaduje za duzo pythona)
@@ -18,7 +19,7 @@ Game::Game()=default;
 Game::~Game()=default;
 
 
-Game::Game(Rules rulings, std::set<Change*> change_list, State status){
+Game::Game(Rules rulings, std::deque<Change*> change_list, State status){
     rules = rulings;
     changes = change_list;
     state = status;
@@ -77,7 +78,7 @@ std::map<std::pair<int, int>, int>* Game::generateInfluenceMap(){
     current_state = state; //niepotrzebne, ale na razie dla czytelnosci kodu sobie siedzi
     std::map<std::pair<<int, int>, int> influence_map;
         
-    for(auto std::iterator<Cell*> it = state.active_cells.begin(); it != state.active_cells.end();){
+    for(auto std::iterator<Cell> it = state.active_cells.begin(); it != state.active_cells.end();){
         Game::includeCellInfluence(influence_map, it);            
             
     }
@@ -88,7 +89,7 @@ std::map<std::pair<int, int>, int>* Game::generateInfluenceMap(){
 void Game::generateChange(std::map<std::pair<int, int>, int> influence_map){
     Change change_i = new Change();
     for(auto std::map<std::pair<int, int>, int>::iterator it = influence_map.begin(); it != influence_map.end(); ++it)
-        for (auto std::set<Cell*>::iterator it2 = state.active_cells; it2 != state.active_cells.end(); ++it2){
+        for (auto std::set<Cell>::iterator it2 = state.active_cells; it2 != state.active_cells.end(); ++it2){
             if ((*it2)->std::pair<it->first, it->second>){                                  //jesli cell o takich wspolrzednych jest w active cellsach
                 if ((it->second < rules.smin + 1 - rules.m) || (it->second  > rules.smax + 1 - rules.m)){                 //jesli nei jest spelniony warunek przezywalnosci
                     change_i.addToShift((*it2));
@@ -100,15 +101,34 @@ void Game::generateChange(std::map<std::pair<int, int>, int> influence_map){
             change_i.addToBirth((*it2));                                      // i jesli chcemy go stworzyc to go tworzymy
 
     }
-    changes.push_back(&change_i);
+    changes.push_back(change_i*);
 }
 
 void Game::implementChange (Change* change){
-    for (auto std::set<Cell*>::iterator it = change->to_birth.begin(); it != change->to_birth.end(); ++it){
-        std::pair to_find = std::make_pair(x_index, y_index);
-        std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
+    for (auto std::list<Cell>::iterator it = change->to_birth.begin(); it != change->to_birth.end(); ++it){
+        it_cell = find(state->inactive_cells.begin(), state->inactive_cells.end(), (*it));           // sprawdzamy czy nie jest w inactive cellach
+        if (it_cell == state->inactive_cells.end()){                                              //jesli nie ma to po prostu tworzymy nowa komorke w active cellsach
+            auto Cell temp_cell = (*it);                                                                        //state cella; prawdopodobnie da sie uniknac tego kopiowania
+            temp_cell.state = rules.states;                                                   //TODO: pozmieniac nazwy zmiennych zeby bylo mniej roznych statesow
+            state->active_cells.push_back(temp_cell);
+        }
+        else{
+            state->inactive_cells.remove(*it);
+            auto Cell temp_cell = (*it);
+            temp_cell.state = rules.states;               //ustawiamy na maksa          
+            state->active_cells.push_back(*it);
+        }
         
     }
+    for (auto std::list<Cell>::iterator it2 = change->to_shift.begin(); it2 != change->to_shift.end(); ++it2){
+        it_cell = find(state->active_cells.begin(), state->active_cells.end(), (*it));           // sprawdzamy czy nie jest w inactive cellach
+                                 // mniej warunkow, bo zakladamy ze taki cell jest, na przyszlosc mozna tu wyjatek zrobic
+        it2->state = it2->state - 1;
+        if (it2->state == 0){
+            state->active_cells.remove(*it2);
+            state->inactive_cells.push_back(*it2);
+        }
+      
 }
     
 
@@ -123,9 +143,9 @@ void Game::implementChange (Change* change){
     void Game::updateState(Change change,int direction){}
 
     void Game::generateAllChanges(){
-        State current_position = state;
-        
-        for (int i = 0; i < GAME_LENGTH; ++i){
+
+        // od jedynki bo zerowa zmiane pobieramy z czesci widokowej
+        for (int i = 1; i < GAME_LENGTH; ++i){
             std::map<std::pair<int, int>, int>* influence_map = generateInfluenceMap();
             generateChange(influence_map);
             implementChange(changes[i]);
