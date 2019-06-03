@@ -82,8 +82,8 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
     State* current_state = state; //niepotrzebne, ale na razie dla czytelnosci kodu sobie siedzi
     std::map<std::pair<int, int>, int> influence_map;
         
-    for(auto stateiteratortype it = state->getActiveCells().begin(); it != state->getActiveCells().end(); ++it){
-        includeCellInfluence(influence_map, *it);                
+    for(stateiteratortype it = state->getActiveCells().begin(); it != state->getActiveCells().end(); ++it){
+        this->includeCellInfluence(&influence_map, *it);                
     }
     return influence_map;
 }
@@ -91,9 +91,9 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
     
 void Game::generateChange(std::map<std::pair<int, int>, int> influence_map){
     Change change_i = new Change();
-    for(auto std::map<std::pair<int, int>, int>::iterator it = influence_map.begin(); it != influence_map.end(); ++it){
-        for (auto std::set<Cell*>::iterator it2 = state.active_cells; it2 != state.active_cells.end(); ++it2){
-            if ((*it2)->std::pair<it->first, it->second>){                                  //jesli cell o takich wspolrzednych jest w active cellsach
+    for(std::map<std::pair<int, int>, int>::iterator it = influence_map.begin(); it != influence_map.end(); ++it){
+        for (stateiteratortype it2 = state->getActiveCells().begin(); it2 != state->getActiveCells().end(); ++it2){
+            if (it2->std::pair<it->first, it->second>){                                  //jesli cell o takich wspolrzednych jest w active cellsach
                 if ((it->second < rules.smin + 1 - rules.m) || (it->second  > rules.smax + 1 - rules.m)){                 //jesli nei jest spelniony warunek przezywalnosci
                     change_i.addToShift((*it2));
                     break;
@@ -108,11 +108,11 @@ void Game::generateChange(std::map<std::pair<int, int>, int> influence_map){
 }
 
 void Game::implementChange (Change* change){
-    for (auto stateiteratortype it = change->getToBirth().begin(); it != change->getToBirth().end(); ++it){
-        std::pair to_find = std::make_pair(x_index, y_index);
-        std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
+    /*for (stateiteratortype it = change->getToBirth().begin(); it != change->getToBirth().end(); ++it){
+        std::pair<int, int> to_find = std::make_pair(x_index, y_index);
+        std::map<std::pair<int, int>, int>* finder = (*influence_map).find(to_find);
         
-    }
+    }*/
 }
     
 
@@ -130,9 +130,9 @@ void Game::implementChange (Change* change){
         State* current_position = state; //nieuzywane
         
         for (int i = 0; i < GAME_LENGTH; ++i){
-            std::map<std::pair<int, int>, int> influence_map = generateInfluenceMap();
-            generateChange(influence_map);
-            implementChange(changes[i]);
+            std::map<std::pair<int, int>, int> influence_map = this->generateInfluenceMap();
+            this->generateChange(influence_map);
+            this->implementChange(changes[i]);
         }
         
     }
