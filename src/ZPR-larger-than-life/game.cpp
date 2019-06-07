@@ -16,7 +16,7 @@
 
 
 typedef std::map<std::pair<int,int>,int>::iterator findertype;
-typedef std::set<Cell>:: iterator stateiteratortype;
+typedef std::set<Cell>::iterator stateiteratortype;
 
 
 Game::Game()=default;
@@ -93,7 +93,7 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     for(findertype it = influence_map->begin(); it != influence_map->end(); ++it){
        
         
-        Cell *cell_find = find( state.getActiveCells().begin(),  state.getActiveCells().end(), Cell((it->first).first, (it->first).second, 0));
+        stateiteratortype cell_find = std::find( state.getActiveCells().begin(),  state.getActiveCells().end(), Cell((it->first).first, (it->first).second, 0));
 
         if (cell_find != state.getActiveCells().end()){
         //for (stateiteratortype it2 = state.getActiveCells().begin(); it2 != state.getActiveCells().end(); ++it2){
@@ -103,7 +103,7 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
                 break;
             }                                                                           //jesli jest to nic nie robimy                           
         }              
-        else if ((it->second >= rules.bmin + 1 - rules.m) && (it->second  <= rules.bmax + 1 - rules.m))       //jseli jestesmy w tym miejscu to oznacza ze takiego cella nie ma
+        else if ((it->second >= rules.bmin + 1 - rules.m) && (it->second  <= rules.bmax + 1 - rules.m)){     //jseli jestesmy w tym miejscu to oznacza ze takiego cella nie ma
             change_i.addToBirth((*cell_find));   
         }                                                                                
                                    // i jesli chcemy go stworzyc to go tworzymy
@@ -112,32 +112,32 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     changes.push_back(change_i);
 }
 
-void Game::implementChange (Change* change){
-    for (stateiteratortype it = change->to_birth.begin(); it != change->to_birth.end(); ++it){
+void Game::implementChange (Change change){
+    for (std::list<Cell>::iterator it = change.getToBirth().begin(); it != change.getToBirth().end(); ++it){
         
-        Cell *it_cell = find(state->inactive_cells.begin(), state->inactive_cells.end(), (*it));           // sprawdzamy czy nie jest w inactive cellach
-        if (it_cell == state->inactive_cells.end()){                                              //jesli nie ma to po prostu tworzymy nowa komorke w active cellsach
-            auto Cell temp_cell = (*it);                                                                        //state cella; prawdopodobnie da sie uniknac tego kopiowania
-            temp_cell.state = rules.states;                                                   //TODO: pozmieniac nazwy zmiennych zeby bylo mniej roznych statesow
-            state->active_cells.push_back(temp_cell);
+        auto it_cell = std::find(state.getInactiveCells().begin(), state.getInactiveCells().end(), (*it));           // sprawdzamy czy nie jest w inactive cellach
+        if (it_cell == state.getInactiveCells().end()){                                              //jesli nie ma to po prostu tworzymy nowa komorke w active cellsach
+            Cell temp_cell = (*it);                                                                        //state cella; prawdopodobnie da sie uniknac tego kopiowania
+            temp_cell.setState(rules.states);                                                   //TODO: pozmieniac nazwy zmiennych zeby bylo mniej roznych statesow
+            state.getActiveCells().insert(temp_cell);
         }
         else{
-            state->inactive_cells.remove(*it);
-            auto Cell temp_cell = (*it);
-            temp_cell.state = rules.states;               //ustawiamy na maksa          
-            state->active_cells.push_back(*it);
+            state.getInactiveCells().erase(it);
+            Cell temp_cell = (*it);
+            temp_cell.setState(rules.states);               //ustawiamy na maksa          
+            state.getActiveCells().insert(*it);
         }
-        
     }
-    for (auto std::list<Cell>::iterator it2 = change->to_shift.begin(); it2 != change->to_shift.end(); ++it2){
-        Cell* it_cell = find(state->active_cells.begin(), state->active_cells.end(), (*it));           // sprawdzamy czy nie jest w inactive cellach
+
+    for (std::list<Cell>::iterator it2 = change.getToShift().begin(); it2 != change.getToShift().end(); ++it2){
+        auto it_cell = std::find(state.getActiveCells().begin(), state.getActiveCells().end(), (*it2));           // sprawdzamy czy nie jest w inactive cellach
                                  // mniej warunkow, bo zakladamy ze taki cell jest, na przyszlosc mozna tu wyjatek zrobic
-        it2->state = it2->state - 1;
-        if (it2->state == 0){
-            state->active_cells.remove(*it2);
-            state->inactive_cells.push_back(*it2);
+        it2->setState(it2->getState() - 1);
+        if (it2->getState() == 0){
+            state.getActiveCells().erase(it2);
+            state->getInactiveCells().insert(*it2);
         }
-      
+    } 
 }
     
 
@@ -156,7 +156,7 @@ void Game::implementChange (Change* change){
         // od jedynki bo zerowa zmiane pobieramy z czesci widokowej
         for (int i = 1; i < GAME_LENGTH; ++i){
             std::map<std::pair<int, int>, int> influence_map = generateInfluenceMap();
-            generateChange(influence_map);
+            generateChange(&influence_map);
             implementChange(changes[i]);
         }
         

@@ -32,7 +32,7 @@ public:
     
 
     Rules getRules();
-    std::set<Change> getChanges();
+    std::deque<Change> getChanges();
     State getState();
     
     void setRules(Rules);
@@ -52,7 +52,7 @@ public:
     void includeCellInfluence(std::map<std::pair<int, int>, int>*, Cell);
     std::map<std::pair<int, int>, int> generateInfluenceMap();
     void generateChange(std::map<std::pair<int, int>, int>*);
-    void implementChange (Change*);
+    void implementChange (Change);
     void generateAllChanges();
 
 
