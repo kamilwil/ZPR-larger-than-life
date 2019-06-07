@@ -1,6 +1,6 @@
 //Cell.cpp
 #include "cell.hpp"
-#include <pair>
+#include <utility>
 
     Cell::Cell() = default;
     Cell::~Cell() = default;
@@ -9,16 +9,16 @@
         state = st;
     }
         
-    void Cell::setCoords(x,y){coords.first = x; coords.second = y;}
+    void Cell::setCoords(int x, int y){coords.first = x; coords.second = y;}
     std::pair<int,int> Cell::getCoords(){return coords;}
     int Cell::getXcoord(void){return coords.first;}
     int Cell::getYcoord(void){return coords.second;}
-    void Cell::setXcoord(int x){x_coord = x;}
-    void Cell::setYcoord(int y){y_coord = y;}
+    void Cell::setXcoord(int x){coords.first = x;}
+    void Cell::setYcoord(int y){coords.second = y;}
     void Cell::setState(int st){state = st;}
 
 
-bool Cell::operator< (const Cell &compared_cell) const                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
+bool Cell::operator < (const Cell &compared_cell)                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
 {
     if (coords.first < compared_cell.coords.first)
         return true;
@@ -30,7 +30,7 @@ bool Cell::operator< (const Cell &compared_cell) const                //przeciaz
         return false;  
 }
 
-bool Cell::operator== (const Cell &compared_cell) const                //przeciazamy operator potrzebny do znajdowania celli
+bool Cell::operator== (const Cell &compared_cell)               //przeciazamy operator potrzebny do znajdowania celli
 {
     if (coords == compared_cell.coords)
         return true;

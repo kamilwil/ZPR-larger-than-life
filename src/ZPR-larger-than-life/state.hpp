@@ -15,7 +15,7 @@ class State{
 public:
     State();
     ~State();
-    State(std::set<Cell>, std::set<Cell, int);
+    State(std::set<Cell>, std::set<Cell>, int);
 
 //    void changeIteration(int);
     void addActiveCell(Cell);
@@ -23,8 +23,8 @@ public:
     void addInactiveCell(Cell);
     void removeInactiveCell(Cell);
 
-    std::set<Cell>  get_activeCells();
-    std::set<Cell>  get_inactiveCells();
+    std::set<Cell>  getActiveCells();
+    std::set<Cell>  getInactiveCells();
     int getItNumber();
     void setActiveCells(std::set<Cell>);
     void setInactiveCells(std::set<Cell>);

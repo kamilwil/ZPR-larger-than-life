@@ -39,8 +39,8 @@
                 ++it;        
     }
 
-    std::set<Cell> State::get_activeCells(){return active_cells;}
-    std::set<Cell> State::get_inactiveCells(){return inactive_cells;}
+    std::set<Cell> State::getActiveCells(){return active_cells;}
+    std::set<Cell> State::getInactiveCells(){return inactive_cells;}
     int State::getItNumber(){return it_number;}
     void State::setActiveCells(std::set<Cell> actives){active_cells = actives}
     void State::setInactiveCells(std::set<Cell> inactives){}
