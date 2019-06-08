@@ -3,6 +3,7 @@ import tkinter.filedialog as tkinterfiledialog
 import platform
 import os
 from random import choice
+from math import floor
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
@@ -86,18 +87,31 @@ def onPressLoad():
 
 def onPressRand():
 	print('Called Randomize method!')
-	r = range(1,CELL_COUNT)
+	r = range(1, floor((CELL_COUNT-0.5)/3.14))
+	r_chosen = choice(r)
 	c = range(0,256)
+	c_chosen = choice(c)
 	m = range(0,2)
-	smin = range(0,CELL_COUNT**2)
-	smin_chosen = choice(smin)
-	smax = range(smin_chosen, CELL_COUNT**2)
-	bmin = range(0, CELL_COUNT**2 - 1)
-	bmin_chosen = choice(bmin)
-	bmax = range(bmin_chosen, CELL_COUNT**2)
+	m_chosen = choice(m)
 	n = ['M', 'N', 'C']
+	n_chosen = choice(n)
 
-	rule_string = "{R:"+str(choice(r))+",C:"+str(choice(c))+",M:"+str(choice(m))+",Smin:"+str(smin_chosen)+",Smax:"+str(choice(smax))+",Bmin:"+str(bmin_chosen)+",Bmax:"+str(choice(bmax))+",N:"+str(choice(n))+"}"
+	sb_max = 1
+	if (n_chosen == 'M'):
+		sb_max = (2*r_chosen + 1)**2
+	elif (n_chosen == 'N'):
+		sb_max = 2*r_chosen*(r_chosen+1)+1
+	elif (n_chosen == 'C'):
+		sb_max = floor(3.14*(r_chosen+0.5)**2)
+
+	smin = range(0, sb_max)
+	smin_chosen = choice(smin)
+	smax = range(smin_chosen, sb_max)
+	bmin = range(0, sb_max)
+	bmin_chosen = choice(bmin)
+	bmax = range(bmin_chosen, sb_max)
+	
+	rule_string = "{R:"+str(r_chosen)+",C:"+str(c_chosen)+",M:"+str(m_chosen)+",Smin:"+str(smin_chosen)+",Smax:"+str(choice(smax))+",Bmin:"+str(bmin_chosen)+",Bmax:"+str(choice(bmax))+",N:"+str(n_chosen)+"}"
 	print(rule_string)
 	rule_field.delete(0, tk.END)
 	rule_field.insert(0, rule_string)
