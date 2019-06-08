@@ -1,4 +1,6 @@
 import tkinter as tk
+import tkinter.filedialog as tkinterfiledialog
+import platform
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
@@ -49,9 +51,34 @@ class RulesButton(tk.Button):
 
 def onPressSave():
 	print('Called Save method!')
+	if (platform.system() == "Windows"):
+		directory = "C:\\"
+	else:
+		directory = "/home/kamil/"
+	save_dialog = tkinterfiledialog.asksaveasfilename(initialdir = directory,title = "Save rule as",filetypes = (("Textfiles","*.txt"),("All files","*.*")))
+	print(save_dialog)
+	try:
+		with open(save_dialog, "w") as file:
+			file.write("Tu bedzie regula")
+	except:
+		print("Saving rule unsuccesful!")
 
 def onPressLoad():
 	print('Called Load method!')
+	if (platform.system() == "Windows"):
+		directory = "C:\\"
+	else:
+		directory = "/home/kamil/"
+	open_dialog = tkinterfiledialog.askopenfile(initialdir = directory,title = "Open rule",filetypes = (("Textfiles","*.txt"),("All files","*.*")))
+	print(open_dialog)
+	try:
+		with open(open_dialog.name, "r") as file:
+			temporary_rule = file.read()
+			print(temporary_rule)
+	except:
+		print("Reading rule unsuccesful!")
+
+	#dodac wyswietlanie w polu tekstowym!
 
 def onPressRand():
 	print('Called Randomize method!')
