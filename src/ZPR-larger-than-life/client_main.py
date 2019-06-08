@@ -1,6 +1,8 @@
 import tkinter as tk
 import tkinter.filedialog as tkinterfiledialog
 import platform
+import os
+from random import choice
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
@@ -52,36 +54,54 @@ class RulesButton(tk.Button):
 def onPressSave():
 	print('Called Save method!')
 	if (platform.system() == "Windows"):
-		directory = "C:\\"
+		directory = os.path.join("C:", "Users", os.getlogin(), "Desktop")
 	else:
-		directory = "/home/kamil/"
+		directory = "/home/"+os.getlogin()
 	save_dialog = tkinterfiledialog.asksaveasfilename(initialdir = directory,title = "Save rule as",filetypes = (("Textfiles","*.txt"),("All files","*.*")))
 	print(save_dialog)
 	try:
 		with open(save_dialog, "w") as file:
-			file.write("Tu bedzie regula")
+			file.write(rule_field.get())
 	except:
 		print("Saving rule unsuccesful!")
 
 def onPressLoad():
 	print('Called Load method!')
 	if (platform.system() == "Windows"):
-		directory = "C:\\"
+		directory = os.path.join("C:", "Users", os.getlogin(), "Desktop")
 	else:
-		directory = "/home/kamil/"
+		directory = "/home/"+os.getlogin()
 	open_dialog = tkinterfiledialog.askopenfile(initialdir = directory,title = "Open rule",filetypes = (("Textfiles","*.txt"),("All files","*.*")))
 	print(open_dialog)
 	try:
 		with open(open_dialog.name, "r") as file:
-			temporary_rule = file.read()
-			print(temporary_rule)
+			read_rule = file.read()
+			print(read_rule)
+			rule_field.delete(0, tk.END)
+			rule_field.insert(0, read_rule)
 	except:
 		print("Reading rule unsuccesful!")
 
-	#dodac wyswietlanie w polu tekstowym!
+	
 
 def onPressRand():
 	print('Called Randomize method!')
+	r = range(1,CELL_COUNT)
+	c = range(0,256)
+	m = range(0,2)
+	smin = range(0,CELL_COUNT**2)
+	smin_chosen = choice(smin)
+	smax = range(smin_chosen, CELL_COUNT**2)
+	bmin = range(0, CELL_COUNT**2 - 1)
+	bmin_chosen = choice(bmin)
+	bmax = range(bmin_chosen, CELL_COUNT**2)
+	n = ['M', 'N', 'C']
+
+	rule_string = "{R:"+str(choice(r))+",C:"+str(choice(c))+",M:"+str(choice(m))+",Smin:"+str(smin_chosen)+",Smax:"+str(choice(smax))+",Bmin:"+str(bmin_chosen)+",Bmax:"+str(choice(bmax))+",N:"+str(choice(n))+"}"
+	print(rule_string)
+	rule_field.delete(0, tk.END)
+	rule_field.insert(0, rule_string)
+
 
 # IterButton (Button)
 class IterButton(tk.Button):
