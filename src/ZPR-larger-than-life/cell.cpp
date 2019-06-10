@@ -19,7 +19,9 @@
     void Cell::setState(int st){state = st;}
 
 
+    Cell& Cell::operator= (const Cell& other) = default;
 
+    
 
 
 

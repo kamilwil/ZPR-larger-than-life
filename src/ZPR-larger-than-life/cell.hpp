@@ -28,8 +28,7 @@ public:
         return false;
 
 }
-    friend bool operator < (const Cell &compared_cell, const Cell &compared_cell_other)                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
-{
+    friend bool operator < (const Cell &compared_cell, const Cell &compared_cell_other){                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
     if (compared_cell.coords.first < compared_cell_other.coords.first)
         return true;
     else if (compared_cell.coords.first > compared_cell_other.coords.first)
@@ -38,8 +37,13 @@ public:
         return true;
     else
         return false;  
-}
     
+}
+    Cell& operator= (const Cell& other);
+
+
+
+
 };
 
 #endif
