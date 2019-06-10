@@ -116,16 +116,14 @@ void Game::implementChange (Change change){
     for (std::list<Cell>::iterator it = change.getToBirth().begin(); it != change.getToBirth().end(); ++it){
         
         auto it_cell = std::find(state.getInactiveCells().begin(), state.getInactiveCells().end(), (*it));           // sprawdzamy czy nie jest w inactive cellach
-        if (it_cell == state.getInactiveCells().end()){                                              //jesli nie ma to po prostu tworzymy nowa komorke w active cellsach
-            Cell temp_cell = (*it);                                                                        //state cella; prawdopodobnie da sie uniknac tego kopiowania
-            temp_cell.setState(rules.states);                                                   //TODO: pozmieniac nazwy zmiennych zeby bylo mniej roznych statesow
-            state.getActiveCells().insert(temp_cell);
+        if (it_cell == state.getInactiveCells().end()){                                              //jesli nie ma to po prostu tworzymy nowa komorke w active cellsach                                                                      //state cella; prawdopodobnie da sie uniknac tego kopiowania
+            (*it).setState(rules.states);                                                   //TODO: pozmieniac nazwy zmiennych zeby bylo mniej roznych statesow
+            state.addActiveCell(*it);
         }
         else{
-            state.getInactiveCells().erase(it);
-            Cell temp_cell = (*it);
-            temp_cell.setState(rules.states);               //ustawiamy na maksa          
-            state.getActiveCells().insert(*it);
+            state.removeInactiveCell(*it);
+            (*it).setState(rules.states);               //ustawiamy na maksa          
+            state.addActiveCell(*it);
         }
     }
 
@@ -134,8 +132,8 @@ void Game::implementChange (Change change){
                                  // mniej warunkow, bo zakladamy ze taki cell jest, na przyszlosc mozna tu wyjatek zrobic
         it2->setState(it2->getState() - 1);
         if (it2->getState() == 0){
-            state.getActiveCells().erase(it2);
-            state->getInactiveCells().insert(*it2);
+            state.removeActiveCell(*it2);
+            state.addInactiveCell(*it2);
         }
     } 
 }

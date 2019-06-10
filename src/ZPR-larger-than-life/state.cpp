@@ -21,22 +21,24 @@
     void State::addActiveCell(Cell cell){active_cells.insert(cell);}
 
     void State::removeActiveCell(Cell cell){
-        for(auto std::iterator<Cell> it = active_cells.begin(); it != active_cells.end(); )
+/*        for(auto std::iterator<Cell> it = active_cells.begin(); it != active_cells.end(); )
             if(*it == cell)
                 it = active_cells.erase(it);
                 break;
             else
-                ++it;
+                ++it;*/
+        active_cells.erase(remove(active_cells.begin(),active_cells.end(), Cell),active_cells.end());
     }
     void State::addInactiveCell(Cell cell){inactive_cells.insert(cell);}
 
     void State::removeInactiveCell(Cell cell){
-        for(auto std:iterator<Cell> it = inactive_cells.begin(); it != inactive_cells.end(); )
+        /*for(auto std:iterator<Cell> it = inactive_cells.begin(); it != inactive_cells.end(); )
             if(*it == cell)
                 it = inactive_cells.erase(it);
                 break;
             else
-                ++it;        
+                ++it;      */
+        inactive_cells.erase(remove(inactive_cells.begin(), inactive_cells.end(), Cell), inactive_cells.end());          
     }
 
     std::set<Cell> State::getActiveCells(){return active_cells;}
