@@ -132,6 +132,15 @@ def onPressPlay():
 def onPressNext():
 	print('Called Next method!')
 
+
+def drawCell(canv, indx, indy):
+	print('Called drawCell()!')
+	canv.create_rectangle(20 + indx*(WINDOW_HEIGHT-300)/CELL_COUNT, 20 + indy*(WINDOW_HEIGHT-100)/CELL_COUNT, 20 + (indx+1)*(WINDOW_HEIGHT-300)/CELL_COUNT, 20 + (indy+1)*(WINDOW_HEIGHT-100)/CELL_COUNT, fill='gray')
+
+
+
+# MAIN -----------------------------------------------------------------------------------------------------
+
 root = tk.Tk()
 root.title("Larger than Life")
 geom_string = str(WINDOW_WIDTH)+"x"+str(WINDOW_HEIGHT)
@@ -174,6 +183,10 @@ play_iter.pack(side="left")
 next_iter = IterButton(iter_frame, text=">>", command=onPressNext)
 next_iter.pack(side="left")
 
-
+#testowe wywolania
+drawCell(canvas, 0, 0)
+drawCell(canvas, 10, 14)
+drawCell(canvas, 37, 22)
+drawCell(canvas, 9, 40)
 
 root.mainloop()
