@@ -88,7 +88,7 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
 
     
 void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
-    Change change_i = new Change();
+    Change* change_i = new Change();
 
     for(findertype it = influence_map->begin(); it != influence_map->end(); ++it){
        
@@ -99,17 +99,17 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
         //for (stateiteratortype it2 = state.getActiveCells().begin(); it2 != state.getActiveCells().end(); ++it2){
                                             //jesli cell o takich wspolrzednych jest w active cellsach
             if ((it->second < rules.smin + 1 - rules.m) || (it->second  > rules.smax + 1 - rules.m)){                 //jesli nei jest spelniony warunek przezywalnosci
-                change_i.addToShift((*cell_find));
+                change_i->addToShift((*cell_find));
                 break;
             }                                                                           //jesli jest to nic nie robimy                           
         }              
         else if ((it->second >= rules.bmin + 1 - rules.m) && (it->second  <= rules.bmax + 1 - rules.m)){     //jseli jestesmy w tym miejscu to oznacza ze takiego cella nie ma
-            change_i.addToBirth((*cell_find));   
+            change_i->addToBirth((*cell_find));   
         }                                                                                
                                    // i jesli chcemy go stworzyc to go tworzymy
 
     }
-    changes.push_back(change_i);
+    changes.push_back(*(change_i));
 }
 
 void Game::implementChange (Change change){
