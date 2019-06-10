@@ -31,14 +31,7 @@ bool Cell::operator < (const Cell &compared_cell)                //przeciazamy o
         return false;  
 }
 
-bool Cell::operator== (const Cell &compared_cell)               //przeciazamy operator potrzebny do znajdowania celli
-{
-    if (coords == compared_cell.coords)
-        return true;
-    else
-        return false;
 
-}
 
 
     

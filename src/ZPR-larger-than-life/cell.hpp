@@ -19,8 +19,15 @@ public:
     void setYcoord(int);
     void setState(int);
     void setCoords(int, int);
-    bool operator== (const Cell &compared_cell);
-    bool operator < (const Cell &compared_cell);
+   friend bool operator == (const Cell &compared_cell, const Cell &compared_cell_other)               //przeciazamy operator potrzebny do znajdowania celli
+{
+    if (compared_cell_other.coords == compared_cell.coords)
+        return true;
+    else
+        return false;
+
+}
+    bool operator < (const Cell &);
     
 };
 

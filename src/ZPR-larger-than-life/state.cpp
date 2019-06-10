@@ -27,7 +27,7 @@
                 break;
             else
                 ++it;*/
-        active_cells.erase(remove(active_cells.begin(),active_cells.end(), Cell),active_cells.end());
+        active_cells.erase(remove(active_cells.begin(),active_cells.end(), cell),active_cells.end());
     }
     void State::addInactiveCell(Cell cell){inactive_cells.insert(cell);}
 
@@ -38,7 +38,7 @@
                 break;
             else
                 ++it;      */
-        inactive_cells.erase(remove(inactive_cells.begin(), inactive_cells.end(), Cell), inactive_cells.end());          
+        inactive_cells.erase(remove(inactive_cells.begin(), inactive_cells.end(), cell), inactive_cells.end());          
     }
 
     std::set<Cell> State::getActiveCells(){return active_cells;}
