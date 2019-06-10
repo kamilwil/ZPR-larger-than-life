@@ -19,17 +19,7 @@
     void Cell::setState(int st){state = st;}
 
 
-bool Cell::operator < (const Cell &compared_cell)                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
-{
-    if (coords.first < compared_cell.coords.first)
-        return true;
-    else if (coords.first > compared_cell.coords.first)
-        return false;
-    else if (coords.second < compared_cell.coords.second)
-        return true;
-    else
-        return false;  
-}
+
 
 
 
