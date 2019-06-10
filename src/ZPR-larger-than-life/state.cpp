@@ -5,6 +5,7 @@
 #include <iterator>
 #include "cell.hpp"
 #include "state.hpp"
+#include <algorithm>
 
 
 
@@ -27,7 +28,7 @@
                 break;
             else
                 ++it;*/
-        active_cells.erase(remove(active_cells.begin(),active_cells.end(), cell),active_cells.end());
+        active_cells.erase(std::remove(active_cells.begin(),active_cells.end(), cell),active_cells.end());
     }
     void State::addInactiveCell(Cell cell){inactive_cells.insert(cell);}
 
@@ -38,15 +39,15 @@
                 break;
             else
                 ++it;      */
-        inactive_cells.erase(remove(inactive_cells.begin(), inactive_cells.end(), cell), inactive_cells.end());          
+        inactive_cells.erase(std::remove(inactive_cells.begin(), inactive_cells.end(), cell), inactive_cells.end());          
     }
 
     std::set<Cell> State::getActiveCells(){return active_cells;}
     std::set<Cell> State::getInactiveCells(){return inactive_cells;}
     int State::getItNumber(){return it_number;}
-    void State::setActiveCells(std::set<Cell> actives){active_cells = actives}
-    void State::setInactiveCells(std::set<Cell> inactives){}
-    void State::setItNumber(int it){}
+    void State::setActiveCells(std::set<Cell> actives){active_cells = actives;}
+    void State::setInactiveCells(std::set<Cell> inactives){inactive_cells = inactives;}
+    void State::setItNumber(int it){it_number = it;}
 
 
 
