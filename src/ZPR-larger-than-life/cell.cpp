@@ -19,7 +19,11 @@
     void Cell::setState(int st){state = st;}
 
 
-    Cell& Cell::operator= (const Cell& other) = default;
+    Cell& Cell::operator= (const Cell& other){
+        coords = other.coords;
+        state = other.state;
+        return *this
+    }
 
     
 

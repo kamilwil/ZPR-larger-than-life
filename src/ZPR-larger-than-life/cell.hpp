@@ -39,7 +39,7 @@ public:
         return false;  
     
 }
-    Cell& operator= (const Cell& other);
+    Cell& operator= (const Cell&);
 
 
 
