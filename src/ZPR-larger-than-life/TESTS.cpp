@@ -185,4 +185,30 @@ BOOST_AUTO_TEST_CASE (implementChangeTest){
 	Rules test_rules = Rules(NeighbourhoodType::NEUM, 2, 1, 1, 1, 1, 1, 1);
 }
 
-                               
+BOOST_AUTO_TEST_CASE (implementChangeTest){
+	Rules test_rules = Rules(NeighbourhoodType::Moore, 2, 20, 1, 1, 2, 2, 0);
+	State test_state = State();
+	std::deque<Change> test_change_list;
+	Game test_game = Game(test_rules, test_state, test_change_list);
+	std::list<Cell> toBeShifted;
+	std::list<Cell> toBeBorn;
+	toBeBorn.push_back(1,1,1);
+	toBeBorn.push_back(2,2,2);
+	
+	Change to_change = Change(toBeShifted, toBeBorn);
+	
+	BOOST_CHECK (test_game.state.getActiveCells().size() == 2);
+	BOOST_CHECK (test_game.state.getActiveCells()[0].state == 20);
+	
+	std::list<Cell> toBeShifted2;
+	std::list<Cell> toBeBorn2;
+	
+	toBeShifted2.push_back(Cell(1,1,1));
+	
+	Change to_change2 = Change(toBeShifted2, toBeBorn2);
+	
+	BOOST_CHECK (test_game.state.getActiveCells().size() == 2);
+	BOOST_CHECK (test_game.state.getActiveCells()[0].state == 19);
+	
+	
+}                               
