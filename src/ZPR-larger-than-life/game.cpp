@@ -13,6 +13,7 @@
 #include <algorithm>  // min,max (da sie bez tego ale jest czytelniej niz konstrukcja a ? b : c ; zgaduje za duzo pythona)
 #include <cmath>     //sqrt, floor, ceil
 #include "rules.hpp"
+#include <boost/python>
 
 
 typedef std::map<std::pair<int,int>,int>::iterator findertype;
@@ -162,7 +163,34 @@ void Game::implementChange (Change change){
 
     int Game::sendChanges(Change change,int it){return 1;}
 
-    void Game::receiveRules(){}
+    Rules Game::receiveRules(const boost::python::list& l)
+    {
+    	int rcv_range = extract<int> l[0];
+    	int rcv_states = extract<int> l[1];
+    	int rcv_smin = extract<int> l[3];
+    	int rcv_smax = extract<int> l[4];
+    	int rcv_bmin = extract<int> l[5];
+    	int rcv_bmax = extract<int> l[6];
+    	int rcv_m = extract<int> l[2];
+    	int rcv_n = extract<char> l[7];
+    	NeighbourhoodType rcv_neighbourhood = 'MOORE';
+
+    	switch (rcv_n)
+    	{
+    		case 'M':
+    			rcv_neighbourhood = 'MOORE';
+    			break;
+    		case 'C':
+    			rcv_neighbourhood = 'CIRC';
+    			break;
+    		case 'N':
+    			rcv_neighbourhood = 'NEUM';
+    			break;
+    	}
+
+    	Rules out = new Rules(rcv_neighbourhood, rcv_range, rcv_states, rcv_smin, rcv_smax, rcv_bmin, rcv_bmax, rcv_m);
+    	return out;
+    }
     void Game::receiveStartingPosition(){} //changes[0] = starting_pos
     void Game::receiveTask(){}
 

@@ -1,8 +1,10 @@
+#include "boost/python.hpp"
 #include <set>
 #include <iterator>
 #include "change.hpp"
 #include "cell.hpp"
 #include <list>
+
 
 
 
@@ -24,5 +26,11 @@
     void Change::addToBirth(Cell tobirthed){toShift.push_back(tobirthed);}
 
 
-
+BOOST_PYTHON_MODULE( change )
+{
+    boost::python::class_<Change>("Change", boost::python::init<std::list<Cell>, std::list<Cell> >())
+        .def( "getToShift", &Change::getToShift )
+        .def( "getToBirth", &Change::getToBirth )
+        ;
+}
 
