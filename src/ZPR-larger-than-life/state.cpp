@@ -25,12 +25,12 @@
 
     void State::removeActiveCell(Cell cell){
 
-        active_cells.erase(std::remove(active_cells.begin(),active_cells.end(), cell),active_cells.end());
+        active_cells.erase(cell);
     }
     void State::addInactiveCell(Cell cell){inactive_cells.insert(cell);}
 
     void State::removeInactiveCell(Cell cell){
-        inactive_cells.erase(std::remove(inactive_cells.begin(), inactive_cells.end(), cell), inactive_cells.end());          
+        inactive_cells.erase(cell);          
     }
 
     // Implementacja getterow oraz setterow
