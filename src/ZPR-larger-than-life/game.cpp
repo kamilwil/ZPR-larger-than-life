@@ -16,33 +16,33 @@
 
 
 
-//* Class Game being our instance of a game.
-//* Fields:
-//* Rules rules - structure with parameters regarding rules of the game
-//* std::deque<Change> - contener with a Change object for each of the game's iterations
-//* State state - State object - our current board state
+/// Class Game being our instance of a game.
+/// Fields:
+/// Rules rules - structure with parameters regarding rules of the game
+/// std::deque<Change> - contener with a Change object for each of the game's iterations
+/// State state - State object - our current board state
 
 typedef std::map<std::pair<int,int>,int>::iterator Findertype;
 typedef std::set<Cell>::iterator Stateiteratortype;
 
-//* Default Game constructor
+/// Default Game constructor
 Game::Game()=default;
-//* Default Game destructor
+/// Default Game destructor
 Game::~Game()=default;
-//* Game constructor with three inputs, similar to fields in the class
+/// Game constructor with three inputs, similar to fields in the class
 Game::Game(const Rules& rulings, const std::deque<Change>& change_list, const State& status){
     rules = rulings;
     changes = change_list;
     state = status;
 }
 
-//* Function updating a particular cell in influence_map 
-//* Inputs:
-//* std::map<std::pair<int,int>,int>* influence_map - representing influence (number of neighbours)
-//* int x_index - x coordinate of a cell
-//* int y_index - y coordinate of a cell
-//* Outputs:
-//* none (void)
+/// Function updating a particular cell in influence_map 
+/// Inputs:
+/// std::map<std::pair<int,int>,int>* influence_map - representing influence (number of neighbours)
+/// int x_index - x coordinate of a cell
+/// int y_index - y coordinate of a cell
+/// Outputs:
+/// none (void)
 void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x_index, int y_index){
     std::pair<int,int> to_find = std::make_pair(x_index, y_index);
     Findertype finder = influence_map->find(to_find);
@@ -55,12 +55,12 @@ void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x
     }    
 }
 
-//* Function updating all cells in influence_map affected by a particular Cell
-//* Inputs:
-//* std::map<std::pair<int,int>,int>* influence_map - representing influence (number of neighbours)
-//* Cell current_cell - influencing Cell
-//* Outputs:
-//* none (void)
+/// Function updating all cells in influence_map affected by a particular Cell
+/// Inputs:
+/// std::map<std::pair<int,int>,int>* influence_map - representing influence (number of neighbours)
+/// Cell current_cell - influencing Cell
+/// Outputs:
+/// none (void)
 void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_map, Cell  current_cell){
        
     int current_x = current_cell.getXcoord();
@@ -83,11 +83,11 @@ void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_ma
                   
 }
     
-//* Function generating an influence map
-//* Inputs:
-//* none
-//* Outputs:
-//* std::map<std::pair<int,int>,int> influence_map - representing influence (number of neighbours)
+/// Function generating an influence map
+/// Inputs:
+/// none
+/// Outputs:
+/// std::map<std::pair<int,int>,int> influence_map - representing influence (number of neighbours)
 std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
         
     std::map<std::pair<int, int>, int> influence_map;
@@ -98,11 +98,11 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
     return influence_map;
 }
 
-//* Funkcja generating Change object with regard to influence map
-//* Inputs:
-//* std::map<std::pair<int,int>,int>* influence_map - representing influence (number of neighbours)
-//* Outputs:
-//* none (void)
+/// Funkcja generating Change object with regard to influence map
+/// Inputs:
+/// std::map<std::pair<int,int>,int>* influence_map - representing influence (number of neighbours)
+/// Outputs:
+/// none (void)
 void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     Change* change_i = new Change();
 
@@ -125,11 +125,11 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     changes.push_back(*(change_i));
 }
 
-//* Function changing state field with regard to Change
-//* Inputs:
-//* Change change - Change object
-//* Outputs:
-//* none (void)
+/// Function changing state field with regard to Change
+/// Inputs:
+/// Change change - Change object
+/// Outputs:
+/// none (void)
 void Game::implementChange (Change change){
     for (std::list<Cell>::iterator it = change.getToBirth().begin(); it != change.getToBirth().end(); ++it){
         
@@ -165,11 +165,11 @@ void Game::implementChange (Change change){
     void Game::setState(const State& status){state = status;}
 
 
-    //* Function matching field change_list with changes at each iteration of the game
-    //* Inputs:
-    //* none
-    //* Outputs:
-    //* none (void)
+    /// Function matching field change_list with changes at each iteration of the game
+    /// Inputs:
+    /// none
+    /// Outputs:
+    /// none (void)
     void Game::generateAllChanges(){
 
         // change_list[0] is received from interface
