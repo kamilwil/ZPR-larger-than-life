@@ -22,7 +22,13 @@
     Cell& Cell::operator= (const Cell& other){
         coords = other.coords;
         state = other.state;
-        return *this
+        return *this;
+    }
+
+    Cell&& Cell::operator= (Cell& other){
+        std::swap(coords, other.coords);
+        std::swap(state, other.state);
+        return *this;
     }
 
     

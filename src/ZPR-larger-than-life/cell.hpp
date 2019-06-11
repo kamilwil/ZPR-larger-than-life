@@ -40,6 +40,7 @@ public:
     
 }
     Cell& operator= (const Cell&);
+    Cell&& operator= (Cell&&);
 
 
 
