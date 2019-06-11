@@ -8,6 +8,7 @@
 //* int smax - maksymalna ilosc sasiadow do przezycia komorki
 //* int bmin - minimalna ilosc sasiadow do powstania komorki
 //* int bmax - maksymalna ilosc sasiadow do powstania komorki
+//* int m - flaga oznaczajaca uwzglednienie komorki jako swojego sasiada
 
 
 //* Implementacja konstruktora struktury rules o argumentach analogicznych do pol klasy
