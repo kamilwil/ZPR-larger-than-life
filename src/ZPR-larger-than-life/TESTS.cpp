@@ -130,11 +130,6 @@ BOOST_AUTO_TEST_CASE (generateInfluemceMapTest){
 }
 
 BOOST_AUTO_TEST_CASE (implementChangeTest){
-	Rules test_rules = Rules(NeighbourhoodType::NEUM, 2, 1, 1, 1, 1, 1, 1);
-}
-}
-
-BOOST_AUTO_TEST_CASE (implementChangeTest){
 	Rules test_rules = Rules(NeighbourhoodType::Moore, 2, 20, 1, 1, 2, 2, 0);
 	State test_state = State();
 	std::deque<Change> test_change_list;
