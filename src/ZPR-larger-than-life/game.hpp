@@ -24,21 +24,18 @@ class Game{
 public:
     Game();
     ~Game();
-    Game(Rules,std::deque<Change>,State);
-
+    Game(const Rules&, const std::deque<Change>&, const State&);
 
     const static int GAME_LENGTH=100;
     const static int BOARD_SIZE=100;
-
-    
 
     Rules getRules();
     std::deque<Change> getChanges();
     State getState();
     
-    void setRules(Rules);
-    void setChanges(std::deque<Change>);
-    void setState(State);
+    void setRules(const Rules&);
+    void setChanges(const std::deque<Change>&);
+    void setState(const State&);
 
     void updateState(Change,int);
     void generateChanges();

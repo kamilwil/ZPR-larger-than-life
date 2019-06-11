@@ -1,8 +1,5 @@
 //State.cpp
 
-
-
-
 #include <set>
 #include <iterator>
 #include "cell.hpp"
@@ -10,51 +7,51 @@
 #include <algorithm>
 
 
-//* Klasa obrazujaca obecny stan planszy
-//* Wartosci pol:
-//* std::set<Cell> active cells - kolekcja obecnie zywych komorek
-//* std::set<Cell> inactive cells - kolekcja niegdys zywych komorek
-//* int it_number - numer iteracji gry
+//* State Class - representing the current state of the board
+//* Fields:
+//* std::set<Cell> active cells - set of currently alive cells
+//* std::set<Cell> inactive cells - set of used-to-be alive cells
+//* int it_number - number of game's iteration
 
-    //* Konstruktor domyslny klasy State
+    //* Default State constructor
     State::State()=default;
-    //* Destruktor domyslny klasy State
+    //* Default State destructor
     State::~State()=default;
     
-    //* Konstruktor trojargumentowy klasy State o argumentach analogicznych do pol klasy
-    State::State(std::set<Cell> actives, std::set<Cell> inactives, int it){
+    //* Three-input constructor with fields similar to one in class
+    State::State(const std::set<Cell>& actives, const std::set<Cell>& inactives, int it){
         active_cells = actives;
         inactive_cells = inactives;
         it_number = it;
     }
     
-    //* Funkcja dodajaca aktywna komorke do active_cells
-    //* Przyjmowane argumenty:
-    //* Cell cell - komorka do wstawienia
-    //* Zwracane wartosci:
-    //* brak(void)
+    //* Function adding a Cell to active_cells
+    //* Inputs:
+    //* Cell cell - cell to be inserted
+    //* Outputs:
+    //* none(void)
     void State::addActiveCell(Cell cell){active_cells.insert(cell);}
 
-    //* Funkcja usuwajaca komorke z active_cells
-    //* Przyjmowane argumenty:
-    //* Cell cell - komorka do usuniecia
-    //* Zwracane wartosci:
-    //* brak(void)
+    //* Funkcja removing a Cell from active_cells
+    //* Inputs:
+    //* Cell cell - cell to be erased
+    //* Outputs:
+    //* none(void)
     void State::removeActiveCell(Cell cell){
         active_cells.erase(cell);
     }
-    //* Funkcja dodajaca komorke do inactive_cells
-    //* Przyjmowane argumenty:
-    //* Cell cell - komorka do wstawienia
-    //* Zwracane wartosci:
-    //* brak(void)
+    //* Function adding a Cell to inactive_cells
+    //* Inputs:
+    //* Cell cell - cell to be inserted
+    //* Outputs:
+    //* none(void)
     void State::addInactiveCell(Cell cell){inactive_cells.insert(cell);}
 
-    //* Funkcja usuwajaca komorke z inactive_cells
-    //* Przyjmowane argumenty:
-    //* Cell cell - komorka do usuniecia
-    //* Zwracane wartosci:
-    //* brak(void)
+    //* Function removing a Cell from inactive_cells
+    //* Inputs:
+    //* Cell cell - cell to be erased
+    //* Outputs:
+    //* none(void)
     void State::removeInactiveCell(Cell cell){
         inactive_cells.erase(cell);          
     }
@@ -62,8 +59,8 @@
     std::set<Cell> State::getActiveCells(){return active_cells;}
     std::set<Cell> State::getInactiveCells(){return inactive_cells;}
     int State::getItNumber(){return it_number;}
-    void State::setActiveCells(std::set<Cell> actives){active_cells = actives;}
-    void State::setInactiveCells(std::set<Cell> inactives){inactive_cells = inactives;}
+    void State::setActiveCells(const std::set<Cell>& actives){active_cells = actives;}
+    void State::setInactiveCells(const std::set<Cell>& inactives){inactive_cells = inactives;}
     void State::setItNumber(int it){it_number = it;}
 
 

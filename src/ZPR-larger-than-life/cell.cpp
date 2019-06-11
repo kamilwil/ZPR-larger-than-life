@@ -2,15 +2,17 @@
 #include "cell.hpp"
 #include <utility>
 
-//! Klasa Cell obslugujaca pojedyncza pola planszy i przechowuje jej stan.
-//! Pola klasy:
-//! std::pair coords - przechowuje koordynaty danej komorki
-//! int state - przechowuje stan (wartosc liczbowa) danej komorki
+//! Cell class representing a single cell on the board
+//! Fields:
+//! std::pair coords - coordinates of cell
+//! int state - state of the cell
 
-    
-Cell::Cell() = default;             //!< Domyslny konstruktor klasy
-Cell::~Cell() = default;            //!< Domyslny destruktor klasy
-Cell::Cell(int x, int y, int st){   //!< Trojargumentowy konstruktor klasy przyjmujacy argumenty analogiczne do pol klasy
+//! default Cell constructor    
+Cell::Cell() = default;  
+//! default Cell destructor
+Cell::~Cell() = default;    
+//! Constructor with arguments similar to the fields of the class        
+Cell::Cell(int x, int y, int st){   
     coords = std::make_pair(x,y);
     state = st;
 }

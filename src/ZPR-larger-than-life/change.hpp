@@ -15,12 +15,12 @@ class Change{
 public:
     Change();
     ~Change();
-    Change(std::list<Cell>, std::list<Cell>);
+    Change(const std::list<Cell>&, const std::list<Cell>&);
 
     std::list<Cell> getToShift();
     std::list<Cell> getToBirth();
-    void setToShift(std::list<Cell>);
-    void setToBirth(std::list<Cell>);
+    void setToShift(const std::list<Cell>&);
+    void setToBirth(const std::list<Cell>)&;
 
     void addToShift(Cell);
     void addToBirth(Cell);

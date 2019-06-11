@@ -7,7 +7,6 @@
 #include "cell.hpp"
 
 
-
 class State{
     std::set<Cell> active_cells;
     std::set<Cell> inactive_cells;
@@ -15,9 +14,8 @@ class State{
 public:
     State();
     ~State();
-    State(std::set<Cell>, std::set<Cell>, int);
+    State(const std::set<Cell>&, const std::set<Cell>&, int);
 
-//    void changeIteration(int);
     void addActiveCell(Cell);
     void removeActiveCell(Cell);
     void addInactiveCell(Cell);
@@ -26,8 +24,8 @@ public:
     std::set<Cell>  getActiveCells();
     std::set<Cell>  getInactiveCells();
     int getItNumber();
-    void setActiveCells(std::set<Cell>);
-    void setInactiveCells(std::set<Cell>);
+    void setActiveCells(const std::set<Cell>&);
+    void setInactiveCells(const std::set<Cell>&);
     void setItNumber(int it);
 };
 

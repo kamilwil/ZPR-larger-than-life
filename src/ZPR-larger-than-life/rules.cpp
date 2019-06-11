@@ -1,17 +1,17 @@
 #include "rules.hpp"
 //* Struktura rules przechowujaca odpowidnie wartosci zasad obecnych w danej grze
 //* Pola klasy:
-//* NeighbourhoodType neighbourhood - typ sasiedztwa
-//* int range - zasieg sasiedztwa
-//* int states - ilosc stanow
-//* int smin - minimalna ilosc sasiadow do przezycia komorki
-//* int smax - maksymalna ilosc sasiadow do przezycia komorki
-//* int bmin - minimalna ilosc sasiadow do powstania komorki
-//* int bmax - maksymalna ilosc sasiadow do powstania komorki
-//* int m - flaga oznaczajaca uwzglednienie komorki jako swojego sasiada
+//* NeighbourhoodType neighbourhood - nieghbourhood type
+//* int range - range of neighbourhood
+//* int states - number of states
+//* int smin - minimal number of neighbours for cell to survive
+//* int smax - maximal number of neighbours for cell to survive
+//* int bmin - minimal number of neighbours for cell to be born
+//* int bmax - maximal number of neighbours for cell to be born
+//* int m - flaga of inclusion cell as its own neighbour
 
 
-//* Implementacja konstruktora struktury rules o argumentach analogicznych do pol klasy
+//* Constructor with arguments similar to fields of the structure
 Rules::Rules(NeighbourhoodType n, int r, int c, int sminimum, int smaximum, int bminimum, int bmaximum, int flag){
 	neighbourhood = n;
 	range = r;
@@ -23,7 +23,7 @@ Rules::Rules(NeighbourhoodType n, int r, int c, int sminimum, int smaximum, int 
 	m = flag;
 }
 
-//* Domyslny konstruktor klasy Rules
+//* Rules default constructor
 Rules::Rules() = default;
-//* Domyslny destruktor klasy Rules
+//* Rules default destructor
 Rules::~Rules() = default;

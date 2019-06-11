@@ -1,5 +1,3 @@
-
-
 #ifndef RULES_HPP
 #define RULES_HPP
 
@@ -18,12 +16,8 @@ struct Rules {
     int m;
 
 	Rules(NeighbourhoodType, int, int, int, int, int, int, int);
-
 	Rules();
 	~Rules();
-
 };
-
-
 
 #endif
