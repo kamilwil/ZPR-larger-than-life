@@ -3,16 +3,15 @@
 #include <boost/python.hpp>
 #include <set>
 #include <deque> 
-#include "cell.hpp"
-#include "change.hpp"
-#include "game.hpp"
-#include "state.hpp"
 #include <map>
-#include <deque>
 #include <utility>
 #include <iterator>
 #include <algorithm>  
 #include <cmath>     
+#include "cell.hpp"
+#include "change.hpp"
+#include "game.hpp"
+#include "state.hpp"
 #include "rules.hpp"
 
 
