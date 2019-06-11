@@ -116,6 +116,10 @@ def onPressRand():
 	rule_field.delete(0, tk.END)
 	rule_field.insert(0, rule_string)
 
+def onPressSet():
+	print('Called Set method!')
+	#wysylanie do C++
+
 
 # IterButton (własna klasa)
 class IterButton(object):
@@ -127,8 +131,8 @@ class IterButton(object):
 		drawCell(self.iter_canvas, 0, 4)
 	def onPressPlay(self):
 		print('Called Play method!')
-		fadeCell(self.iter_canvas, 49, 4)
-		fadeCell(self.iter_canvas, 0, 4)
+		fadeCell(self.iter_canvas, 49, 4, 1)
+		fadeCell(self.iter_canvas, 0, 4, 4)
 	def onPressNext(self):
 		print('Called Next method!')
 
@@ -140,13 +144,14 @@ def drawCell(canv, indx, indy):
 	scale_h = canv.winfo_reqheight()/WINDOW_HEIGHT
 	print(scale_w)
 	print(scale_h)
-	canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill='gray')
+	canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill='#aaaaaa')
 
-def fadeCell(canv, indx, indy):
+def fadeCell(canv, indx, indy, state):
 	print('Called fadeCell!')
 	darkgray = Color("#aaaaaa")
 	white = Color("#333333")
-	shades = list(darkgray.range_to(white, 6))
+	shades = list(darkgray.range_to(white, 6)) #liczba stanow do okreslenia
+	current_color = shades[state]
 
 	ratio = WINDOW_HEIGHT/WINDOW_WIDTH
 	scale_w = canv.winfo_reqwidth()/WINDOW_WIDTH
@@ -154,9 +159,8 @@ def fadeCell(canv, indx, indy):
 	print(scale_w)
 	print(scale_h)
 
-	for i in shades:
-		hex_color = "%s" % i
-		canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill=hex_color)
+	hex_color = "%s" % current_color
+	canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill=hex_color)
 
 
 
@@ -186,6 +190,9 @@ load_rule.pack(side="top")
 
 rand_rule = RulesButton(side_frame, text="Losuj regule", command=onPressRand)
 rand_rule.pack(side="top")
+
+set_rule = RulesButton(side_frame, text="Zastosuj regule", command=onPressSet)
+set_rule.pack(side="top")
 
 rule_field = tk.Entry(side_frame, width = 40, textvariable="Wpisz regule")
 rule_field.pack(side="top")
