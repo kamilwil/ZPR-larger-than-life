@@ -117,22 +117,7 @@ def onPressRand():
 	rule_field.insert(0, rule_string)
 
 
-# IterButton (Button)
-'''class IterButton(tk.Button):
-	def __init__(self, parent=None, **kwargs):
-		tk.Button.__init__(self, parent, **kwargs)
-		self.parent = parent
-
-	def onPressPrev():
-		print('Called Previous method!')
-		iter_parent = self.parent
-		side_parent = iter_parent.master
-		canv_parent = side_parent.master
-
-		fadeCell(canv_parent, 1, 1)
-'''
-
-# IterButton (nie po Button)
+# IterButton (własna klasa)
 class IterButton(object):
 	def __init__(self, canv):
 		self.iter_canvas = canv
@@ -140,12 +125,12 @@ class IterButton(object):
 		print('Called Previous method!')
 		drawCell(self.iter_canvas, 49, 4)
 		drawCell(self.iter_canvas, 0, 4)
-
-def onPressPlay():
-	print('Called Play method!')
-
-def onPressNext():
-	print('Called Next method!')
+	def onPressPlay(self):
+		print('Called Play method!')
+		fadeCell(self.iter_canvas, 49, 4)
+		fadeCell(self.iter_canvas, 0, 4)
+	def onPressNext(self):
+		print('Called Next method!')
 
 
 def drawCell(canv, indx, indy):
@@ -155,21 +140,24 @@ def drawCell(canv, indx, indy):
 	scale_h = canv.winfo_reqheight()/WINDOW_HEIGHT
 	print(scale_w)
 	print(scale_h)
-	canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-195*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 25*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-195*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill='gray')
-	print(20*scale_w + indx*(ratio*canv.winfo_reqwidth()-250*scale_w)/CELL_COUNT)
-	print(20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT)
-	print(20*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-250*scale_w)/CELL_COUNT)
-	print(20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT)
+	canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill='gray')
 
 def fadeCell(canv, indx, indy):
 	print('Called fadeCell!')
 	darkgray = Color("#aaaaaa")
 	white = Color("#333333")
 	shades = list(darkgray.range_to(white, 6))
+
+	ratio = WINDOW_HEIGHT/WINDOW_WIDTH
+	scale_w = canv.winfo_reqwidth()/WINDOW_WIDTH
+	scale_h = canv.winfo_reqheight()/WINDOW_HEIGHT
+	print(scale_w)
+	print(scale_h)
+
 	for i in shades:
 		hex_color = "%s" % i
-		canvas.create_rectangle(20 + indx*(WINDOW_HEIGHT-300)/CELL_COUNT, 20 + indy*(WINDOW_HEIGHT-100)/CELL_COUNT, 20 + (indx+1)*(WINDOW_HEIGHT-300)/CELL_COUNT, 20 + (indy+1)*(WINDOW_HEIGHT-100)/CELL_COUNT, fill=hex_color)
-		sleep(1)
+		canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill=hex_color)
+
 
 
 # MAIN -----------------------------------------------------------------------------------------------------
@@ -207,19 +195,13 @@ rule_field.insert(0,"Wpisz regule")
 iter_frame = tk.Frame(side_frame)
 iter_frame.pack(side="top", anchor="center")
 
-#prev_iter = IterButton(iter_frame, text="<<", command=onPressPrev)
-#prev_iter.pack(side="left")
-
 prev_iter = IterButton(canvas)
 tk.Button(iter_frame, text="<<", command=prev_iter.onPressPrev).pack(side="left")
 
-#play_iter = IterButton(iter_frame, text=">", command=onPressPlay)
-#play_iter.pack(side="left")
+play_iter = IterButton(canvas)
+tk.Button(iter_frame, text=">", command=play_iter.onPressPlay).pack(side="left")
 
-#next_iter = IterButton(iter_frame, text=">>", command=onPressNext)
-#next_iter.pack(side="left")
-
-#testowe wywolania
-drawCell(canvas, 3, 3)
+next_iter = IterButton(canvas)
+tk.Button(iter_frame, text=">>", command=next_iter.onPressNext).pack(side="left")
 
 root.mainloop()
