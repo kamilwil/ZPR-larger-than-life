@@ -1,7 +1,7 @@
 //game.hpp
 
 #include <set>
-#include <deque> // http://www.gotw.ca/gotw/054.htm
+#include <deque> 
 #include "cell.hpp"
 #include "change.hpp"
 #include "game.hpp"
@@ -10,24 +10,38 @@
 #include <deque>
 #include <utility>
 #include <iterator>
-#include <algorithm>  // min,max (da sie bez tego ale jest czytelniej niz konstrukcja a ? b : c ; zgaduje za duzo pythona)
-#include <cmath>     //sqrt, floor, ceil
+#include <algorithm>  
+#include <cmath>     
 #include "rules.hpp"
 
+
+
+//* Klasa Game bedaca nasza instancja gry, zawierajaca pola:
+//* Rules rules - struktura zawierajaca parametry oznaczajace wartosci poszczegolnych regul
+//* std::deque<Change> - kontener zawierajacy obiekt typu Change dla kazdej iteracji gry
+//* State state - obiekt typu State, przechowujacy obecny stan obiektu
 
 typedef std::map<std::pair<int,int>,int>::iterator findertype;
 typedef std::set<Cell>::iterator stateiteratortype;
 
-
+//* Domyslny konstruktor klasy Game
 Game::Game()=default;
+//* Domyslny destruktor klasy Game
 Game::~Game()=default;
-
+//* Trojargumentowany konstruktor klasy Game, przypisujacy polom klasy analogiczne argumenty
 Game::Game(Rules rulings, std::deque<Change> change_list, State status){
     rules = rulings;
     changes = change_list;
     state = status;
 }
 
+//* Funkcja realizujaca uaktualnienie mapy wplywow przez pojedynczy obiekt Cell
+//* Przyjmowane argumenty:
+//* std::map<std::pair<int,int>,int>* influence_map - mapa wplywow, reprezentujacy wplyw na danych wspolrzednych
+//* int x_index - wspolrzedna x komorki wplywajacej
+//* int y_index - wspolrzedna y komirki wplywajacej
+//* Wartosci zwracane:
+//* brak (void)
 void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x_index, int y_index){
     std::pair<int,int> to_find = std::make_pair(x_index, y_index);
     findertype finder = influence_map->find(to_find);
@@ -40,17 +54,15 @@ void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x
     }    
 }
 
+//* Funkcja realizujaca rzutowanie wplywu danej komorki na wszystkie wspolrzedne w sasiedztwie
+//* Przyjmowane argumenty:
+//* std::map<std::pair<int,int>,int>* influence_map - mapa wplywow, reprezentujacy wplyw na danych wspolrzednych
+//* Cell current_cell - komorka wplywajaca
+//* Wartosci zwracane:
+//* brak (void)
 void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_map, Cell  current_cell){
 
-    // Niby zrobione, ale nie wiem czy jest cos zle ze wskaznikami do influence_map
-    // Generalnie kwestia jest taka, ze chcemy miec kazda funkcje do jednej rzeczy
-    // Stad wlasnie ta pokraczna funkcja ktora dostaje wskaznik na mape
-    // Wskaznik, bo nie chcemy zeby kompilator nam robil jej kopie
-    // Mandatory disclaimer: sprawdzic czy nie jestem noga ze wskaznikow
-    // No i poniewaz funkcja ta pobiera wskaznik na rzeczywisty obiekt i go edytuje to nie musi nic zwracac
-    // I czy poprawnie sa zapisane warunki dla enumow
-    
-    
+        
     int current_x = current_cell.getXcoord();
     int current_y = current_cell.getYcoord();
     int min_x = (current_x > 0) ? current_x : 0;
@@ -75,7 +87,11 @@ void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_ma
                   
 }
     
-
+//* Funkcja generujaca mape wplywow
+//* Przyjmowane argumenty:
+//* brak
+//* Wartosci zwracane:
+//* std::map<std::pair<int,int>,int> influence_map - mapa wplywow, reprezentujacy wplyw na danych wspolrzednych
 std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
         
     std::map<std::pair<int, int>, int> influence_map;
@@ -86,7 +102,11 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
     return influence_map;
 }
 
-    
+//* Funkcja generujaca obiekt typu Change w oprarciu o mape wplywow
+//* Przyjmowane argumenty:
+//* std::map<std::pair<int,int>,int>* influence_map - mapa wplywow, reprezentujacy wplyw na danych wspolrzednych
+//* Wartosci zwracane:
+//* brak (void)
 void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     Change* change_i = new Change();
 
@@ -96,8 +116,6 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
         stateiteratortype cell_find = std::find( state.getActiveCells().begin(),  state.getActiveCells().end(), Cell((it->first).first, (it->first).second, 0));
 
         if (cell_find != state.getActiveCells().end()){
-        //for (stateiteratortype it2 = state.getActiveCells().begin(); it2 != state.getActiveCells().end(); ++it2){
-                                            //jesli cell o takich wspolrzednych jest w active cellsach
             if ((it->second < rules.smin + 1 - rules.m) || (it->second  > rules.smax + 1 - rules.m)){                 //jesli nei jest spelniony warunek przezywalnosci
                 change_i->addToShift((*cell_find));
                 break;
@@ -112,12 +130,17 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     changes.push_back(*(change_i));
 }
 
+//* Funkcja zmieniajaca pole state w zaleznosci od obiektu Change
+//* Argumenty przyjmowane:
+//* Change change - obiekt typu Change, przechowujacy zmiany
+//* Wartosci zwracane:
+//* brak (void)
 void Game::implementChange (Change change){
     for (std::list<Cell>::iterator it = change.getToBirth().begin(); it != change.getToBirth().end(); ++it){
         
         auto it_cell = std::find(state.getInactiveCells().begin(), state.getInactiveCells().end(), (*it));           // sprawdzamy czy nie jest w inactive cellach
         if (it_cell == state.getInactiveCells().end()){                                              //jesli nie ma to po prostu tworzymy nowa komorke w active cellsach                                                                      //state cella; prawdopodobnie da sie uniknac tego kopiowania
-            (*it).setState(rules.states);                                                   //TODO: pozmieniac nazwy zmiennych zeby bylo mniej roznych statesow
+            (*it).setState(rules.states);                                                   
             state.addActiveCell(*it);
         }
         else{
@@ -138,7 +161,6 @@ void Game::implementChange (Change change){
     } 
 }
     
-
     Rules Game::getRules(){return rules;}
     std::deque<Change> Game::getChanges(){return changes;}
     State Game::getState(){return state;}
@@ -147,8 +169,12 @@ void Game::implementChange (Change change){
     void Game::setChanges(std::deque<Change> change_list){changes = change_list;}
     void Game::setState(State status){state = status;}
 
-    void Game::updateState(Change change,int direction){}
 
+    //* Funkcja przypisujacy polu change_list obiekty Change dla kazdej iteracji gry
+    //* Przyjmowane wartosci:
+    //* brak (void)
+    //* Wartosci zwracane:
+    //* brak (vid)
     void Game::generateAllChanges(){
 
         // od jedynki bo zerowa zmiane pobieramy z czesci widokowej
@@ -159,7 +185,7 @@ void Game::implementChange (Change change){
         }
         
     }
-
+    
     int Game::sendChanges(Change change,int it){return 1;}
 
     void Game::receiveRules(){}
