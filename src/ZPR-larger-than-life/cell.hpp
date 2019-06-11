@@ -4,8 +4,8 @@
 #include <utility>
 
 class Cell{
-    std::pair<int,int> coords;
-    int state;
+    std::pair<int,int> coords_;
+    int state_;
 
 public:
     
@@ -21,24 +21,8 @@ public:
     void setState(int);
     void setCoords(int, int);
 
-   friend bool operator == (const Cell &compared_cell, const Cell &compared_cell_other) {              //przeciazamy operator potrzebny do znajdowania celli
-
-    if (compared_cell_other.coords == compared_cell.coords)
-        return true;
-    else
-        return false;
-    }
-
-    friend bool operator < (const Cell &compared_cell, const Cell &compared_cell_other){                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
-    if (compared_cell.coords.first < compared_cell_other.coords.first)
-        return true;
-    else if (compared_cell.coords.first > compared_cell_other.coords.first)
-        return false;
-    else if (compared_cell.coords.second < compared_cell_other.coords.second)
-        return true;
-    else
-        return false;   
-    }
+    friend bool operator == (const Cell &compared_cell, const Cell &compared_cell_other)             //overloading operator for Cell findings
+    friend bool operator < (const Cell &compared_cell, const Cell &compared_cell_other)             //overloading operator for Cell sorting
 
 };
 

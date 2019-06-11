@@ -8,9 +8,9 @@
 
 
 class State{
-    std::set<Cell> active_cells;
-    std::set<Cell> inactive_cells;
-    int it_number;
+    std::set<Cell> active_cells_;
+    std::set<Cell> inactive_cells_;
+    int it_number_;
 public:
     State();
     ~State();

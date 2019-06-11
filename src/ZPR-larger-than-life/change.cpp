@@ -7,38 +7,38 @@
 
 /// Class Change representing changes of the cells between two iterations
 /// Fields:
-/// std::list<Cell> toShift - list of cells for their size to be decreased in current iteration
-/// std::list<Cell> toBirth - list of cells to be born in the current iteration_
+/// std::list<Cell> to_shift_ - list of cells for their size to be decreased in current iteration
+/// std::list<Cell> to_birth_ - list of cells to be born in the current iteration_
 
 
     /// Change Constructor with arguments similar to the fields of the class
-    Change::Change(const std::list<Cell>& toshifts, const std::list<Cell>& tobirths){
-        toShift = toshifts;
-        toBirth = tobirths;
+    Change::Change(const std::list<Cell>& to_shift, const std::list<Cell>& to_birth){
+        to_shift_ = to_shift;
+        to_birth_ = to_birth;
     }
     /// Default Change constructor
     Change::Change() = default;
     /// Default Change destructor
     Change::~Change() = default;
 
-    std::list<Cell> Change::getToShift(){return toShift;}
-    std::list<Cell> Change::getToBirth(){return toBirth;}
+    std::list<Cell> Change::getToShift(){return to_shift_;}
+    std::list<Cell> Change::getToBirth(){return to_birth_;}
 
-    void Change::setToShift(const std::list<Cell>& toshifted){toShift = toshifted;}
-    void Change::setToBirth(const std::list<Cell>& tobirthed){toBirth = tobirthed;}
+    void Change::setToShift(const std::list<Cell>& to_shift){to_shift_ = to_shift;}
+    void Change::setToBirth(const std::list<Cell>& to_birth){to_birth_ = to_birth;}
 
-    /// Function allowing to insert cell into toShift field
+    /// Function allowing to insert cell into to_shift_ field
     /// Inputs:
-    /// Cell toshifted - cell to be added
+    /// Cell to_shift - cell to be added
     /// Outputs:
     /// none(void)
-    void Change::addToShift(Cell toshifted){toShift.push_back(toshifted);}
-    /// Function allowing to insert cell into toBirth field
+    void Change::addToShift(Cell to_shift){to_shift_.push_back(to_shift);}
+    /// Function allowing to insert cell into to_birth_ field
     /// Inputs:
-    /// Cell tobirthed - cell to be added
+    /// Cell to_birth - cell to be added
     /// Outputs:
     /// none(void)
-    void Change::addToBirth(Cell tobirthed){toShift.push_back(tobirthed);}
+    void Change::addToBirth(Cell to_birth){toShift.push_back(to_birth);}
 
 
 BOOST_PYTHON_MODULE ( libchange )

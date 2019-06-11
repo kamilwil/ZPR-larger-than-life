@@ -18,9 +18,9 @@
 
 /// Class Game being our instance of a game.
 /// Fields:
-/// Rules rules - structure with parameters regarding rules of the game
-/// std::deque<Change> - contener with a Change object for each of the game's iterations
-/// State state - State object - our current board state
+/// Rules rules_ - structure with parameters regarding rules of the game
+/// std::deque<Change> changes_ - container with a Change object for each of the game's iterations
+/// State state_ - State object - our current board state
 
 typedef std::map<std::pair<int,int>,int>::iterator Findertype;
 typedef std::set<Cell>::iterator Stateiteratortype;
@@ -30,10 +30,10 @@ Game::Game()=default;
 /// Default Game destructor
 Game::~Game()=default;
 /// Game constructor with three inputs, similar to fields in the class
-Game::Game(const Rules& rulings, const std::deque<Change>& change_list, const State& status){
-    rules = rulings;
-    changes = change_list;
-    state = status;
+Game::Game(const Rules& rules, const std::deque<Change>& changes, const State& state){
+    rules_ = rules;
+    changes_ = changes;
+    state_ = state;
 }
 
 /// Function updating a particular cell in influence_map 
@@ -66,19 +66,19 @@ void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_ma
     int current_x = current_cell.getXcoord();
     int current_y = current_cell.getYcoord(); 
             
-    if (rules.neighbourhood == NeighbourhoodType::MOORE)
-        for (auto x_offset = std::max(-rules.range, -current_x) ; x_offset <= std::min(rules.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = std::max(-rules.range, -current_y) ; y_offset <= std::min(rules.range, BOARD_SIZE-1-current_y); ++y_offset) 
+    if (rules_.neighbourhood == NeighbourhoodType::MOORE)
+        for (auto x_offset = std::max(-rules_.range, -current_x) ; x_offset <= std::min(rules_.range, BOARD_SIZE-1-current_x); ++x_offset)
+             for (auto y_offset = std::max(-rules_.range, -current_y) ; y_offset <= std::min(rules_.range, BOARD_SIZE-1-current_y); ++y_offset) 
                 Game::updateRecord(influence_map, current_x + x_offset, current_y + y_offset);
     
-    else if (rules.neighbourhood == NeighbourhoodType::NEUM)
-        for (auto x_offset = std::max(-rules.range, -current_x) ; x_offset <= std::min(rules.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = -std::abs(rules.range - std::abs(x_offset)); y_offset <= std::abs(rules.range - std::abs(x_offset)); ++y_offset) 
+    else if (rules_.neighbourhood == NeighbourhoodType::NEUM)
+        for (auto x_offset = std::max(-rules_.range, -current_x) ; x_offset <= std::min(rules_.range, BOARD_SIZE-1-current_x); ++x_offset)
+             for (auto y_offset = -std::abs(rules_.range - std::abs(x_offset)); y_offset <= std::abs(rules_.range - std::abs(x_offset)); ++y_offset) 
                  Game::updateRecord(influence_map, current_x + x_offset, current_y + y_offset);      
         
-    else if (rules.neighbourhood == NeighbourhoodType::CIRC)
-        for (auto x_offset = std::max(-rules.range, -current_x) ; x_offset <= std::min(rules.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = -floor(sqrt(pow(rules.range + 0.5, 2) - pow(x_offset, 2))); y_offset <= floor(sqrt(pow(rules.range + 0.5, 2) - pow(x_offset, 2))); ++y_offset) 
+    else if (rules_.neighbourhood == NeighbourhoodType::CIRC)
+        for (auto x_offset = std::max(-rules_.range, -current_x) ; x_offset <= std::min(rules_.range, BOARD_SIZE-1-current_x); ++x_offset)
+             for (auto y_offset = -floor(sqrt(pow(rules_.range + 0.5, 2) - pow(x_offset, 2))); y_offset <= floor(sqrt(pow(rules_.range + 0.5, 2) - pow(x_offset, 2))); ++y_offset) 
                  Game::updateRecord(influence_map, current_x + x_offset, current_y + y_offset);            
                   
 }
@@ -92,7 +92,7 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
         
     std::map<std::pair<int, int>, int> influence_map;
         
-    for(stateiteratortype it = state.getActiveCells().begin(); it != state.getActiveCells().end(); ++it)
+    for(stateiteratortype it = state_.getActiveCells().begin(); it != state_.getActiveCells().end(); ++it)
         this->includeCellInfluence(&influence_map, *it);                        
     
     return influence_map;
@@ -109,20 +109,20 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     for(findertype it = influence_map->begin(); it != influence_map->end(); ++it){
        
         
-        stateiteratortype cell_find = std::find( state.getActiveCells().begin(),  state.getActiveCells().end(), Cell((it->first).first, (it->first).second, 0));
+        stateiteratortype cell_find = std::find( state_.getActiveCells().begin(),  state_getActiveCells().end(), Cell((it->first).first, (it->first).second, 0));
 
-        if (cell_find != state.getActiveCells().end()){
-            if ((it->second < rules.smin + 1 - rules.m) || (it->second  > rules.smax + 1 - rules.m)){                 //survivability condition not reached
+        if (cell_find != state_.getActiveCells().end()){
+            if ((it->second < rules_.smin + 1 - rules_.m) || (it->second  > rules_.smax + 1 - rules_.m)){                 //survivability condition not reached
                 change_i->addToShift((*cell_find));
                 break;
             }                                                                                                         //otherwise we do nothing                        
         }              
-        else if ((it->second >= rules.bmin + 1 - rules.m) && (it->second  <= rules.bmax + 1 - rules.m)){     //being here means there is no such cell in container
+        else if ((it->second >= rules_.bmin + 1 - rules_.m) && (it->second  <= rules_.bmax + 1 - rules_.m)){     //being here means there is no such cell in container
             change_i->addToBirth((*cell_find));                                                              //so we may want to create it
         }                                                                                
                                    
     }
-    changes.push_back(*(change_i));
+    changes_.push_back(*(change_i));
 }
 
 /// Function changing state field with regard to Change
@@ -133,35 +133,35 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
 void Game::implementChange (Change change){
     for (std::list<Cell>::iterator it = change.getToBirth().begin(); it != change.getToBirth().end(); ++it){
         
-        auto it_cell = std::find(state.getInactiveCells().begin(), state.getInactiveCells().end(), (*it));           // checking if cell is not already there
-        if (it_cell == state.getInactiveCells().end()){                                                              //if there is not we create it
-            (*it).setState(rules.states);                                                   
+        auto it_cell = std::find(state_.getInactiveCells().begin(), state_.getInactiveCells().end(), (*it));           // checking if cell is not already there
+        if (it_cell == state_.getInactiveCells().end()){                                                              //if there is not we create it
+            (*it).setState(rules_.states_);                                                   
             state.addActiveCell(*it);
         }
         else{
             state.removeInactiveCell(*it);
-            (*it).setState(rules.states);               //setting to a max state value        
+            (*it).setState(rules_.states_);               //setting to a max state value        
             state.addActiveCell(*it);
         }
     }
 
     for (std::list<Cell>::iterator it2 = change.getToShift().begin(); it2 != change.getToShift().end(); ++it2){
-        auto it_cell = std::find(state.getActiveCells().begin(), state.getActiveCells().end(), (*it2));           // checking if cell is in inactive cells (assuming such cell exists)
+        auto it_cell = std::find(state_.getActiveCells().begin(), state_.getActiveCells().end(), (*it2));           // checking if cell is in inactive cells (assuming such cell exists)
                                  
         it2->setState(it2->getState() - 1);
         if (it2->getState() == 0){
-            state.removeActiveCell(*it2);
-            state.addInactiveCell(*it2);
+            state_.removeActiveCell(*it2);
+            state_.addInactiveCell(*it2);
         }
     } 
 }
     
-    Rules Game::getRules(){return rules;}
-    std::deque<Change> Game::getChanges(){return changes;}
-    State Game::getState(){return state;}
+    Rules Game::getRules(){return rules_;}
+    std::deque<Change> Game::getChanges(){return changes_;}
+    State Game::getState(){return state_;}
 
-    void Game::setRules(const Rules& rulings){rules = rulings;}
-    void Game::setChanges(const std::deque<Change>& change_list){changes = change_list;}
+    void Game::setRules(const Rules& rulings){rules_ = rulings;}
+    void Game::setChanges(const std::deque<Change>& change_list){changes_ = change_list;}
     void Game::setState(const State& status){state = status;}
 
 
@@ -176,7 +176,7 @@ void Game::implementChange (Change change){
         for (int i = 1; i < GAME_LENGTH; ++i){
             std::map<std::pair<int, int>, int> influence_map = generateInfluenceMap();
             generateChange(&influence_map);
-            implementChange(changes[i]);
+            implementChange(changes_[i]);
         }
         
     }

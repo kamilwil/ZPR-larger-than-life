@@ -6,14 +6,14 @@ enum class NeighbourhoodType {MOORE, NEUM, CIRC };
 
 struct Rules {
     
-    NeighbourhoodType neighbourhood;
-    int range;
-    int states;
-    int smin;
-    int smax;
-    int bmin;
-    int bmax;
-    int m;
+    NeighbourhoodType neighbourhood_;
+    int range_;
+    int states_;
+    int smin_;
+    int smax_;
+    int bmin_;
+    int bmax_;
+    int m_;
 
 	Rules(NeighbourhoodType, int, int, int, int, int, int, int);
 	Rules();

@@ -17,9 +17,9 @@
 
 class Game{
 
-    Rules rules;
-    std::deque<Change> changes;
-    State state;
+    Rules rules_;
+    std::deque<Change> changes_;
+    State state_;
 
 public:
     Game();
