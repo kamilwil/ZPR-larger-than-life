@@ -1,7 +1,7 @@
 #include "rules.hpp"
-//* Struktura rules przechowujaca odpowidnie wartosci zasad obecnych w danej grze
-//* Pola klasy:
-//* NeighbourhoodType neighbourhood - nieghbourhood type
+//* Structure with rules regarding the game
+//* Fields:
+//* NeighbourhoodType neighbourhood - neeghbourhood type
 //* int range - range of neighbourhood
 //* int states - number of states
 //* int smin - minimal number of neighbours for cell to survive
