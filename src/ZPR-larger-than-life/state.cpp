@@ -9,7 +9,7 @@
 
 
 
-
+    // Implementacja publiczych destruktorow oraz konstruktorow
     State::State()=default;
     State::~State()=default;
     State::State(std::set<Cell> actives, std::set<Cell> inactives, int it){
@@ -19,29 +19,21 @@
     }
 
 //    void State::changeIteration(int i){}
+
+    // Implementacja funkcji pomocniczych ultawiajacych na dzialanie na konterach w ramach klasy
     void State::addActiveCell(Cell cell){active_cells.insert(cell);}
 
     void State::removeActiveCell(Cell cell){
-/*        for(auto std::iterator<Cell> it = active_cells.begin(); it != active_cells.end(); )
-            if(*it == cell)
-                it = active_cells.erase(it);
-                break;
-            else
-                ++it;*/
+
         active_cells.erase(std::remove(active_cells.begin(),active_cells.end(), cell),active_cells.end());
     }
     void State::addInactiveCell(Cell cell){inactive_cells.insert(cell);}
 
     void State::removeInactiveCell(Cell cell){
-        /*for(auto std:iterator<Cell> it = inactive_cells.begin(); it != inactive_cells.end(); )
-            if(*it == cell)
-                it = inactive_cells.erase(it);
-                break;
-            else
-                ++it;      */
         inactive_cells.erase(std::remove(inactive_cells.begin(), inactive_cells.end(), cell), inactive_cells.end());          
     }
 
+    // Implementacja getterow oraz setterow
     std::set<Cell> State::getActiveCells(){return active_cells;}
     std::set<Cell> State::getInactiveCells(){return inactive_cells;}
     int State::getItNumber(){return it_number;}

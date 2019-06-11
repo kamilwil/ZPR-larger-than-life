@@ -3,14 +3,17 @@
 #define CELL_HPP
 #include <utility>
 
+// Klasa Cell obslugujaca pojedyncze pole na planszy
 class Cell{
     std::pair<int,int> coords;
     int state;
 
 public:
+    // Deklaracja publicznych konstruktorow i destruktora domyslnego
     Cell();
     ~Cell();
     Cell(int, int, int);
+    // Deklaracja publicznych getterow oraz setterow
     int getXcoord();
     int getYcoord();
     int getState();
@@ -20,7 +23,8 @@ public:
     void setState(int);
     void setCoords(int, int);
 
-   friend bool operator == (const Cell &compared_cell, const Cell &compared_cell_other)               //przeciazamy operator potrzebny do znajdowania celli
+    // Operator == dla Cell, porównywane jest jedynie pole coords
+   friend bool operator == (const Cell &compared_cell, const Cell &compared_cell_other)               // Przeciazamy operator potrzebny do funkcji find 
 {
     if (compared_cell_other.coords == compared_cell.coords)
         return true;
@@ -28,7 +32,8 @@ public:
         return false;
 
 }
-    friend bool operator < (const Cell &compared_cell, const Cell &compared_cell_other){                //przeciazamy operator potrzebny dla std::set do sortowania obiektow
+    // Operator mniejszosci dla Cell, porównywane najpierw jest coords.first potem coords.second
+    friend bool operator < (const Cell &compared_cell, const Cell &compared_cell_other){                //P rzeciazamy operator potrzebny dla std::set do sortowania obiektow
     if (compared_cell.coords.first < compared_cell_other.coords.first)
         return true;
     else if (compared_cell.coords.first > compared_cell_other.coords.first)

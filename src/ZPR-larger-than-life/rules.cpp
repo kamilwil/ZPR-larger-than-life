@@ -1,5 +1,6 @@
 #include "rules.hpp"
 
+// Implementacja konstruktora struktury rules
 Rules::Rules(int n, int r, int c, int sminimum, int smaximum, int bminimum, int bmaximum, int flag){
 	neighbourhood = n;
 	range = r;
