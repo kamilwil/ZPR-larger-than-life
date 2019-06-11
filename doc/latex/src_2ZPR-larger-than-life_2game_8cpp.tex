@@ -1,0 +1,37 @@
+\hypertarget{src_2ZPR-larger-than-life_2game_8cpp}{}\doxysection{src/\+Z\+P\+R-\/larger-\/than-\/life/game.cpp File Reference}
+\label{src_2ZPR-larger-than-life_2game_8cpp}\index{src/ZPR-\/larger-\/than-\/life/game.cpp@{src/ZPR-\/larger-\/than-\/life/game.cpp}}
+{\ttfamily \#include $<$boost/python.\+hpp$>$}\newline
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$deque$>$}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include \char`\"{}cell.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}change.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}state.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}rules.\+hpp\char`\"{}}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ std\+::pair$<$ int, int $>$, int $>$\+::iterator \mbox{\hyperlink{src_2ZPR-larger-than-life_2game_8cpp_a606cdfcb9864674770b32754560d00ae}{Findertype}}
+\item 
+typedef std\+::set$<$ \mbox{\hyperlink{classCell}{Cell}} $>$\+::iterator \mbox{\hyperlink{src_2ZPR-larger-than-life_2game_8cpp_ab5d0d2e56df2a6154e6ed9ff98c74c80}{Stateiteratortype}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{src_2ZPR-larger-than-life_2game_8cpp_a606cdfcb9864674770b32754560d00ae}\label{src_2ZPR-larger-than-life_2game_8cpp_a606cdfcb9864674770b32754560d00ae}} 
+\index{game.cpp@{game.cpp}!Findertype@{Findertype}}
+\index{Findertype@{Findertype}!game.cpp@{game.cpp}}
+\doxysubsubsection{\texorpdfstring{Findertype}{Findertype}}
+{\footnotesize\ttfamily typedef std\+::map$<$std\+::pair$<$int,int$>$,int$>$\+::iterator \mbox{\hyperlink{src_2ZPR-larger-than-life_2game_8cpp_a606cdfcb9864674770b32754560d00ae}{Findertype}}}
+
+Class \mbox{\hyperlink{classGame}{Game}} being our instance of a game. Fields\+: \mbox{\hyperlink{structRules}{Rules}} rules -\/ structure with parameters regarding rules of the game std\+::deque$<$\+Change$>$ -\/ contener with a \mbox{\hyperlink{classChange}{Change}} object for each of the game\textquotesingle{}s iterations \mbox{\hyperlink{classState}{State}} state -\/ \mbox{\hyperlink{classState}{State}} object -\/ our current board state \mbox{\Hypertarget{src_2ZPR-larger-than-life_2game_8cpp_ab5d0d2e56df2a6154e6ed9ff98c74c80}\label{src_2ZPR-larger-than-life_2game_8cpp_ab5d0d2e56df2a6154e6ed9ff98c74c80}} 
+\index{game.cpp@{game.cpp}!Stateiteratortype@{Stateiteratortype}}
+\index{Stateiteratortype@{Stateiteratortype}!game.cpp@{game.cpp}}
+\doxysubsubsection{\texorpdfstring{Stateiteratortype}{Stateiteratortype}}
+{\footnotesize\ttfamily typedef std\+::set$<$\mbox{\hyperlink{classCell}{Cell}}$>$\+::iterator \mbox{\hyperlink{src_2ZPR-larger-than-life_2game_8cpp_ab5d0d2e56df2a6154e6ed9ff98c74c80}{Stateiteratortype}}}
+

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setup',['setup',['../namespacesetup.html',1,'']]]
+  ['client_5fmain',['client_main',['../namespaceclient__main.html',1,'']]]
 ];

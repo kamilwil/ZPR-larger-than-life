@@ -1,15 +1,5 @@
 var searchData=
 [
-  ['game',['Game',['../game_8hpp.html#ad59df6562a58a614fda24622d3715b65',1,'Game():&#160;game.hpp'],['../game_8hpp.html#a30d40d6075ae69576347bc63fa2a6882',1,'Game(Rules, std::set&lt; Change * &gt;, State):&#160;game.cpp']]],
-  ['generatechanges',['generateChanges',['../game_8hpp.html#a7783625a111cf228d8b6ac205428728a',1,'game.cpp']]],
-  ['get_5factivecells',['get_activeCells',['../classState.html#a1840a9ae235cde698eb57510568ab6de',1,'State']]],
-  ['get_5finactivecells',['get_inactiveCells',['../classState.html#ae30d156559db4e438c8543a4a2ae1607',1,'State']]],
-  ['getchanges',['getChanges',['../game_8hpp.html#ae0ec1f13b6b817b1b993edb1d755b48d',1,'game.cpp']]],
-  ['getitnumber',['getItNumber',['../classState.html#a14346d5f19e72a358859bbc1892276dd',1,'State']]],
-  ['getrules',['getRules',['../game_8hpp.html#a65ddd862b26ee10de146c0a08019bf7f',1,'game.cpp']]],
-  ['getstate',['getState',['../game_8hpp.html#a0b49a95020f004bdbb6955d4b3de5215',1,'game.cpp']]],
-  ['gettobirth',['getToBirth',['../classChange.html#ae0aed441a557b10ca77d56dc7db6246c',1,'Change']]],
-  ['gettoshift',['getToShift',['../classChange.html#a52348c90185645c97d14df3e02f9ffd4',1,'Change']]],
-  ['getxcoord',['getXcoord',['../classCell.html#aa4139995b268749c4ededd04d7df5784',1,'Cell']]],
-  ['getycoord',['getYcoord',['../classCell.html#a24b84f57ae15c5e053f76e3a7b73c26a',1,'Cell']]]
+  ['cell',['Cell',['../classCell.html#a394510643e8664cf12b5efaf5cb99f71',1,'Cell::Cell()'],['../classCell.html#a4c7d055604398c9c161ea71bf902fb56',1,'Cell::Cell(int, int, int)'],['../classCell.html#a394510643e8664cf12b5efaf5cb99f71',1,'Cell::Cell()'],['../classCell.html#a4c7d055604398c9c161ea71bf902fb56',1,'Cell::Cell(int, int, int)']]],
+  ['change',['Change',['../classChange.html#a1586f865f4a2df5f00a9d0d294efe78f',1,'Change::Change()'],['../classChange.html#ac17bad67731411e11dc690d8dde3e54d',1,'Change::Change(const std::list&lt; Cell &gt; &amp;, const std::list&lt; Cell &gt; &amp;)'],['../classChange.html#a1586f865f4a2df5f00a9d0d294efe78f',1,'Change::Change()'],['../classChange.html#a45fc468d26537fec99c649dcaa8f5c9e',1,'Change::Change(std::list&lt; Cell &gt;, std::list&lt; Cell &gt;)']]]
 ];

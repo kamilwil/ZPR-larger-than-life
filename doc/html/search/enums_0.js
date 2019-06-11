@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['neighboorhoodtype',['NeighboorhoodType',['../game_8hpp.html#a8aeb293bb2e53a99089ea134f07c7e0f',1,'game.hpp']]]
+  ['neighbourhoodtype',['NeighbourhoodType',['../src_2ZPR-larger-than-life_2rules_8hpp.html#a0d7faa6ecc415725cc9aa366dd1bf41c',1,'NeighbourhoodType():&#160;rules.hpp'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2rules_8hpp.html#a0d7faa6ecc415725cc9aa366dd1bf41c',1,'NeighbourhoodType():&#160;rules.hpp']]]
 ];

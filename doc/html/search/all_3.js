@@ -1,14 +1,15 @@
 var searchData=
 [
-  ['canvas',['canvas',['../namespaceZPR-larger-than-life_1_1client__main.html#a9505cedcddcee4542925f17d5ccf7945',1,'ZPR-larger-than-life::client_main']]],
-  ['cell',['Cell',['../classCell.html',1,'Cell'],['../classCell.html#a394510643e8664cf12b5efaf5cb99f71',1,'Cell::Cell()'],['../classCell.html#a4c7d055604398c9c161ea71bf902fb56',1,'Cell::Cell(int, int, int)']]],
-  ['cell_2ecpp',['cell.cpp',['../cell_8cpp.html',1,'']]],
-  ['cell_2ehpp',['cell.hpp',['../cell_8hpp.html',1,'']]],
-  ['cell_5fcount',['CELL_COUNT',['../namespaceZPR-larger-than-life_1_1client__main.html#afe315c1486698a3789a08d8b14b901b2',1,'ZPR-larger-than-life::client_main']]],
-  ['change',['Change',['../classChange.html',1,'Change'],['../classChange.html#a1586f865f4a2df5f00a9d0d294efe78f',1,'Change::Change()'],['../classChange.html#a9875ce7d4134958773160cb078d82f44',1,'Change::Change(std::set&lt; Cell * &gt;, std::set&lt; Cell * &gt;)']]],
-  ['change_2ecpp',['change.cpp',['../change_8cpp.html',1,'']]],
-  ['change_2ehpp',['change.hpp',['../change_8hpp.html',1,'']]],
-  ['changes',['changes',['../game_8hpp.html#ae8d46de495c12a5eb71591818fb9baa8',1,'game.hpp']]],
-  ['circ',['CIRC',['../game_8hpp.html#a8aeb293bb2e53a99089ea134f07c7e0fa659b28d352b60e54d1f2a5e48859eeb3',1,'game.hpp']]],
-  ['client_5fmain_2epy',['client_main.py',['../client__main_8py.html',1,'']]]
+  ['canvas',['canvas',['../namespaceZPR-larger-than-life_1_1client__main.html#a9505cedcddcee4542925f17d5ccf7945',1,'ZPR-larger-than-life.client_main.canvas()'],['../namespaceclient__main.html#a228f357ad69ee0776614193557d8b931',1,'client_main.canvas()']]],
+  ['cell',['Cell',['../classCell.html',1,'Cell'],['../classCell.html#a394510643e8664cf12b5efaf5cb99f71',1,'Cell::Cell()'],['../classCell.html#a4c7d055604398c9c161ea71bf902fb56',1,'Cell::Cell(int, int, int)'],['../classCell.html#a394510643e8664cf12b5efaf5cb99f71',1,'Cell::Cell()'],['../classCell.html#a4c7d055604398c9c161ea71bf902fb56',1,'Cell::Cell(int, int, int)']]],
+  ['cell_2ecpp',['cell.cpp',['../src_2ZPR-larger-than-life_2cell_8cpp.html',1,'(Global Namespace)'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2cell_8cpp.html',1,'(Global Namespace)']]],
+  ['cell_2ehpp',['cell.hpp',['../src_2ZPR-larger-than-life_2cell_8hpp.html',1,'(Global Namespace)'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2cell_8hpp.html',1,'(Global Namespace)']]],
+  ['cell_5fcount',['CELL_COUNT',['../namespaceZPR-larger-than-life_1_1client__main.html#afe315c1486698a3789a08d8b14b901b2',1,'ZPR-larger-than-life.client_main.CELL_COUNT()'],['../namespaceclient__main.html#a90cbdef77e1bbd014ee82c7277ae017f',1,'client_main.CELL_COUNT()']]],
+  ['change',['Change',['../classChange.html',1,'Change'],['../classChange.html#a1586f865f4a2df5f00a9d0d294efe78f',1,'Change::Change()'],['../classChange.html#ac17bad67731411e11dc690d8dde3e54d',1,'Change::Change(const std::list&lt; Cell &gt; &amp;, const std::list&lt; Cell &gt; &amp;)'],['../classChange.html#a1586f865f4a2df5f00a9d0d294efe78f',1,'Change::Change()'],['../classChange.html#a45fc468d26537fec99c649dcaa8f5c9e',1,'Change::Change(std::list&lt; Cell &gt;, std::list&lt; Cell &gt;)']]],
+  ['change_2ecpp',['change.cpp',['../src_2ZPR-larger-than-life_2change_8cpp.html',1,'(Global Namespace)'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2change_8cpp.html',1,'(Global Namespace)']]],
+  ['change_2ehpp',['change.hpp',['../src_2ZPR-larger-than-life_2change_8hpp.html',1,'(Global Namespace)'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2change_8hpp.html',1,'(Global Namespace)']]],
+  ['circ',['CIRC',['../src_2ZPR-larger-than-life_2rules_8hpp.html#a0d7faa6ecc415725cc9aa366dd1bf41ca659b28d352b60e54d1f2a5e48859eeb3',1,'CIRC():&#160;rules.hpp'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2rules_8hpp.html#a0d7faa6ecc415725cc9aa366dd1bf41ca659b28d352b60e54d1f2a5e48859eeb3',1,'CIRC():&#160;rules.hpp'],['../src_2ZPR-larger-than-life_2rules_8hpp.html#a0d7faa6ecc415725cc9aa366dd1bf41ca659b28d352b60e54d1f2a5e48859eeb3',1,'CIRC():&#160;rules.hpp'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2rules_8hpp.html#a0d7faa6ecc415725cc9aa366dd1bf41ca659b28d352b60e54d1f2a5e48859eeb3',1,'CIRC():&#160;rules.hpp']]],
+  ['client_5fmain',['client_main',['../namespaceclient__main.html',1,'']]],
+  ['client_5fmain_2epy',['client_main.py',['../src_2ZPR-larger-than-life_2client__main_8py.html',1,'(Global Namespace)'],['../ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2client__main_8py.html',1,'(Global Namespace)']]],
+  ['command',['command',['../namespaceZPR-larger-than-life_1_1client__main.html#a8e8267ea188ef26af7263465c47b3985',1,'ZPR-larger-than-life::client_main']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['scalablecanvas',['ScalableCanvas',['../classZPR-larger-than-life_1_1client__main_1_1ScalableCanvas.html',1,'ZPR-larger-than-life::client_main']]],
-  ['state',['State',['../classState.html',1,'']]]
+  ['rules',['Rules',['../structRules.html',1,'']]],
+  ['rulesbutton',['RulesButton',['../classZPR-larger-than-life_1_1client__main_1_1RulesButton.html',1,'ZPR-larger-than-life.client_main.RulesButton'],['../classclient__main_1_1RulesButton.html',1,'client_main.RulesButton']]]
 ];

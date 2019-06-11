@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['addactivecell',['addActiveCell',['../classState.html#a8a92765570c400f92caddea548dba0a6',1,'State']]],
-  ['addinactivecell',['addInactiveCell',['../classState.html#ae15c36eca808516986a40a4db2f711ed',1,'State']]],
-  ['addtobirth',['addToBirth',['../classChange.html#a6b853f2a7d88d5c8ff2b204251064109',1,'Change']]],
-  ['addtoshift',['addToShift',['../classChange.html#af8532cc28382e828e214fe63ac4366c3',1,'Change']]]
+  ['addactivecell',['addActiveCell',['../classState.html#a9afb75d7cd8f35a705717597f80fe9e0',1,'State::addActiveCell(Cell)'],['../classState.html#a9afb75d7cd8f35a705717597f80fe9e0',1,'State::addActiveCell(Cell)']]],
+  ['addinactivecell',['addInactiveCell',['../classState.html#a1ce573c73ba230feee739406ecd60579',1,'State::addInactiveCell(Cell)'],['../classState.html#a1ce573c73ba230feee739406ecd60579',1,'State::addInactiveCell(Cell)']]],
+  ['addtobirth',['addToBirth',['../classChange.html#a3a8bc66c0703f68a7de525bd9a380632',1,'Change::addToBirth(Cell)'],['../classChange.html#a3a8bc66c0703f68a7de525bd9a380632',1,'Change::addToBirth(Cell)']]],
+  ['addtoshift',['addToShift',['../classChange.html#a438127f0a71fbe420a468771ccd02e9b',1,'Change::addToShift(Cell)'],['../classChange.html#a438127f0a71fbe420a468771ccd02e9b',1,'Change::addToShift(Cell)']]]
 ];

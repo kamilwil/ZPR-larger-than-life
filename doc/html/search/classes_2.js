@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['rules',['Rules',['../structRules.html',1,'']]],
-  ['rulesbutton',['RulesButton',['../classZPR-larger-than-life_1_1client__main_1_1RulesButton.html',1,'ZPR-larger-than-life::client_main']]]
+  ['iterbutton',['IterButton',['../classclient__main_1_1IterButton.html',1,'client_main.IterButton'],['../classZPR-larger-than-life_1_1client__main_1_1IterButton.html',1,'ZPR-larger-than-life.client_main.IterButton']]]
 ];

@@ -1,5 +1,10 @@
 var searchData=
 [
   ['bmax',['bmax',['../structRules.html#acaddcdf14f621def0a324a0c0125f712',1,'Rules']]],
-  ['bmin',['bmin',['../structRules.html#ae765376adff2666087ef56dc6c24445b',1,'Rules']]]
+  ['bmin',['bmin',['../structRules.html#ae765376adff2666087ef56dc6c24445b',1,'Rules']]],
+  ['board_5fsize',['BOARD_SIZE',['../classGame.html#ada3dfc7ce000b988bcbff7f344161419',1,'Game']]],
+  ['boost_5fauto_5ftest_5fcase',['BOOST_AUTO_TEST_CASE',['../tests_8cpp.html#a4d09d1efb0ce6b25def86889d9103b34',1,'BOOST_AUTO_TEST_CASE(testCellConstruct):&#160;tests.cpp'],['../tests_8cpp.html#a9d4adba006aa7f40eff0199582348ab9',1,'BOOST_AUTO_TEST_CASE(overloadTest):&#160;tests.cpp'],['../tests_8cpp.html#a9b74b63f1327299a68bf010e60ec8c5d',1,'BOOST_AUTO_TEST_CASE(testSetGetConstruct):&#160;tests.cpp'],['../tests_8cpp.html#a951dd05b8970292e952e16c4a7f206e4',1,'BOOST_AUTO_TEST_CASE(testStateConstruct):&#160;tests.cpp'],['../tests_8cpp.html#a1263047012d35d47c09805731683365d',1,'BOOST_AUTO_TEST_CASE(testAddingStateCells):&#160;tests.cpp'],['../tests_8cpp.html#ae6ab451f96bd378ca8463af4df23bfdd',1,'BOOST_AUTO_TEST_CASE(testRemovingStateCells):&#160;tests.cpp'],['../tests_8cpp.html#a71c84bc14913dc6ce869e9b035b75ac4',1,'BOOST_AUTO_TEST_CASE(testChangeConstructor):&#160;tests.cpp'],['../tests_8cpp.html#a5de5e8748b1e4e8513dd78ebf7d4cf06',1,'BOOST_AUTO_TEST_CASE(testAddingChangeCells):&#160;tests.cpp'],['../tests_8cpp.html#a7c2499ffe37bbf182ecffe7d2644d6f3',1,'BOOST_AUTO_TEST_CASE(EasyFunctions):&#160;tests.cpp'],['../tests_8cpp.html#aa50e75d882903f84499900e18a2f4477',1,'BOOST_AUTO_TEST_CASE(updateRecordTest):&#160;tests.cpp'],['../tests_8cpp.html#a585e58f8bde28b292e29275932abeeca',1,'BOOST_AUTO_TEST_CASE(generateInfluemceMapTest):&#160;tests.cpp'],['../tests_8cpp.html#a1b31363371e41f0d084fe8dc6261bf95',1,'BOOST_AUTO_TEST_CASE(implementChangeTest):&#160;tests.cpp']]],
+  ['boost_5fpython_5fmodule',['BOOST_PYTHON_MODULE',['../src_2ZPR-larger-than-life_2change_8cpp.html#a13874d85d3c77a101dd6fbe3dfca7c3b',1,'change.cpp']]],
+  ['boost_5ftest_5fdyn_5flink',['BOOST_TEST_DYN_LINK',['../tests_8cpp.html#a139f00d2466d591f60b8d6a73c8273f1',1,'tests.cpp']]],
+  ['boost_5ftest_5fmodule',['BOOST_TEST_MODULE',['../tests_8cpp.html#a6b2a3852db8bb19ab6909bac01859985',1,'tests.cpp']]]
 ];

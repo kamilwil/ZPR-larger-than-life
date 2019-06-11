@@ -1,0 +1,36 @@
+\hypertarget{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp}{}\doxysection{Z\+P\+R-\/larger-\/than-\/life-\/without\+\_\+pointers/src/\+Z\+P\+R-\/larger-\/than-\/life/game.cpp File Reference}
+\label{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp}\index{ZPR-\/larger-\/than-\/life-\/without\_pointers/src/ZPR-\/larger-\/than-\/life/game.cpp@{ZPR-\/larger-\/than-\/life-\/without\_pointers/src/ZPR-\/larger-\/than-\/life/game.cpp}}
+{\ttfamily \#include $<$set$>$}\newline
+{\ttfamily \#include $<$deque$>$}\newline
+{\ttfamily \#include \char`\"{}cell.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}change.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}game.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}state.\+hpp\char`\"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$iterator$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include \char`\"{}rules.\+hpp\char`\"{}}\newline
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ std\+::pair$<$ int, int $>$, int $>$\+::iterator \mbox{\hyperlink{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a3acd8aa6c24eb4a105145fb4ba42cf91}{findertype}}
+\item 
+typedef std\+::set$<$ \mbox{\hyperlink{classCell}{Cell}} $>$\+::iterator \mbox{\hyperlink{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a7bed2ac087e7b3f66c572f4b6022c307}{stateiteratortype}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a3acd8aa6c24eb4a105145fb4ba42cf91}\label{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a3acd8aa6c24eb4a105145fb4ba42cf91}} 
+\index{game.cpp@{game.cpp}!findertype@{findertype}}
+\index{findertype@{findertype}!game.cpp@{game.cpp}}
+\doxysubsubsection{\texorpdfstring{findertype}{findertype}}
+{\footnotesize\ttfamily typedef std\+::map$<$std\+::pair$<$int,int$>$,int$>$\+::iterator \mbox{\hyperlink{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a3acd8aa6c24eb4a105145fb4ba42cf91}{findertype}}}
+
+\mbox{\Hypertarget{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a7bed2ac087e7b3f66c572f4b6022c307}\label{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a7bed2ac087e7b3f66c572f4b6022c307}} 
+\index{game.cpp@{game.cpp}!stateiteratortype@{stateiteratortype}}
+\index{stateiteratortype@{stateiteratortype}!game.cpp@{game.cpp}}
+\doxysubsubsection{\texorpdfstring{stateiteratortype}{stateiteratortype}}
+{\footnotesize\ttfamily typedef std\+::set$<$\mbox{\hyperlink{classCell}{Cell}}$>$\+::iterator \mbox{\hyperlink{ZPR-larger-than-life-without__pointers_2src_2ZPR-larger-than-life_2game_8cpp_a7bed2ac087e7b3f66c572f4b6022c307}{stateiteratortype}}}
+
