@@ -12,7 +12,7 @@ sources = env.Glob("src/ZPR-larger-than-life/*.cpp")
 env.Append(CPPPATH = [os.path.join(boost_prefix, "include"), "/usr/include/python3.6m"])
 env.Append(LIBPATH = [os.path.join(boost_prefix, "lib")])
 env.Append(CXXFLAGS = "-std=c++11")
-env.Append(LIBS = ['python3.6m', 'boost_python3', 'boost_system'])
+env.Append(LIBS = ['python3.6m', 'boost_python3', 'boost_system', 'boost_test'])
 
 if os.name=='nt':
   targett = 'build\\change.pyd'

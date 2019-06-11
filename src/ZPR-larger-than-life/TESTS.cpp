@@ -88,24 +88,6 @@ BOOST_AUTO_TEST_CASE (testAddingChangeCells){
     BOOST_CHECK (change_t.getToBirth().size() == 1);
 }
 
-BOOST_AUTO_TEST_CASE (testRemovingChangeCells){
-    std::list<Cell> test_list1;
-    std::list<Cell> test_list2;
-    Change change_t = Change(test_list1, test_list2);
-    test_list2.addInactiveCell(Cell(1,2,3));
-    test_list2.removeInactiveCell(Cell(1,2,19));
-    BOOST_CHECK (change_t.getInactiveCells().size() == 0);
-}
-
-BOOST_AUTO_TEST_CASE (testRemovingChangeCells2){
-    std::list<Cell> test_list1;
-    std::list<Cell> test_list2;
-    Change change_t = Change(test_list1, test_list2);
-    test_list2.addInactiveCell(Cell(1,2,3));
-    test_list2.removeInactiveCell(Cell(2,2,3));
-    BOOST_CHECK (change_t.getInactiveCells().size() == 1);
-}
-
 BOOST_AUTO_TEST_SUITE_END()
                                  
 
@@ -116,58 +98,24 @@ BOOST_AUTO_TEST_CASE (EasyFunctions){
     std::deque<Change> test_changes;
     test_changes.push_front(Change());
     State test_state = State();
-    BOOST_CHECK ( Game(rules, test_changes, test_state).getRules == rules);    
+    BOOST_CHECK ( Game(rules, test_changes, test_state).getRules().smin == rules.smin);    
 }
            
 BOOST_AUTO_TEST_CASE (updateRecordTest){
+    Rules test_rules = Rules(NeighbourhoodType::MOORE, 1, 1, 1, 1, 1, 1, 1);
+    std::deque<Change> test_changes;
+    State test_state = State();
+    Game test_game = Game(test_rules, test_changes, test_state);
     std::map<std::pair<int, int>, int> influence_map_test; 
-    Game::updateRecord( &influence_map_test, 1, 1);
-    Game::updateRecord( &influence_map_test, 1, 1);
-    Game::updateRecord( &influence_map_test, -1, 2);
-    Game::updateRecord( &influence_map_test, 2, -1);
+    test_game.updateRecord( &influence_map_test, 1, 1);
+    test_game.updateRecord( &influence_map_test, 1, 1);
+    test_game.updateRecord( &influence_map_test, -1, 2);
+    test_game.updateRecord( &influence_map_test, 2, -1);
     BOOST_CHECK (influence_map_test[std::make_pair(1,1)] == 2);
     BOOST_CHECK (influence_map_test[std::make_pair(-1,2)] == 1);
     BOOST_CHECK (influence_map_test.size() == 3);
     
 }
-                                 
-BOOST_AUTO_TEST_CASE (includeCellInfluenceTestMoore){
-    Rules test_rules = Rules(NeighbourhoodType::MOORE, 1, 1, 1, 1, 1, 1, 1);
-    std::deque<Change> test_changes;
-    State test_state = State();
-    Game test_game = Game(test_rules, test_changes, test_state);
-    std::map<std::pair<int, int>, int> influence_map_test;    
-    
-    Cell cell_10 = Cell(1,0,2);
-    Cell cell_30 = Cell(3,0,0);
-    influence_map_test = Game::includeCellInfluence (&influence_map_test, cell_10);
-    
-    BOOST_CHECK (influence_map_test.size() == 9);
-    BOOST_CHECK (influence_map[std::make_pair(1,1)] == 1);
-                               
-    influence_map_test = Game::includeCellInfluence (&influence_map_test, cell_30);
-    BOOST_CHECK (influence_map_test.size() == 15);
-    BOOST_CHECK (influence_map[std::make_pair(2,0)] == 2);                           
-}
-                               
-BOOST_AUTO_TEST_CASE (includeCellInfluenceTestNeum){
-    Rules test_rules = Rules(NeighbourhoodType::NEUM, 2, 1, 1, 1, 1, 1, 1);
-    std::deque<Change> test_changes;
-    State test_state = State();
-    Game test_game = Game(test_rules, test_changes, test_state);
-    std::map<std::pair<int, int>, int> influence_map_test;    
-    
-    Cell cell_10 = Cell(1,0,2);
-    Cell cell_30 = Cell(3,0,0);
-    influence_map_test = Game::includeCellInfluence (&influence_map_test, cell_10);
-    
-    BOOST_CHECK (influence_map_test.size() == 13);
-    BOOST_CHECK (influence_map_test[std::make_pair(1,1)] == 1);
-                               
-    influence_map_test = Game::includeCellInfluence (&influence_map_test, cell_30);
-    BOOST_CHECK (influence_map_test.size() == 21);
-    BOOST_CHECK (influence_map_test[std::make_pair(2,1)] == 2);                           
-}           
                                
 BOOST_AUTO_TEST_CASE (generateInfluemceMapTest){
     Rules test_rules = Rules(NeighbourhoodType::NEUM, 2, 1, 1, 1, 1, 1, 1);
@@ -183,6 +131,7 @@ BOOST_AUTO_TEST_CASE (generateInfluemceMapTest){
 
 BOOST_AUTO_TEST_CASE (implementChangeTest){
 	Rules test_rules = Rules(NeighbourhoodType::NEUM, 2, 1, 1, 1, 1, 1, 1);
+}
 }
 
                                
