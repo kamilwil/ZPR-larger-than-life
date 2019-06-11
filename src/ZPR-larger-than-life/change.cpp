@@ -1,4 +1,4 @@
-#include <boost/python.hpp>
+// #include <boost/python.hpp>
 #include <set>
 #include <iterator>
 #include "change.hpp"
@@ -38,7 +38,7 @@
     /// Cell to_birth - cell to be added
     /// Outputs:
     /// none(void)
-    void Change::addToBirth(Cell to_birth){toShift.push_back(to_birth);}
+    void Change::addToBirth(Cell to_birth){to_shift_.push_back(to_birth);}
 
 
 BOOST_PYTHON_MODULE ( libchange )

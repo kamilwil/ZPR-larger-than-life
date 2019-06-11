@@ -66,19 +66,19 @@ void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_ma
     int current_x = current_cell.getXcoord();
     int current_y = current_cell.getYcoord(); 
             
-    if (rules_.neighbourhood == NeighbourhoodType::MOORE)
-        for (auto x_offset = std::max(-rules_.range, -current_x) ; x_offset <= std::min(rules_.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = std::max(-rules_.range, -current_y) ; y_offset <= std::min(rules_.range, BOARD_SIZE-1-current_y); ++y_offset) 
+    if (rules_.neighbourhood_ == NeighbourhoodType::MOORE)
+        for (auto x_offset = std::max(-rules_.range_, -current_x) ; x_offset <= std::min(rules_.range_, BOARD_SIZE-1-current_x); ++x_offset)
+             for (auto y_offset = std::max(-rules_.range_, -current_y) ; y_offset <= std::min(rules_.range_, BOARD_SIZE-1-current_y); ++y_offset) 
                 Game::updateRecord(influence_map, current_x + x_offset, current_y + y_offset);
     
-    else if (rules_.neighbourhood == NeighbourhoodType::NEUM)
-        for (auto x_offset = std::max(-rules_.range, -current_x) ; x_offset <= std::min(rules_.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = -std::abs(rules_.range - std::abs(x_offset)); y_offset <= std::abs(rules_.range - std::abs(x_offset)); ++y_offset) 
+    else if (rules_.neighbourhood_ == NeighbourhoodType::NEUM)
+        for (auto x_offset = std::max(-rules_.range_, -current_x) ; x_offset <= std::min(rules_.range_, BOARD_SIZE-1-current_x); ++x_offset)
+             for (auto y_offset = -std::abs(rules_.range_ - std::abs(x_offset)); y_offset <= std::abs(rules_.range_ - std::abs(x_offset)); ++y_offset) 
                  Game::updateRecord(influence_map, current_x + x_offset, current_y + y_offset);      
         
-    else if (rules_.neighbourhood == NeighbourhoodType::CIRC)
-        for (auto x_offset = std::max(-rules_.range, -current_x) ; x_offset <= std::min(rules_.range, BOARD_SIZE-1-current_x); ++x_offset)
-             for (auto y_offset = -floor(sqrt(pow(rules_.range + 0.5, 2) - pow(x_offset, 2))); y_offset <= floor(sqrt(pow(rules_.range + 0.5, 2) - pow(x_offset, 2))); ++y_offset) 
+    else if (rules_.neighbourhood_ == NeighbourhoodType::CIRC)
+        for (auto x_offset = std::max(-rules_.range_, -current_x) ; x_offset <= std::min(rules_.range_, BOARD_SIZE-1-current_x); ++x_offset)
+             for (auto y_offset = -floor(sqrt(pow(rules_.range_ + 0.5, 2) - pow(x_offset, 2))); y_offset <= floor(sqrt(pow(rules_.range_ + 0.5, 2) - pow(x_offset, 2))); ++y_offset) 
                  Game::updateRecord(influence_map, current_x + x_offset, current_y + y_offset);            
                   
 }
@@ -92,7 +92,7 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
         
     std::map<std::pair<int, int>, int> influence_map;
         
-    for(stateiteratortype it = state_.getActiveCells().begin(); it != state_.getActiveCells().end(); ++it)
+    for(Stateiteratortype it = state_.getActiveCells().begin(); it != state_.getActiveCells().end(); ++it)
         this->includeCellInfluence(&influence_map, *it);                        
     
     return influence_map;
@@ -106,18 +106,18 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
 void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     Change* change_i = new Change();
 
-    for(findertype it = influence_map->begin(); it != influence_map->end(); ++it){
+    for(Findertype it = influence_map->begin(); it != influence_map->end(); ++it){
        
         
-        stateiteratortype cell_find = std::find( state_.getActiveCells().begin(),  state_getActiveCells().end(), Cell((it->first).first, (it->first).second, 0));
+        Stateiteratortype cell_find = std::find( state_.getActiveCells().begin(),  state_.getActiveCells().end(), Cell((it->first).first, (it->first).second, 0));
 
         if (cell_find != state_.getActiveCells().end()){
-            if ((it->second < rules_.smin + 1 - rules_.m) || (it->second  > rules_.smax + 1 - rules_.m)){                 //survivability condition not reached
+            if ((it->second < rules_.smin_ + 1 - rules_.m_) || (it->second  > rules_.smax_ + 1 - rules_.m_)){                 //survivability condition not reached
                 change_i->addToShift((*cell_find));
                 break;
             }                                                                                                         //otherwise we do nothing                        
         }              
-        else if ((it->second >= rules_.bmin + 1 - rules_.m) && (it->second  <= rules_.bmax + 1 - rules_.m)){     //being here means there is no such cell in container
+        else if ((it->second >= rules_.bmin_ + 1 - rules_.m_) && (it->second  <= rules_.bmax_ + 1 - rules_.m_)){     //being here means there is no such cell in container
             change_i->addToBirth((*cell_find));                                                              //so we may want to create it
         }                                                                                
                                    
@@ -136,12 +136,12 @@ void Game::implementChange (Change change){
         auto it_cell = std::find(state_.getInactiveCells().begin(), state_.getInactiveCells().end(), (*it));           // checking if cell is not already there
         if (it_cell == state_.getInactiveCells().end()){                                                              //if there is not we create it
             (*it).setState(rules_.states_);                                                   
-            state.addActiveCell(*it);
+            state_.addActiveCell(*it);
         }
         else{
-            state.removeInactiveCell(*it);
+            state_.removeInactiveCell(*it);
             (*it).setState(rules_.states_);               //setting to a max state value        
-            state.addActiveCell(*it);
+            state_.addActiveCell(*it);
         }
     }
 
@@ -162,7 +162,7 @@ void Game::implementChange (Change change){
 
     void Game::setRules(const Rules& rulings){rules_ = rulings;}
     void Game::setChanges(const std::deque<Change>& change_list){changes_ = change_list;}
-    void Game::setState(const State& status){state = status;}
+    void Game::setState(const State& status){state_ = status;}
 
 
     /// Function matching field change_list with changes at each iteration of the game
@@ -181,9 +181,9 @@ void Game::implementChange (Change change){
         
     }
     
-    int Game::sendChanges(Change change,int it){return 1;}
 
-    Rules Game::receiveRules(const boost::python::list& l)
+
+   Rules Game::receiveRules(const boost::python::list& l)
     {
         int rcv_range = boost::python::extract<int> (l[0]);
         int rcv_states = boost::python::extract<int> (l[1]);

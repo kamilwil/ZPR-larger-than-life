@@ -9,8 +9,8 @@
 
 class Change{
 
-    std::list<Cell> toShift_;
-    std::list<Cell> toBirth_;
+    std::list<Cell> to_shift_;
+    std::list<Cell> to_birth_;
 
 public:
     Change();
@@ -20,7 +20,7 @@ public:
     std::list<Cell> getToShift();
     std::list<Cell> getToBirth();
     void setToShift(const std::list<Cell>&);
-    void setToBirth(const std::list<Cell>)&;
+    void setToBirth(const std::list<Cell>&);
 
     void addToShift(Cell);
     void addToBirth(Cell);

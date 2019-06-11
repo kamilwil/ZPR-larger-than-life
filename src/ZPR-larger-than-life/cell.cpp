@@ -26,28 +26,3 @@ void Cell::setXcoord(int x){coords_.first = x;}
 void Cell::setYcoord(int y){coords_.second = y;}
 void Cell::setState(int st){state_ = st;}
 
-    
-friend bool operator == (const Cell &compared_cell, const Cell &compared_cell_other) {              //overloading operator required for finding objects
-
-    if (compared_cell_other.coords_ == compared_cell.coords_)
-        return true;
-    else
-        return false;
-    }
-
-friend bool operator < (const Cell &compared_cell, const Cell &compared_cell_other){                //overloading operator required for sorting objects
-    
-    if (compared_cell.coords_.first < compared_cell_other.coords_.first)
-        return true;
-    else if (compared_cell.coords_.first > compared_cell_other.coords_.first)
-        return false;
-    else if (compared_cell.coords_.second < compared_cell_other.coords_.second)
-        return true;
-    else
-        return false;   
-    }
-
-
-
-    
-
