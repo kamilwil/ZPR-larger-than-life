@@ -23,8 +23,8 @@
 //* std::deque<Change> - contener with a Change object for each of the game's iterations
 //* State state - State object - our current board state
 
-typedef std::map<std::pair<int,int>,int>::iterator findertype;
-typedef std::set<Cell>::iterator stateiteratortype;
+typedef std::map<std::pair<int,int>,int>::iterator Findertype;
+typedef std::set<Cell>::iterator Stateiteratortype;
 
 //* Default Game constructor
 Game::Game()=default;
@@ -46,7 +46,7 @@ Game::Game(const Rules& rulings, const std::deque<Change>& change_list, const St
 //* none (void)
 void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x_index, int y_index){
     std::pair<int,int> to_find = std::make_pair(x_index, y_index);
-    findertype finder = influence_map->find(to_find);
+    Findertype finder = influence_map->find(to_find);
         
     if (finder == influence_map->end()){           // when in there is no such key in the map
         influence_map->insert(std::make_pair(to_find, 1));
