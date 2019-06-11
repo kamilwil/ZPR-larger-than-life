@@ -1,4 +1,4 @@
-//#include <boost/python.hpp>
+#include <boost/python.hpp>
 #include <set>
 #include <iterator>
 #include "change.hpp"
@@ -36,7 +36,7 @@
     //! Cell tosbirthed - komorka ktora ma byc dodana do pola ToBirth
     void Change::addToBirth(Cell tobirthed){toShift.push_back(tobirthed);}
 
-/*
+
 BOOST_PYTHON_MODULE ( change )
 {
     boost::python::class_<Change>("Change", boost::python::init<std::list<Cell>, std::list<Cell> >())
@@ -44,4 +44,3 @@ BOOST_PYTHON_MODULE ( change )
         .def( "getToBirth", &Change::getToBirth)
         ;
 }
-*/

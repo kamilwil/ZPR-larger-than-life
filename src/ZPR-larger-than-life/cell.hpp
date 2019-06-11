@@ -40,8 +40,6 @@ public:
         return false;  
     
 }
- // Cell& operator= (const Cell&);
- //   Cell& operator= (Cell&&);
 
 
 

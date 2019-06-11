@@ -3,7 +3,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-//#include<boost/python.hpp>
+#include<boost/python.hpp>
 #include <set>
 #include <deque> // http://www.gotw.ca/gotw/054.htm
 #include "change.hpp"
@@ -46,7 +46,7 @@ public:
     int sendChanges(Change,int);
 
     void receiveRules();
-    //Rules receiveRules (const boost::python::list&);
+    Rules receiveRules (const boost::python::list&);
     void receiveStartingPosition();
     void receiveTask();
 
