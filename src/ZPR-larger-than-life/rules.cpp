@@ -1,17 +1,17 @@
 #include "rules.hpp"
-//* Struktura rules przechowujaca odpowidnie wartosci zasad obecnych w danej grze
-//* Pola klasy:
-//* NeighbourhoodType neighbourhood - nieghbourhood type
-//* int range - range of neighbourhood
-//* int states - number of states
-//* int smin - minimal number of neighbours for cell to survive
-//* int smax - maximal number of neighbours for cell to survive
-//* int bmin - minimal number of neighbours for cell to be born
-//* int bmax - maximal number of neighbours for cell to be born
-//* int m - flaga of inclusion cell as its own neighbour
+/// Structure with rules regarding the game
+/// Fields:
+/// NeighbourhoodType neighbourhood - neeghbourhood type
+/// int range - range of neighbourhood
+/// int states - number of states
+/// int smin - minimal number of neighbours for cell to survive
+/// int smax - maximal number of neighbours for cell to survive
+/// int bmin - minimal number of neighbours for cell to be born
+/// int bmax - maximal number of neighbours for cell to be born
+/// int m - flaga of inclusion cell as its own neighbour
 
 
-//* Constructor with arguments similar to fields of the structure
+/// Constructor with arguments similar to fields of the structure
 Rules::Rules(NeighbourhoodType n, int r, int c, int sminimum, int smaximum, int bminimum, int bmaximum, int flag){
 	neighbourhood = n;
 	range = r;
@@ -23,7 +23,7 @@ Rules::Rules(NeighbourhoodType n, int r, int c, int sminimum, int smaximum, int 
 	m = flag;
 }
 
-//* Rules default constructor
+/// Rules default constructor
 Rules::Rules() = default;
-//* Rules default destructor
+/// Rules default destructor
 Rules::~Rules() = default;

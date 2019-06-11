@@ -12,7 +12,6 @@ BOOST_AUTO_TEST_SUITE (CellSuite)
 BOOST_AUTO_TEST_CASE (testCellConstruct){
     BOOST_CHECK (Cell(1,2,3).getCoords() == std::make_pair(1,2));
     BOOST_CHECK (Cell(1,2,3).getState() == 3);
-
 }
 
 BOOST_AUTO_TEST_CASE (overloadTest){
@@ -43,10 +42,7 @@ BOOST_AUTO_TEST_CASE (testStateConstruct){
     State test_state = State(test_set1, test_set2, 0);
     BOOST_CHECK (test_state.getActiveCells() == test_set1);
     BOOST_CHECK (test_state.getInactiveCells() == test_set2);
-
 }
-
-
 
 BOOST_AUTO_TEST_CASE (testAddingStateCells){
     std::set<Cell> test_set1;
@@ -54,7 +50,6 @@ BOOST_AUTO_TEST_CASE (testAddingStateCells){
     State state_t = State(test_set1, test_set2, 0);
     state_t.addActiveCell(Cell(1,2,3));
     BOOST_CHECK (state_t.getActiveCells().size() == 1);
-
 }
 
 BOOST_AUTO_TEST_CASE (testRemovingStateCells){
@@ -67,7 +62,6 @@ BOOST_AUTO_TEST_CASE (testRemovingStateCells){
 }
 
 BOOST_AUTO_TEST_SUITE_END()
-
 
 BOOST_AUTO_TEST_SUITE (ChangeSuite)
 
@@ -90,7 +84,6 @@ BOOST_AUTO_TEST_CASE (testAddingChangeCells){
 
 BOOST_AUTO_TEST_SUITE_END()
                                  
-
 BOOST_AUTO_TEST_SUITE(GameSuite)
                                  
 BOOST_AUTO_TEST_CASE (EasyFunctions){
@@ -130,11 +123,6 @@ BOOST_AUTO_TEST_CASE (generateInfluemceMapTest){
 }
 
 BOOST_AUTO_TEST_CASE (implementChangeTest){
-	Rules test_rules = Rules(NeighbourhoodType::NEUM, 2, 1, 1, 1, 1, 1, 1);
-}
-}
-
-BOOST_AUTO_TEST_CASE (implementChangeTest){
 	Rules test_rules = Rules(NeighbourhoodType::Moore, 2, 20, 1, 1, 2, 2, 0);
 	State test_state = State();
 	std::deque<Change> test_change_list;
@@ -158,6 +146,5 @@ BOOST_AUTO_TEST_CASE (implementChangeTest){
 	
 	BOOST_CHECK (test_game.state.getActiveCells().size() == 2);
 	BOOST_CHECK (test_game.state.getActiveCells()[0].state == 19);
-	
 	
 }                               
