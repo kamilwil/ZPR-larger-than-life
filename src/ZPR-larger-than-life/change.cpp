@@ -1,3 +1,4 @@
+//#include <boost/python.hpp>
 #include <set>
 #include <iterator>
 #include "change.hpp"
@@ -23,6 +24,12 @@
     void Change::addToShift(Cell toshifted){toShift.push_back(toshifted);}
     void Change::addToBirth(Cell tobirthed){toShift.push_back(tobirthed);}
 
-
-
-
+/*
+BOOST_PYTHON_MODULE ( change )
+{
+    boost::python::class_<Change>("Change", boost::python::init<std::list<Cell>, std::list<Cell> >())
+        .def( "getToShift", &Change::getToShift)
+        .def( "getToBirth", &Change::getToBirth)
+        ;
+}
+*/

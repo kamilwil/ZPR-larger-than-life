@@ -17,7 +17,13 @@ struct Rules {
     int bmax;
     int m;
 
+	Rules(NeighbourhoodType, int, int, int, int, int, int, int);
+
+	Rules();
+	~Rules();
+
 };
+
 
 
 #endif
