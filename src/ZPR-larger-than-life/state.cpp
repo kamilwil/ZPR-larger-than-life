@@ -56,12 +56,6 @@
     //* Zwracane wartosci:
     //* brak(void)
     void State::removeInactiveCell(Cell cell){
-        /*for(auto std:iterator<Cell> it = inactive_cells.begin(); it != inactive_cells.end(); )
-            if(*it == cell)
-                it = inactive_cells.erase(it);
-                break;
-            else
-                ++it;      */
         inactive_cells.erase(cell);          
     }
 
