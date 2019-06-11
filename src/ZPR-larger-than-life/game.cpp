@@ -13,13 +13,12 @@
 #include <algorithm>  // min,max (da sie bez tego ale jest czytelniej niz konstrukcja a ? b : c ; zgaduje za duzo pythona)
 #include <cmath>     //sqrt, floor, ceil
 #include "rules.hpp"
-#include <boost/python>
 
 
 typedef std::map<std::pair<int,int>,int>::iterator findertype;
 typedef std::set<Cell>::iterator stateiteratortype;
 
-// Definicja publiczynch kontruktorow oraz destruktora
+
 Game::Game()=default;
 Game::~Game()=default;
 
@@ -29,7 +28,6 @@ Game::Game(Rules rulings, std::deque<Change> change_list, State status){
     state = status;
 }
 
-// Defiinicja funkcji uaktalniajaca mape wplywu po uwzglednieniu danej komorki
 void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x_index, int y_index){
     std::pair<int,int> to_find = std::make_pair(x_index, y_index);
     findertype finder = influence_map->find(to_find);
@@ -42,9 +40,17 @@ void Game::updateRecord(std::map<std::pair<int, int>, int>* influence_map, int x
     }    
 }
 
-// Definicja funkcji odopowiedzialnej za generacje wplywu pojedynczej komorki na mape wplywow uwzgledniajac ograniczenia zwiazane z rozmiarem planszy oraz wartosciami pol w strukturze Rules
 void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_map, Cell  current_cell){
-       
+
+    // Niby zrobione, ale nie wiem czy jest cos zle ze wskaznikami do influence_map
+    // Generalnie kwestia jest taka, ze chcemy miec kazda funkcje do jednej rzeczy
+    // Stad wlasnie ta pokraczna funkcja ktora dostaje wskaznik na mape
+    // Wskaznik, bo nie chcemy zeby kompilator nam robil jej kopie
+    // Mandatory disclaimer: sprawdzic czy nie jestem noga ze wskaznikow
+    // No i poniewaz funkcja ta pobiera wskaznik na rzeczywisty obiekt i go edytuje to nie musi nic zwracac
+    // I czy poprawnie sa zapisane warunki dla enumow
+    
+    
     int current_x = current_cell.getXcoord();
     int current_y = current_cell.getYcoord();
     int min_x = (current_x > 0) ? current_x : 0;
@@ -69,7 +75,7 @@ void Game::includeCellInfluence(std::map<std::pair<int, int>, int>* influence_ma
                   
 }
     
-// Funkcja generujaca calosciowa mape wplywow, potrzebna do generacji obiektu Change
+
 std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
         
     std::map<std::pair<int, int>, int> influence_map;
@@ -80,7 +86,7 @@ std::map<std::pair<int, int>, int> Game::generateInfluenceMap(){
     return influence_map;
 }
 
-// Generowanie obiektu Change w oparciu o mape wplywow dla danej iteracji 
+    
 void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     Change* change_i = new Change();
 
@@ -106,8 +112,6 @@ void Game::generateChange(std::map<std::pair<int, int>, int>* influence_map){
     changes.push_back(*(change_i));
 }
 
-
-// Funkcja zmieniajaca obecny stan gry w zaleznosci od stanu poprzedniego oraz obiektu Change
 void Game::implementChange (Change change){
     for (std::list<Cell>::iterator it = change.getToBirth().begin(); it != change.getToBirth().end(); ++it){
         
@@ -135,7 +139,6 @@ void Game::implementChange (Change change){
 }
     
 
-    // Implementacja getterow oraz setterow
     Rules Game::getRules(){return rules;}
     std::deque<Change> Game::getChanges(){return changes;}
     State Game::getState(){return state;}
@@ -146,8 +149,6 @@ void Game::implementChange (Change change){
 
     void Game::updateState(Change change,int direction){}
 
-
-    // Funkcja generujaca wszystkie zmiany dla danej dlugosci gry
     void Game::generateAllChanges(){
 
         // od jedynki bo zerowa zmiane pobieramy z czesci widokowej
@@ -159,37 +160,9 @@ void Game::implementChange (Change change){
         
     }
 
-    // Funkcje sluzace do komunikacji z modulem pythonowym
     int Game::sendChanges(Change change,int it){return 1;}
 
-    Rules Game::receiveRules(const boost::python::list& l)
-    {
-    	int rcv_range = extract<int> l[0];
-    	int rcv_states = extract<int> l[1];
-    	int rcv_smin = extract<int> l[3];
-    	int rcv_smax = extract<int> l[4];
-    	int rcv_bmin = extract<int> l[5];
-    	int rcv_bmax = extract<int> l[6];
-    	int rcv_m = extract<int> l[2];
-    	int rcv_n = extract<char> l[7];
-    	NeighbourhoodType rcv_neighbourhood = 'MOORE';
-
-    	switch (rcv_n)
-    	{
-    		case 'M':
-    			rcv_neighbourhood = 'MOORE';
-    			break;
-    		case 'C':
-    			rcv_neighbourhood = 'CIRC';
-    			break;
-    		case 'N':
-    			rcv_neighbourhood = 'NEUM';
-    			break;
-    	}
-
-    	Rules out = new Rules(rcv_neighbourhood, rcv_range, rcv_states, rcv_smin, rcv_smax, rcv_bmin, rcv_bmax, rcv_m);
-    	return out;
-    }
+    void Game::receiveRules(){}
     void Game::receiveStartingPosition(){} //changes[0] = starting_pos
     void Game::receiveTask(){}
 

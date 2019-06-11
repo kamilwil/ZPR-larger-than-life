@@ -1,11 +1,4 @@
 import tkinter as tk
-import tkinter.filedialog as tkinterfiledialog
-import platform
-import os
-from random import choice
-from math import floor
-from colour import Color
-from time import sleep
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
@@ -56,111 +49,27 @@ class RulesButton(tk.Button):
 
 def onPressSave():
 	print('Called Save method!')
-	if (platform.system() == "Windows"):
-		directory = os.path.join("C:", "Users", os.getlogin(), "Desktop")
-	else:
-		directory = "/home/"+os.getlogin()
-	save_dialog = tkinterfiledialog.asksaveasfilename(initialdir = directory,title = "Save rule as",filetypes = (("Textfiles","*.txt"),("All files","*.*")))
-	print(save_dialog)
-	try:
-		with open(save_dialog, "w") as file:
-			file.write(rule_field.get())
-	except:
-		print("Saving rule unsuccesful!")
 
 def onPressLoad():
 	print('Called Load method!')
-	if (platform.system() == "Windows"):
-		directory = os.path.join("C:", "Users", os.getlogin(), "Desktop")
-	else:
-		directory = "/home/"+os.getlogin()
-	open_dialog = tkinterfiledialog.askopenfile(initialdir = directory,title = "Open rule",filetypes = (("Textfiles","*.txt"),("All files","*.*")))
-	print(open_dialog)
-	try:
-		with open(open_dialog.name, "r") as file:
-			read_rule = file.read()
-			print(read_rule)
-			rule_field.delete(0, tk.END)
-			rule_field.insert(0, read_rule)
-	except:
-		print("Reading rule unsuccesful!")
 
 def onPressRand():
 	print('Called Randomize method!')
-	r = range(1, floor((CELL_COUNT-0.5)/3.14))
-	r_chosen = choice(r)
-	c = range(0,256)
-	c_chosen = choice(c)
-	m = range(0,2)
-	m_chosen = choice(m)
-	n = ['M', 'N', 'C']
-	n_chosen = choice(n)
 
-	sb_max = 1
-	if (n_chosen == 'M'):
-		sb_max = (2*r_chosen + 1)**2
-	elif (n_chosen == 'N'):
-		sb_max = 2*r_chosen*(r_chosen+1)+1
-	elif (n_chosen == 'C'):
-		sb_max = floor(3.14*(r_chosen+0.5)**2)
+# IterButton (Button)
+class IterButton(tk.Button):
+	def __init__(self, parent=None, **kwargs):
+		tk.Button.__init__(self, parent, **kwargs)
+		self.parent = parent
 
-	smin = range(0, sb_max)
-	smin_chosen = choice(smin)
-	smax = range(smin_chosen, sb_max)
-	bmin = range(0, sb_max)
-	bmin_chosen = choice(bmin)
-	bmax = range(bmin_chosen, sb_max)
-	
-	rule_string = "{R:"+str(r_chosen)+",C:"+str(c_chosen)+",M:"+str(m_chosen)+",Smin:"+str(smin_chosen)+",Smax:"+str(choice(smax))+",Bmin:"+str(bmin_chosen)+",Bmax:"+str(choice(bmax))+",N:"+str(n_chosen)+"}"
-	print(rule_string)
-	rule_field.delete(0, tk.END)
-	rule_field.insert(0, rule_string)
+def onPressPrev():
+	print('Called Previous method!')
 
+def onPressPlay():
+	print('Called Play method!')
 
-# IterButton (własna klasa)
-class IterButton(object):
-	def __init__(self, canv):
-		self.iter_canvas = canv
-	def onPressPrev(self):
-		print('Called Previous method!')
-		drawCell(self.iter_canvas, 49, 4)
-		drawCell(self.iter_canvas, 0, 4)
-	def onPressPlay(self):
-		print('Called Play method!')
-		fadeCell(self.iter_canvas, 49, 4)
-		fadeCell(self.iter_canvas, 0, 4)
-	def onPressNext(self):
-		print('Called Next method!')
-
-
-def drawCell(canv, indx, indy):
-	print('Called drawCell!')
-	ratio = WINDOW_HEIGHT/WINDOW_WIDTH
-	scale_w = canv.winfo_reqwidth()/WINDOW_WIDTH
-	scale_h = canv.winfo_reqheight()/WINDOW_HEIGHT
-	print(scale_w)
-	print(scale_h)
-	canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill='gray')
-
-def fadeCell(canv, indx, indy):
-	print('Called fadeCell!')
-	darkgray = Color("#aaaaaa")
-	white = Color("#333333")
-	shades = list(darkgray.range_to(white, 6))
-
-	ratio = WINDOW_HEIGHT/WINDOW_WIDTH
-	scale_w = canv.winfo_reqwidth()/WINDOW_WIDTH
-	scale_h = canv.winfo_reqheight()/WINDOW_HEIGHT
-	print(scale_w)
-	print(scale_h)
-
-	for i in shades:
-		hex_color = "%s" % i
-		canv.create_rectangle(27*scale_w + indx*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + indy*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, 27*scale_w + (indx+1)*(ratio*canv.winfo_reqwidth()-200*scale_w)/CELL_COUNT, 20*scale_h + (indy+1)*(canv.winfo_reqheight()-100*scale_h)/CELL_COUNT, fill=hex_color)
-
-
-
-# MAIN -----------------------------------------------------------------------------------------------------
+def onPressNext():
+	print('Called Next method!')
 
 root = tk.Tk()
 root.title("Larger than Life")
@@ -195,13 +104,15 @@ rule_field.insert(0,"Wpisz regule")
 iter_frame = tk.Frame(side_frame)
 iter_frame.pack(side="top", anchor="center")
 
-prev_iter = IterButton(canvas)
-tk.Button(iter_frame, text="<<", command=prev_iter.onPressPrev).pack(side="left")
+prev_iter = IterButton(iter_frame, text="<<", command=onPressPrev)
+prev_iter.pack(side="left")
 
-play_iter = IterButton(canvas)
-tk.Button(iter_frame, text=">", command=play_iter.onPressPlay).pack(side="left")
+play_iter = IterButton(iter_frame, text=">", command=onPressPlay)
+play_iter.pack(side="left")
 
-next_iter = IterButton(canvas)
-tk.Button(iter_frame, text=">>", command=next_iter.onPressNext).pack(side="left")
+next_iter = IterButton(iter_frame, text=">>", command=onPressNext)
+next_iter.pack(side="left")
+
+
 
 root.mainloop()

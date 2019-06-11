@@ -2,15 +2,13 @@
 #include "cell.hpp"
 #include <utility>
 
-    // Implementacja konstruktorow oraz destruktora
     Cell::Cell() = default;
     Cell::~Cell() = default;
     Cell::Cell(int x, int y, int st){
         coords = std::make_pair(x,y);
         state = st;
     }
-
-    // Implementacja getterow oraz setterow  
+        
     void Cell::setCoords(int x, int y){coords.first = x; coords.second = y;}
     std::pair<int,int> Cell::getCoords(){return coords;}
     int Cell::getXcoord(void){return coords.first;}
@@ -21,19 +19,20 @@
     void Cell::setState(int st){state = st;}
 
 
- /*   
-    Cell& Cell::operator= (Cell& other){
+    /*Cell& Cell::operator= (const Cell other) {
         coords = other.coords;
         state = other.state;
         return *this;
-    }
+    }*/ 
 
-    Cell& Cell::operator= (Cell&& other){
+  /*  Cell& Cell::operator= (Cell&& other){
         std::swap(coords, other.coords);
         std::swap(state, other.state);
         return *this;
-    }
-*/
+    } */
+    
+ //   const Cell& Cell::operator= (const Cell& other) = default;
+
     
 
 
