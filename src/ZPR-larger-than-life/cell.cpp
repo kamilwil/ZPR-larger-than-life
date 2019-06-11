@@ -19,13 +19,13 @@
     void Cell::setState(int st){state = st;}
 
 
-    Cell& Cell::operator= (const Cell& other){
+    Cell& Cell::operator= (Cell& other){
         coords = other.coords;
         state = other.state;
         return *this;
     }
 
-    Cell&& Cell::operator= (Cell& other){
+    Cell& Cell::operator= (Cell&& other){
         std::swap(coords, other.coords);
         std::swap(state, other.state);
         return *this;
