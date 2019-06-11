@@ -8,16 +8,30 @@
 
 
 BOOST_AUTO_TEST_SUITE (CellSuite)
+    
 BOOST_AUTO_TEST_CASE (testCellConstruct)
 {
     BOOST_CHECK (Cell(1,2,3).coords == std::make_pair(1,2));
     BOOST_CHECK (Cell(1,2,3).state == 3);
 
 }
+
+BOOST_AUTO_TEST_CASE (overloadTest)
+{
+    BOOST_CHECK (Cell(1,2,3) == Cell(1,2,4));
+    BOOST_CHECK (!(Cell(2,4,6) == Cell(2,8,6)));
+    BOOST_CHECK (!(Cell(2,4,6) == Cell(4,2,6)));
+    BOOST_CHECK (Cell(1,2,3) < Cell(3,2,1));
+    BOOST_CHECK (!(Cell(2,2,2) < Cell(2,2,3)));
+}
+
 BOOST_AUTO_TEST_CASE (testSetGetConstruct)
 {
-    BOOST_CHECK (Cell(1,2,3).setCoords(4,5).coords == std::make_pair(4,5));
-    BOOST_CHECK (Cell(1,2,3).coords == Cell::getCoords);
+    Cell cell_1 = Cell(1,2,3);
+    cell_1.setCoords(4,5);
+    BOOST_CHECK (cell_1.getCoords() == std::make_pair(4,5));
+    Cell cell_2 = Cell(5,6,7);
+    BOOST_CHECK (cell_2.getXcoord() == 5);
 }
 
 BOOST_AUTO_TEST_SUITE_END()
@@ -30,12 +44,15 @@ BOOST_AUTO_TEST_CASE (testStateConstruct)
     test_set1.insert(Cell(1,2,3));
     std::set<Cell> test_set2;
     test_set2.insert(Cell(4,5,6));
-    BOOST_CHECK (State(test_set1, test_set2).getActiveCells() == test_set1);
-    BOOST_CHECK (State(test_set1, test_set2).getInactiveCells()== test_set2);
+    State test_state = State(test_set1, test_set2);
+    BOOST_CHECK (test_state.getActiveCells() == test_set1);
+    BOOST_CHECK (test_state.getInactiveCells() == test_set2);
 
 }
 
-BOOST_AUTO_TEST_CASE (testAddingCells)
+
+
+BOOST_AUTO_TEST_CASE (testAddingStateCells)
 {
     std::set<Cell> test_set1;
     std::set<Cell> test_set2;
@@ -45,7 +62,7 @@ BOOST_AUTO_TEST_CASE (testAddingCells)
 
 }
 
-BOOST_AUTO_TEST_CASE (testRemovingCells)
+BOOST_AUTO_TEST_CASE (testRemovingStateCells)
 {
     std::set<Cell> test_set1;
     std::set<Cell> test_set2;
@@ -70,11 +87,31 @@ BOOST_AUTO_TEST_CASE (testChangeConstructor)
     BOOST_CHECK (Change(test_list1, test_list2, 0).getToBirth == test_list2);
 }
 
-BOOST_AUTO_TEST_CASE (testAddingCells)
+BOOST_AUTO_TEST_CASE (testAddingChangeCells)
 {
     std::list<Cell> test_list1;
     std::list<Cell> test_list2;
     Change change_t = Change(test_set1, test_set2, 0);
     change_t.addToBirth(Cell(1,2,3));
     BOOST_CHECK (state_t.getToBirth().size() == 1);
+}
+
+BOOST_AUTO_TEST_CASE (testRemovingChangeCells)
+{
+    std::list<Cell> test_set1;
+    std::list<Cell> test_set2;
+    test_set2.addInactiveCell(Cell(1,2,3));
+    test_set2.removeInactiveCell(Cell(1,2,19));
+    State state_t = State(test_set1, test_set2, 0);
+    BOOST_CHECK (change_t.getInactiveCells().size() == 0);
+}
+
+BOOST_AUTO_TEST_CASE (testRemovingChangeCells2)
+{
+    std::list<Cell> test_set1;
+    std::list<Cell> test_set2;
+    test_set2.addInactiveCell(Cell(1,2,3));
+    test_set2.removeInactiveCell(Cell(2,2,3);
+    State state_t = State(test_set1, test_set2, 0);
+    BOOST_CHECK (change_t.getInactiveCells().size() == 1);
 }
