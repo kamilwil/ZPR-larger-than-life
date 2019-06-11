@@ -2,16 +2,16 @@
 #include "cell.hpp"
 #include <utility>
 
-//! Cell class representing a single cell on the board
-//! Fields:
-//! std::pair coords - coordinates of cell
-//! int state - state of the cell
+/// Cell class representing a single cell on the board
+/// Fields:
+/// std::pair coords - coordinates of cell
+/// int state - state of the cell
 
-//! default Cell constructor    
+/// default Cell constructor    
 Cell::Cell() = default;  
-//! default Cell destructor
+/// default Cell destructor
 Cell::~Cell() = default;    
-//! Constructor with arguments similar to the fields of the class        
+/// Constructor with arguments similar to the fields of the class        
 Cell::Cell(int x, int y, int st){   
     coords = std::make_pair(x,y);
     state = st;
