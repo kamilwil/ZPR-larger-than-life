@@ -37,7 +37,7 @@
     void Change::addToBirth(Cell tobirthed){toShift.push_back(tobirthed);}
 
 
-BOOST_PYTHON_MODULE ( change )
+BOOST_PYTHON_MODULE ( libchange )
 {
     boost::python::class_<Change>("Change", boost::python::init<std::list<Cell>, std::list<Cell> >())
         .def( "getToShift", &Change::getToShift)

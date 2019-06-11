@@ -6,6 +6,8 @@ from random import choice
 from math import floor
 from colour import Color
 from time import sleep
+import libchange
+
 
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
